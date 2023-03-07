@@ -25,29 +25,23 @@ $ npm start
 ## Routes
 | Route                | Privacy         | Renders                  |
 | -------------------- | :-------------: | ------------------------ |
-| /                    | public          | HomePage                 |
-| /signup              | public          | SignupPage               |
-| /login               | public          | LoginPage                |
-| /about               | public          | ResumePage               |
-| /coding-projects     | public          | CodingProjectListPage    |
-| /design-projects     | public          | DesignProjectListPage    |
-| /coding-projects/:id | public          | CodingProjectDetailsPage |
-| /design-projects/:id | public          | DesignProjectDetailsPage |
-| /all-orders          | private (admin) | AllOrdersPage            |
-| /all-orders/:id      | private (admin) | EditOrderPage            |
-| /profile             | private (user)  | UserProfilePage          |
+| /                    | public          | Home.page                |
+| /signup              | public          | Signup.page              |
+| /login               | public          | Login.page               |
+| /user/:userId        | private (user)  | ....                     |
+| /post                | private (user)  | Posts.page               |
+| /post/:postId.       | private (user)  | .....                    |
+| /post/new            | private (user)  | .....                    |
+| /contact             | private (user)  | ....                     |
+
 
 ## Components
-- AddCodingProject
-- AddDesignProject
-- AddOrder
-- AnonRoute
-- CodingProjectCard
-- DesignProjectCard
-- EditCodingProject
-- EditDesignProject
+- ArtisanSignupForm
+- CommerceSignUpForm
+- ArtisanProfile
+- CommerceProfile
 - Navbar
-- OrderCard
-- PrivateRoute
+- PostCard
+
 
 ---
