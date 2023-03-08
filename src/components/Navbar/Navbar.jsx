@@ -9,7 +9,7 @@ function Navbar() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
   return (
-    <nav>
+     <nav>
       <Link to="/">
         <button>Home</button>
       </Link>
@@ -39,7 +39,7 @@ function Navbar() {
           </Link>
         </>
       )}
-    </nav>
+    </nav> 
   );
 }
 

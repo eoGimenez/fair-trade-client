@@ -2,18 +2,37 @@ import "./SignupPage.css";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import authService from "../../services/auth.service";
+import {
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  FormHelperText,
+  Input,
+  Center,
+  Box,
+  Select,
+  AbsoluteCenter,
+  Container,
+  Stack,
+  Button,
+} from "@chakra-ui/react";
+import Navbar2 from "../../components/Navbar/Navbar2";
 
 function SignupPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
+  const [input, setInput] = useState("");
 
   const navigate = useNavigate();
 
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
   const handleName = (e) => setName(e.target.value);
+
+  const handleInputChange = (e) => setInput(e.target.value);
+  const isError = input === "";
 
   const handleSignupSubmit = (e) => {
     e.preventDefault();
@@ -46,7 +65,69 @@ function SignupPage() {
   };
 
   return (
-    <div className="SignupPage">
+    <>
+      <Navbar2 />
+
+      <Box
+        position="relative"
+        /* backgroundColor='blue'  */ mx="auto"
+        mt="200px"
+      >
+        <AbsoluteCenter w="500px">
+          <FormControl mt="15px" mb="15" isRequired isInvalid={!isError}>
+            <FormLabel color="teal">Name</FormLabel>
+            <Input
+              type="text"
+              placeholder="Lucia"
+              value={input}
+              onChange={handleInputChange}
+            />
+            {!isError ? (
+              <FormHelperText>Enter your Name</FormHelperText>
+            ) : (
+              <FormErrorMessage>Name is required.</FormErrorMessage>
+            )}
+          </FormControl>
+          <FormControl mt="15px" mb="15" isRequired isInvalid={!isError}>
+            <FormLabel color="teal">Last Name</FormLabel>
+            <Input
+              type="text"
+              placeholder="Gomez"
+              value={input}
+              onChange={handleInputChange}
+            />
+          </FormControl>
+          <FormControl mt="15px" mb="15" isRequired isInvalid={isError}>
+            <FormLabel color="teal">Email address</FormLabel>
+            <Input
+              type="email"
+              variant="filled"
+              placeholder="artesaniaslucia@gmail.com"
+              value={input}
+              onChange={handleInputChange}
+            />
+            <FormHelperText>We'll never share your email.</FormHelperText>
+          </FormControl>
+
+          <FormControl>
+            <FormLabel color="teal">Category</FormLabel>
+            <Select placeholder="Select category">
+              <option>Home</option>
+              <option>Natural Cosmetics</option>
+              <option>Fabric</option>
+              <option>Miscellaneaus</option>
+            </Select>
+          </FormControl>
+
+          <Stack direction="row" spacing={4} align="center" mt='20px' >
+            <Button colorScheme="teal" variant="ghost" size='lg' mx='auto'>
+              Sing Up
+            </Button>
+          </Stack>
+        </AbsoluteCenter>
+      </Box>
+
+      {/*  <div className="SignupPage">
       <h1>Sign Up</h1>
 
       <form onSubmit={handleSignupSubmit}>
@@ -71,7 +152,8 @@ function SignupPage() {
 
       <p>Already have account?</p>
       <Link to={"/login"}> Login</Link>
-    </div>
+    </div>  */}
+    </>
   );
 }
 
