@@ -9,11 +9,12 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import Navbar from "./components/Navbar/Navbar";
 import IsPrivate from "./components/IsPrivate/IsPrivate";
 import IsAnon from "./components/IsAnon/IsAnon";
+import PostList from "./pages/PostPage/PostList";
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
+      {/* <Navbar /> */}
 
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -21,9 +22,13 @@ function App() {
         <Route
           path="/profile"
           element={
-            <IsPrivate>
               <ProfilePage />
-            </IsPrivate>
+          }
+        />
+              <Route
+          path="/post"
+          element={
+              <PostList />
           }
         />
 
