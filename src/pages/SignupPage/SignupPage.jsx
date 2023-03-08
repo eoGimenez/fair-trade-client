@@ -1,6 +1,6 @@
 import "./SignupPage.css";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import authService from "../../services/auth.service";
 import {
   FormControl,
@@ -8,11 +8,9 @@ import {
   FormErrorMessage,
   FormHelperText,
   Input,
-  Center,
   Box,
   Select,
   AbsoluteCenter,
-  Container,
   Stack,
   Button,
 } from "@chakra-ui/react";
@@ -27,9 +25,9 @@ function SignupPage() {
 
   const navigate = useNavigate();
 
-  const handleEmail = (e) => setEmail(e.target.value);
+/*   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
-  const handleName = (e) => setName(e.target.value);
+  const handleName = (e) => setName(e.target.value); */
 
   const handleInputChange = (e) => setInput(e.target.value);
   const isError = input === "";
@@ -40,15 +38,15 @@ function SignupPage() {
     const requestBody = { email, password, name };
 
     // Send a request to the server using axios
-    /* 
-    const authToken = localStorage.getItem("authToken");
+     
+  /*   const authToken = localStorage.getItem("authToken");
     axios.post(
       `${process.env.REACT_APP_SERVER_URL}/auth/signup`, 
       requestBody, 
       { headers: { Authorization: `Bearer ${authToken}` },
     })
-    .then((response) => {})
-    */
+    .then((response) => {}) */
+    
 
     // Or using a service
     authService
