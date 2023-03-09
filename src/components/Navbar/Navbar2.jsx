@@ -24,7 +24,7 @@ function Navbar2() {
     Post
   </Button> </Link>
   <Link to="/signup"><Button colorScheme='teal' variant='ghost' size='lg'>
-   Sgin Up
+   Sign Up
   </Button> </Link>
 </Stack>
 <Spacer />
