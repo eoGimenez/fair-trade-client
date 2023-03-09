@@ -3,7 +3,7 @@ import { Box, Card, CardHeader, Flex, Avatar, CardBody, Text, Image, CardFooter,
 
 export default function Post() {
   return (
-    <SimpleGrid
+    <SimpleGrid 
       spacing={2}
       templateColumns="repeat(auto-fill, minmax(340px, 1fr))"
     >
@@ -11,11 +11,7 @@ export default function Post() {
         <CardHeader>
           <Flex spacing="4">
             <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
-              <Avatar
-                name="Nombre Artesano"
-                src="https://bit.ly/sage-adebayo"
-              />
-
+              <Avatar name="Nombre Artesano" src="https://bit.ly/sage-adebayo" />
               <Box>
                 <Heading size="sm">Nombre Artesano</Heading>
                 <Text>Ubicacion</Text>
@@ -36,12 +32,11 @@ export default function Post() {
             voluptatibus voluptas eligendi enim quia recusandae saepe quibusdam
             libero, similique neque?
           </Text>
-          <Divider></Divider>
+          <Divider />
           <Stat>
             <StatLabel>Batch</StatLabel>
             <StatNumber>15 Units</StatNumber>
             <StatNumber fontSize="lg">$12.00</StatNumber>
-            <StatHelpText>Contract</StatHelpText>
           </Stat>
         </CardBody>
           <Image
