@@ -1,6 +1,6 @@
 import "./SignupPage.css";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import authService from "../../services/auth.service";
 import {
   FormControl,
@@ -8,11 +8,9 @@ import {
   FormErrorMessage,
   FormHelperText,
   Input,
-  Center,
   Box,
   Select,
   AbsoluteCenter,
-  Container,
   Stack,
   Button,
   Tooltip,
@@ -78,8 +76,8 @@ function SignupPage() {
       requestBody, 
       { headers: { Authorization: `Bearer ${authToken}` },
     })
-    .then((response) => {})
-    */
+    .then((response) => {}) */
+    
 
   return (
     <>
