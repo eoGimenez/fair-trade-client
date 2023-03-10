@@ -1,12 +1,7 @@
-import Navbar2 from "../../components/Navbar/Navbar2";
 import Navbar from "../../components/Navbar/Navbar";
 import "./HomePage.css";
-import InitialFocus from "../../components/modal/InitialFocus";
-import { Box } from "@chakra-ui/layout";
-import slide1 from "./slide1.jpg";
-import slide2 from "./slide2.jpg";
-import slide3 from "./slide3.jpg";
-
+//import InitialFocus from "../../components/modal/InitialFocus";
+//import { Box } from "@chakra-ui/layout";
 import slide1 from "./slide1.jpg";
 import slide2 from "./slide2.jpg";
 import slide3 from "./slide3.jpg";

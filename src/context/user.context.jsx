@@ -7,13 +7,13 @@ const userContext = createContext();
 function UserProviderWrapper({ children }) {
 
     
-  const [usersCTX, SetUserCTX] = useState([]);
+  const [usersCTX, SetUsersCTX] = useState([]);
 
   const getUsers = () => {
     userService.getUsers()
       .then((result) => {
        /*  console.log("RESULT-GET USER", result); */
-        SetUserCTX(result.data);
+        SetUsersCTX(result.data);
       })
       .catch((err) => console.log(err));
   };

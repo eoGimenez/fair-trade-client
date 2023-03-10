@@ -54,8 +54,8 @@ function ModalLogIn(props) {
 
         storeToken(response.data.authToken);
         authenticateUser();
-        console.log('USERCXT:',response.data)
-        navigate("/profile/:id");
+        console.log('USERCXT:', user)
+        navigate(`/profile/${user._id}`);
       })
       .catch((error) => {
         // If the request resolves with an error, set the error message in the state

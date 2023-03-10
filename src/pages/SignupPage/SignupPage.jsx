@@ -39,12 +39,12 @@ function SignupPage() {
 /*   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
   const handleName = (e) => setName(e.target.value); */
-
+  let requestBody
 
   const handleSignupSubmit = (e) => {
     e.preventDefault();
     // Create an object representing the request body
-    const requestBody = {
+    requestBody = {
       email,
       password,
       passwordRe,

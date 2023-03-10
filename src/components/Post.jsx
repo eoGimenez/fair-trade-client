@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react"
 import { Link } from "react-router-dom";
 import { postContext } from "../context/posts.context"
+import Navbar2 from "./Navbar/Navbar2";
 
 export default function Post() {
 
@@ -14,6 +15,7 @@ export default function Post() {
 
     return (
         <>
+        <Navbar2 />
             {posts.map(post => {
                 return (
                     <div key={post._id} className="card mb-3 w-50 mx-auto" style={{ "max-width": "540px;" }}>

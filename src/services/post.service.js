@@ -31,7 +31,7 @@ class PostServiceConst {
     return this.api.put(`/post/${postId}/edit`, reqBody);
   }
 
-  deleteProject(id) {
+  deletePost(id) {
     return this.api.delete(`/post/${id}/delete`);
   } 
 

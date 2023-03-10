@@ -1,23 +1,27 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import PostService from "../services/post.service";
+import Navbar2 from "../../components/Navbar/Navbar2";
+import { postContext } from "../../context/posts.context";
+import PostService from "../../services/post.service";
 
-export default function PostEdit({getPosts, toggleEdit, getPost, postId, setPost, currentPost }) {
+export default function PostNewPage() {
+  const { posts, getPosts } = useContext(postContext);
+
   const [form, setForm] = useState({
-    title: currentPost.title,
-    contract: currentPost.contract,
-    image: currentPost.image,
-    description: currentPost.description,
-    batch: currentPost.batch,
-    price: currentPost.price,
-    category: currentPost.category,
-    available: currentPost.available,
+    title: "",
+    contract: "",
+    image: "",
+    description: "",
+    batch: "",
+    price: "",
+    category: "",
+    available: false
   });
   const navigate = useNavigate();
 
   const submitHandler = (e) => {
     e.preventDefault();
-    PostService.updateOne(postId, {
+    PostService.newPost({
       title: form.title,
       contract: form.contract,
       image: form.image,
@@ -25,25 +29,22 @@ export default function PostEdit({getPosts, toggleEdit, getPost, postId, setPost
       batch: form.batch,
       price: form.price,
       category: form.category,
-      available: form.available
-    }, {new: true})
-    .then(result => {
-      getPosts();
-      toggleEdit();
-      getPost();
-      setPost(result.data);
-      navigate(`/post/${result.data._id}`)
+      available: true
     })
-    .catch(err => console.log(err));
-  }
+      .then((result) => {
+        getPosts();
+        navigate(`/post`);
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <>
-    
+    <Navbar2 />
       <form className="row " onSubmit={submitHandler}>
         <div className="col col-md-6">
           <label htmlFor="title" className="form-label">
-          title
+            title
           </label>
           <input
             type="text"
@@ -67,7 +68,7 @@ export default function PostEdit({getPosts, toggleEdit, getPost, postId, setPost
         </div>
         <div className="col-12">
           <label htmlFor="image" className="form-label">
-          image
+            image
           </label>
           <input
             type="text"
@@ -79,7 +80,7 @@ export default function PostEdit({getPosts, toggleEdit, getPost, postId, setPost
         </div>
         <div className="col col-6">
           <label htmlFor="description" className="form-label">
-          description
+            description
           </label>
           <input
             type="text"
@@ -91,7 +92,7 @@ export default function PostEdit({getPosts, toggleEdit, getPost, postId, setPost
         </div>
         <div className="col col-md-6">
           <label htmlFor="batch" className="form-label">
-          batch{" "}
+            batch{" "}
           </label>
           <input
             type="number"
@@ -103,46 +104,31 @@ export default function PostEdit({getPosts, toggleEdit, getPost, postId, setPost
         </div>
         <div className="col col-md-6">
           <label htmlFor="price" className="form-label">
-          price{" "}
+            price{" "}
           </label>
           <input
             type="number"
             className="form-control"
             id="price"
             value={form.price}
-            onChange={(e) =>
-              setForm({ ...form, price: e.target.value })
-            }
+            onChange={(e) => setForm({ ...form, price: e.target.value })}
           />
         </div>
         <div className="col col-md-6">
           <label htmlFor="category" className="form-label">
-          category
+            category
           </label>
           <input
             type="text"
             className="form-control"
             id="category"
             form={form.category}
-            onChange={(e) =>
-              setForm({ ...form, category: e.target.value })
-            }
+            onChange={(e) => setForm({ ...form, category: e.target.value })}
           />
         </div>
         <div className="col col-md-6">
-         {/*  <input
-            type="boolean"
-            className="form-control"
-            id="available"
-            form={form.available}
-            onChange={(e) =>
-              setForm({ ...form, available: e.target.value })
-            }
-          /> */}
-        </div>
-        <div className="col col-md-6">
           <button type="submit" className="btn btn-primary">
-            edit!
+            Create
           </button>
         </div>
       </form>

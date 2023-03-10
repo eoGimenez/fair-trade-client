@@ -1,15 +1,19 @@
 
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AbsoluteCenter, Button, ButtonGroup, Stack, Avatar, AvatarGroup, Flex, Box ,Spacer} from '@chakra-ui/react'
 import InitialFocus from "../modal/InitialFocus";
-
+import { AuthContext } from "../../context/auth.context";
 
 function Navbar2() {
   // Subscribe to the AuthContext to gain access to
   // the values from AuthContext.Provider's `value` prop
- /*  const { isLoggedIn, user, logOutUser } = useContext(AuthContext); */
-
+   const { isLoggedIn, user, logOutUser, authenticateUser } = useContext(AuthContext);
+   const [ isLoading, setIsLoading ] = useState(true)
+  useEffect(() => {
+    authenticateUser()
+    setIsLoading(false)
+  }, [])
   return (
   <>
   {/* <AbsoluteCenter> */}
@@ -27,14 +31,18 @@ function Navbar2() {
   <Link to="/signup"><Button colorScheme='teal' variant='ghost' size='lg'>
    Sign Up
   </Button> </Link>
+  <Link to="/post/new"><Button colorScheme='teal' variant='ghost' size='lg' >
+    New Post
+    </Button>
+  </Link>
 </Stack>
 <Spacer />
 
 <Box p='4' >
 <AvatarGroup spacing='1rem'  p='4'>
-<Link to="/profile/:id">
+{/* {!isLoading && <Link to={`/profile/${user._id}`}>
 <Avatar bg='teal.500' />
-          </Link>
+          </Link>} */}
   
 </AvatarGroup>
 </Box>

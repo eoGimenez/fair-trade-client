@@ -1,11 +1,13 @@
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 import  logoImg  from "./navbarlogo.png";
-// import { useContext } from "react";
-// import { AuthContext } from "../../context/auth.context";
-
-function Navbar() {
-  
+import InitialFocus from "../modal/InitialFocus";
+import { useContext } from "react";
+ import { AuthContext } from "../../context/auth.context";
+ 
+ function Navbar() {
+   const { user } = useContext(AuthContext)
+   
   return (
     <>
     <nav className="navbar navbar-expand-lg">
@@ -22,7 +24,7 @@ function Navbar() {
           <li className="nav-item">
 
           {/* Button trigger modal */}
-            <Link className="nav-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Log In</Link>
+            <InitialFocus />
           </li>
           
 
