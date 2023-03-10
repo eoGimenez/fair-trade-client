@@ -35,6 +35,13 @@ function SignupPage() {
 
   const navigate = useNavigate();
 
+/*   const handleEmail = (e) => setEmail(e.target.value);
+  const handlePassword = (e) => setPassword(e.target.value);
+  const handleName = (e) => setName(e.target.value); */
+
+  const handleInputChange = (e) => setInput(e.target.value);
+  const isError = input === "";
+
   const handleSignupSubmit = (e) => {
     e.preventDefault();
     // Create an object representing the request body
@@ -78,6 +85,20 @@ function SignupPage() {
     })
     .then((response) => {}) */
     
+
+    // Or using a service
+    authService
+      .signup(requestBody)
+      .then((response) => {
+        // If the POST request is successful redirect to the login page
+        navigate("/login");
+      })
+      .catch((error) => {
+        // If the request resolves with an error, set the error message in the state
+        const errorDescription = error.response.data.message;
+        setErrorMessage(errorDescription);
+      });
+  
 
   return (
     <>

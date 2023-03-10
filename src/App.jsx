@@ -10,6 +10,7 @@ import Navbar from "./components/Navbar/Navbar";
 import IsPrivate from "./components/IsPrivate/IsPrivate";
 import IsAnon from "./components/IsAnon/IsAnon";
 import PostList from "./pages/PostPage/PostList";
+import PostDetailPage from "./pages/PostPage/PostDetailPage";
 
 function App() {
   return (
@@ -19,19 +20,9 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
 
-        <Route
-          path="/profile"
-          element={
-              <ProfilePage />
-          }
-        />
-              <Route
-          path="/post"
-          element={
-              <PostList />
-          }
-        />
-
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/post" element={<PostList />} />
+        <Route path="/post/:postId" element={<PostDetailPage />} />
         <Route
           path="/signup"
           element={
