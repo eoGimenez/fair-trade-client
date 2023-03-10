@@ -2,6 +2,8 @@ import "./SignupPage.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import authService from "../../services/auth.service";
+import Navbar from "../../components/Navbar/Navbar";
+
 import {
   FormControl,
   FormLabel,
@@ -17,8 +19,7 @@ import {
   Flex,
   Spacer,
 } from "@chakra-ui/react";
-import Navbar2 from "../../components/Navbar/Navbar2";
-import { ImInfo } from "react-icons/im";
+import SignupPage2 from "./SignUpPage2";
 
 function SignupPage() {
   const [email, setEmail] = useState("");
@@ -100,9 +101,8 @@ function SignupPage() {
 
   return (
     <>
-  
-     <Navbar2/>
-     
+      <Navbar />
+      <SignupPage2 />
       <Box
         position="relative"
         ml="auto"
