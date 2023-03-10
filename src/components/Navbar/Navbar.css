@@ -1,0 +1,9 @@
+.dropdown-menu {
+    position: relative;
+    z-index: 10;
+}
+
+.navbar-expand-lg {
+    background-color: #ebebf8;
+    opacity: 0.95;
+}

@@ -1,45 +1,70 @@
 import "./Navbar.css";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { AuthContext } from "../../context/auth.context";
+import  logoImg  from "./navbarlogo.png";
+// import { useContext } from "react";
+// import { AuthContext } from "../../context/auth.context";
 
 function Navbar() {
-  // Subscribe to the AuthContext to gain access to
-  // the values from AuthContext.Provider's `value` prop
-  const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
-
+  
   return (
-     <nav>
-      <Link to="/">
-        <button>Home</button>
-      </Link>
+    <>
+    <nav className="navbar navbar-expand-lg">
+    <div className="container-fluid">
+      <Link className="navbar-brand" to="/"><img src={logoImg} alt="Logo" style={{height:50}}/></Link>
+      <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span className="navbar-toggler-icon"></span>
+      </button>
+      <div className="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul className="navbar-nav">
+          <li className="nav-item">
+            <Link className="nav-link" to="/aboutus">About us</Link>
+          </li>
+          <li className="nav-item">
 
-      {isLoggedIn && (
-        <>
-          <button onClick={logOutUser}>Logout</button>
+          {/* Button trigger modal */}
+            <Link className="nav-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Log In</Link>
+          </li>
+          
 
-          <Link to="/profile">
-            <button>Profile</button>
-            {/* <img src="https://picsum.photos/id/402/200/300" style={{ width: 50, height: 50, borderRadius: 25}} alt="profile" /> */}
-          </Link>
+{/* <!-- Modal --> */}
 
-          <span>{user && user.name}</span>
-        </>
-      )}
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-      {!isLoggedIn && (
-        <>
-          <Link to="/signup">
-            {" "}
-            <button>Sign Up</button>{" "}
-          </Link>
-          <Link to="/login">
-            {" "}
-            <button>Login</button>{" "}
-          </Link>
-        </>
-      )}
-    </nav> 
+
+
+
+
+          {/* <li className="nav-item dropdown">
+            <Link className="nav-link dropdown-toggle" to="/login" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Log In
+            </Link>
+            <ul className="dropdown-menu">
+              <li><Link className="dropdown-item" to="">Action</Link></li>
+              <li><Link className="dropdown-item" to="">Another action</Link></li>
+              <li><Link className="dropdown-item" to="">Something else here</Link></li>
+            </ul>
+          </li> */}
+        </ul>
+      </div>
+    </div>
+  </nav>
+  </>
   );
 }
 
