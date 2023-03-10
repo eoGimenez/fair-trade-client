@@ -10,7 +10,7 @@ import Navbar from "./components/Navbar/Navbar";
 import IsPrivate from "./components/IsPrivate/IsPrivate";
 import IsAnon from "./components/IsAnon/IsAnon";
 import PostList from "./pages/PostPage/PostList";
-import Users from "./pages/users/Users";
+import PostDetailPage from "./pages/PostPage/PostDetailPage";
 
 function App() {
   
@@ -23,12 +23,9 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
 
-        <Route path='/profile/:id' element={<ProfilePage />} />
-        
-
-        <Route path="/user/all" element={<Users />} />
+        <Route path="/profile" element={<ProfilePage />} />
         <Route path="/post" element={<PostList />} />
-
+        <Route path="/post/:postId" element={<PostDetailPage />} />
         <Route
           path="/signup"
           element={

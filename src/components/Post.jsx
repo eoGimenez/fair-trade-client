@@ -1,71 +1,45 @@
-import { Box, Card, CardHeader, Flex, Avatar, CardBody, Text, Image, CardFooter, Button, Heading, IconButton, Stat, StatLabel, StatNumber, StatHelpText, Divider, SimpleGrid } from "@chakra-ui/react";
-
+import { useContext, useEffect } from "react"
+import { Link } from "react-router-dom";
+import { postContext } from "../context/posts.context"
 
 export default function Post() {
-  return (
-    <SimpleGrid
-      spacing={2}
-      templateColumns="repeat(auto-fill, minmax(340px, 1fr))"
-    >
-      <Card maxW="md" ml="10px" mt="30px">
-        <CardHeader>
-          <Flex spacing="4">
-            <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
-              <Avatar
-                name="Nombre Artesano"
-                src="https://bit.ly/sage-adebayo"
-              />
 
-              <Box>
-                <Heading size="sm">Nombre Artesano</Heading>
-                <Text>Ubicacion</Text>
-              </Box>
-            </Flex>
-            <IconButton
-              variant="ghost"
-              colorScheme="gray"
-              aria-label="See menu"
-              /* icon={<BsThreeDotsVertical />} */
-            />
-          </Flex>
-        </CardHeader>
-        <CardBody>
-          <Text mb="10px">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia
-            unde maxime in sit aut consequatur odit commodi obcaecati modi
-            voluptatibus voluptas eligendi enim quia recusandae saepe quibusdam
-            libero, similique neque?
-          </Text>
-          <Divider></Divider>
-          <Stat>
-            <StatLabel>Batch</StatLabel>
-            <StatNumber>15 Units</StatNumber>
-            <StatNumber fontSize="lg">$12.00</StatNumber>
-            <StatHelpText>Contract</StatHelpText>
-          </Stat>
-        </CardBody>
-          <Image
-            objectFit="cover"
-            src="https://archive.marcoguoli.com/img-get/I0000ZgDBgbNhP1w/s/1200/I0000ZgDBgbNhP1w.jpg"
-            alt="Chakra UI"
-          />
-        <CardFooter
-          justify="space-between"
-          flexWrap="wrap"
-          sx={{
-            "& > button": {
-              minW: "136px",
-            },
-          }}
-        >
-          <Button flex="1" variant="ghost" /* leftIcon={<BiChat />} */>
-            Contact
-          </Button>
-          <Button flex="1" variant="ghost" /* leftIcon={<BiChat />} */>
-            View details
-          </Button>
-        </CardFooter>
-      </Card>
-    </SimpleGrid>
-  );
+    const { posts, getPosts } = useContext(postContext);
+
+    useEffect(() => {
+        getPosts();
+    }, []);
+
+
+
+    return (
+        <>
+            {posts.map(post => {
+                return (
+                    <div key={post._id} className="card mb-3 w-50 mx-auto" style={{ "max-width": "540px;" }}>
+                        <div className="row g-0">
+                            <div className="col col-md-4">
+                                <img src={post.image} className="img-fluid rounded-start" alt={post.title} />
+                            </div>
+                            <div className="col-md-8">
+                                <div className="card-body">
+                                    <h4 className="card-title">{post.title}</h4>
+                                    <p className="card-text">{post.description}</p>
+                                    <p className="card-text">Batch:{post.batch}</p>
+                                    <p className="card-text">Price per unit: {post.price}€.</p>
+                                    <p className="card-text"><small className="text-muted">{post.available}</small></p>
+                                    <div className="col-6">
+                                    <Link className="m-2 btn btn-info">Contact</Link>
+                                    <Link to={`/post/${post._id}`} className="m-2 btn btn-info">Details</Link>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )
+            })
+            }
+
+        </>
+    )
 }
