@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-class PostService {
+class PostServiceConst {
   constructor() {
     this.api = axios.create({
       baseURL: process.env.REACT_APP_SERVER_URL || "http://localhost:5005/api"
@@ -15,35 +15,29 @@ class PostService {
     });
   }
 
-  // POST /api/examples
   newPost(post) {
     return this.api.post('/post/new', post);
   }
 
-  // GET /api/examples
   getAll () {
     return this.api.get('/post');
   }
 
-  // GET /api/examples/:id
-  getOne = async (id) => {
-    return this.api.get(`/api/examples/${id}`);
+  getOne (postId) {
+    return this.api.get(`/post/${postId}`);
   }
 
-  // PUT /api/examples/:id
-  updateOne = async (id, requestBody) => {
-    return this.api.put(`/api/examples/${id}`, requestBody);
+  updateOne (postId, reqBody){
+    return this.api.put(`/post/${postId}/edit`, reqBody);
   }
 
-  // DELETE /api/examples/:id
-  deleteProject = async (id) => {
-    return this.api.delete(`/api/examples/${id}`);
+  deleteProject(id) {
+    return this.api.delete(`/post/${id}/delete`);
   } 
-
 
 }
 
 // Create one instance of the service
-//const exampleService = new PostService();
+const PostService = new PostServiceConst();
 
 export default PostService;
