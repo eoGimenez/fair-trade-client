@@ -6,8 +6,7 @@ class UserService {
       baseURL: process.env.REACT_APP_SERVER_URL || "http://localhost:5005/api"
     });
 
-   
-    this.api.interceptors.request.use((config) => {
+   this.api.interceptors.request.use((config) => {
       const storedToken = localStorage.getItem("authToken");
       if (storedToken) {
         config.headers = { Authorization: `Bearer ${storedToken}` };
@@ -16,7 +15,11 @@ class UserService {
     });
   }
 
- getUser(userId) {
+   getUsers = ()=>{
+    return this.api.get('/user/all');
+   }
+
+ getUser = (userId)=> {
     return this.api.get(`/user/${userId}`);
     }
 
@@ -24,7 +27,6 @@ class UserService {
     return this.api.put(`/user/${userId}/edit`, requestBody);
   }
 
-  
   deleteUser=  (userId) => {
     return this.api.delete(`/user/${userId}/delete`);
   } 
@@ -32,4 +34,4 @@ class UserService {
 
 const userService = new UserService();
 
-export default UserService;
+export default userService;

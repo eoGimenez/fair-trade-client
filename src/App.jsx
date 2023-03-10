@@ -1,5 +1,5 @@
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useParams } from "react-router-dom";
 
 import HomePage from "./pages/HomePage/HomePage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
@@ -13,7 +13,10 @@ import PostList from "./pages/PostPage/PostList";
 import PostDetailPage from "./pages/PostPage/PostDetailPage";
 
 function App() {
+  
   return (
+      
+    
     <div className="App">
       {/* <Navbar /> */}
 
