@@ -2,6 +2,7 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AbsoluteCenter, Button, ButtonGroup, Stack, Avatar, AvatarGroup, Flex, Box ,Spacer} from '@chakra-ui/react'
+import InitialFocus from "../modal/InitialFocus";
 
 
 function Navbar2() {
@@ -31,13 +32,15 @@ function Navbar2() {
 
 <Box p='4' >
 <AvatarGroup spacing='1rem'  p='4'>
-<Link to="/profile">
+<Link to="/profile/:id">
 <Avatar bg='teal.500' />
           </Link>
   
 </AvatarGroup>
 </Box>
  </Flex> 
+
+
 {/* </AbsoluteCenter> */}
   </>
   );

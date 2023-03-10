@@ -1,5 +1,5 @@
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useParams } from "react-router-dom";
 
 import HomePage from "./pages/HomePage/HomePage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
@@ -10,27 +10,24 @@ import Navbar from "./components/Navbar/Navbar";
 import IsPrivate from "./components/IsPrivate/IsPrivate";
 import IsAnon from "./components/IsAnon/IsAnon";
 import PostList from "./pages/PostPage/PostList";
+import Users from "./pages/users/Users";
 
 function App() {
+  
   return (
+      
+    
     <div className="App">
       {/* <Navbar /> */}
 
       <Routes>
         <Route path="/" element={<HomePage />} />
 
-        <Route
-          path="/profile"
-          element={
-              <ProfilePage />
-          }
-        />
-              <Route
-          path="/post"
-          element={
-              <PostList />
-          }
-        />
+        <Route path='/profile/:id' element={<ProfilePage />} />
+        
+
+        <Route path="/user/all" element={<Users />} />
+        <Route path="/post" element={<PostList />} />
 
         <Route
           path="/signup"

@@ -35,6 +35,12 @@ function SignupPage() {
 
   const navigate = useNavigate();
 
+/*   const handleEmail = (e) => setEmail(e.target.value);
+  const handlePassword = (e) => setPassword(e.target.value);
+  const handleName = (e) => setName(e.target.value); */
+
+
+
   const handleSignupSubmit = (e) => {
     e.preventDefault();
     // Create an object representing the request body
@@ -81,8 +87,8 @@ function SignupPage() {
 
   return (
     <>
-      <Navbar2 />
-
+  
+     <Navbar2/>
      
       <Box
         position="relative"
@@ -92,8 +98,8 @@ function SignupPage() {
         w={[300, 400, 500]}
       >
         <AbsoluteCenter w="500px">
-          <FormControl mt="15px" mb="15" isRequired >
-            <FormLabel color="teal" mt="15px" mb="15px" >
+          <FormControl mt="50px" mb="15" isRequired >
+            <FormLabel color="rgb(79, 37, 120)" mt="15px" mb="15px" >
               Name
             </FormLabel>
             <Input
@@ -104,7 +110,7 @@ function SignupPage() {
             />
             <FormErrorMessage>Name is required.</FormErrorMessage>
 
-            <FormLabel color="teal" mt="15px" mb="15px">
+            <FormLabel color="rgb(79, 37, 120)" mt="15px" mb="15px">
               Last Name
             </FormLabel>
             <Input
@@ -114,7 +120,7 @@ function SignupPage() {
               onChange={(e) => setSurname(e.target.value)}
             />
 
-            <FormLabel color="teal" mt="15px" mb="15px">
+            <FormLabel color="rgb(79, 37, 120)" mt="15px" mb="15px">
               Commerce Name
             </FormLabel>
             <Input
@@ -124,7 +130,7 @@ function SignupPage() {
               onChange={(e) => setCommercename(e.target.value)}
             />
 
-            <FormLabel color="teal" mt="15px" mb="15px">
+            <FormLabel color="rgb(79, 37, 120)" mt="15px" mb="15px">
               Email address
             </FormLabel>
             <Input
@@ -136,7 +142,7 @@ function SignupPage() {
             <FormHelperText>We'll never share your email.</FormHelperText>
 
             <FormControl isRequired>
-            <FormLabel color="teal" mt="10px" mb="15px" >
+            <FormLabel color="rgb(79, 37, 120)" mt="10px" mb="15px" >
              Password 
        
             </FormLabel>
@@ -151,7 +157,7 @@ function SignupPage() {
               Must have at least 6 characters,at least one number, one lowercase
               and one uppercase letter
             </FormHelperText>
-            <FormLabel color="teal" mt="15px" mb="15px">
+            <FormLabel color="rgb(79, 37, 120)" mt="15px" mb="15px">
               Repeat Password
             </FormLabel>
             <Input
@@ -161,7 +167,7 @@ function SignupPage() {
               onChange={(e) => setPasswordRe(e.target.value)}
             />
 
-            <FormLabel color="teal" mt="15px" mb="15px">
+            <FormLabel color="rgb(79, 37, 120)" mt="15px" mb="15px">
               CIF
             </FormLabel>
             <Input
@@ -173,7 +179,7 @@ function SignupPage() {
           </FormControl>
 
           <FormControl isRequired>
-            <FormLabel color="teal" mt="15px" mb="15px">
+            <FormLabel color="rgb(79, 37, 120)" mt="15px" mb="15px">
               You are joining as:
             </FormLabel>
             <Select
@@ -187,7 +193,7 @@ function SignupPage() {
 
           <Stack direction="row" spacing={4} align="center" mt="20px">
             <Button
-              colorScheme="teal"
+              color="rgb(79, 37, 120)"
               variant="ghost"
               size="lg"
               mx="auto"
