@@ -1,6 +1,6 @@
-// import { useContext, useEffect, useRef, useState } from "react"
-// import Talk from "talkjs"
-// import { AuthContext } from "../context/auth.context"
+import { useContext, useEffect, useRef, useState } from "react"
+import Talk from "talkjs"
+import { AuthContext } from "../context/auth.context"
 
 
 export default function ChatBox() {
