@@ -34,7 +34,7 @@ function CommerceForm(props) {
     userService
       .updateCommerce(user._id, requestBody)
       .then((response) => {
-        authenticateUser();
+        /* authenticateUser ();*/
 
         console.log("RESPONSE CAMBIO", response.data);
 

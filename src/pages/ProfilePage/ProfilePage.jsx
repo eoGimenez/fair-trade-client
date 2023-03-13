@@ -2,53 +2,54 @@
 /* eslint-disable no-unused-vars */
 import Navbar2 from "../../components/Navbar/Navbar2";
 import { useContext, useEffect, useState } from "react";
+  import { useParams } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
 import CommerceForm from "../../components/profile/CommerceForm"
 import { postContext } from "../../context/posts.context";
 import FormUser from "../../components/profile/FormUser";
+import userService from "../../services/user.services";
 
 function ProfilePage() {
-  /*  const { userId } = useParams(); */
+  const { userId } = useParams();
   /*  console.log('PARAMS:', userId) */
   /* const [user, setUser] = useState('') */
   /*  const { usersCTX, getUsers} = useContext(userContext);  */
-  const { user, authenticateUser } = useContext(AuthContext);
-  const { post, getPosts } = useContext(postContext);
+  const { user, isLoggedIn, isLoading } = useContext(AuthContext);
+ /*  const { post, getPosts } = useContext(postContext); */
 
-  const [postUser, setPostUser] = useState([]);
+  const [currentUser, setCurrentUser] = useState(null); 
 
-  console.log("currentUserPost:", post);
+ /*  console.log("currentUserPost:", post); */
  
 
-  const getPost = () => {
+/*   const getPost = () => {
     let currentUserPost = post.find((posts) => posts.author === user._id);
     setPostUser(currentUserPost);
-  };
+  }; */
 
   useEffect(() => {
-    authenticateUser();
+    /* authenticateUser(); */
+    userService.getUser(userId).then((response) => {
+    setCurrentUser(response.data)
+  })
 
   }, []);
 
-  console.log("post: ", post);
+  /* console.log("post: ", post); */
 
   return (
     <>
       <Navbar2 />
 
-      <div id="containerprofile" className="container  ">
+      {currentUser ? (<div id="containerprofile" className="container  ">
         <div className="row ">
-          <div className="col-5 /* vh-100 */">{/*  bg-primary */}
-          
-              <FormUser user={user}  authenticateUser={authenticateUser} />
-            
-          </div>
+          <div className="col-5 /* vh-100 */">{/*  bg-primary */}<FormUser user={currentUser}/></div> 
           <div className="col-6  ">
             {" "}
             {/* bg-info */}
             <div className="container ">
               <div className="row">
-               <CommerceForm  user={user}  authenticateUser={authenticateUser}/>
+               <CommerceForm user={currentUser}  />
                 </div>
               </div>
               <div className="row mt-5">
@@ -56,7 +57,7 @@ function ProfilePage() {
               </div>
             </div>
           </div>
-        </div>
+        </div>) : <p>Loading...</p>}
     
 
 

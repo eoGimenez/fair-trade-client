@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import {
   AbsoluteCenter,
   Button,
@@ -19,13 +19,15 @@ function Navbar2() {
   // Subscribe to the AuthContext to gain access to
   // the values from AuthContext.Provider's `value` prop
  
- const {logOutUser, user, authenticateUser}= useContext(AuthContext)
+ const { logOutUser, user, authenticateUser, isLoading, isLoggedIn } = useContext(AuthContext)
+
+/*  const[usuario, setUsuario]= useState(user) */
 
 
- console.log("USER EN NAVBAR",user)
+ console.log("USER EN NAVBAR", user)
 
  useEffect(() => {
-  authenticateUser();
+/*   authenticateUser(); */
 }, []) 
 
   return (
@@ -68,13 +70,15 @@ function Navbar2() {
         </Stack>
         <Spacer />
 
-        <Box p="4">
+
+     {!isLoading && isLoggedIn &&   <Box p="4">
           <AvatarGroup spacing="1rem" p="4">
              <Link to={`/profile/${user._id}`}>
               <Avatar bg="teal.500" />
             </Link> 
           </AvatarGroup>
-        </Box>
+        </Box>  } 
+       
       </Flex>
 
       
