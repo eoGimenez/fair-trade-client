@@ -13,12 +13,13 @@ export default function PostDetailPage() {
     const { posts, getPosts } = useContext(postContext);
     //const { currentUser, setCurrentUser} = useContext(AuthContext)
 
-    //console.log("USER:", currentUser)
+    //console.log("POST:", post)
 
     const navigate = useNavigate();
 
     const [showEdit, setShowEdit] = useState(false);
     const[ showChat, setShowChat ] = useState(false)
+    const [ chatId, setChatId ] = useState("")
 
     const getPost = () => {
         const currentPost = posts.find(result => result._id === postId);
@@ -43,6 +44,8 @@ export default function PostDetailPage() {
     }
     const handleChat = () => {
         setShowChat(!showChat)
+        console.log("SESION ID ??", ChatBox)
+
     }
 
     return (
@@ -69,7 +72,10 @@ export default function PostDetailPage() {
                     {!showEdit && <button className="btn btn-danger mx-2" onClick={deleteHandler}>Delete</button>}
                 <button onClick={handleChat}  className="m-2 btn btn-info">Contact</button>
                 </div>
-                {showChat && <ChatBox handleChat={handleChat} />}
+                {showChat && <>
+                <ChatBox  author={post.author}/>
+                <button onClick={handleChat} className="m-2 btn btn-info">Go back!</button>
+                </>}
         </>
     );
 };

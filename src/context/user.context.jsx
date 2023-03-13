@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+/* import { createContext, useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import userService from "../services/user.services";
 
@@ -12,7 +12,7 @@ function UserProviderWrapper({ children }) {
   const getUsers = () => {
     userService.getUsers()
       .then((result) => {
-       console.log("RESULT-GET USER", result); 
+      // console.log("RESULT-GET USER", result); 
         SetUsersCTX(result.data);
       })
       .catch((err) => console.log(err));
@@ -21,7 +21,7 @@ function UserProviderWrapper({ children }) {
   useEffect(() => {
     getUsers();
   }, []);
- console.log("userCXT:", usersCTX.length)
+ console.log("userCXT:", usersCTX)
   return (
     <userContext.Provider value={{ usersCTX, getUsers }}>
       {children}
@@ -30,3 +30,4 @@ function UserProviderWrapper({ children }) {
 }
 
 export { userContext, UserProviderWrapper };
+ */
