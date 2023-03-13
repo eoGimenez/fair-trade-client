@@ -1,11 +1,13 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar2 from "../../components/Navbar/Navbar2";
+import { AuthContext } from "../../context/auth.context";
 import { postContext } from "../../context/posts.context";
 import PostService from "../../services/post.service";
 
  function PostNewPage() {
   const { posts, getPosts } = useContext(postContext);
+  const { user, autheticateUser } = useContext(AuthContext)
 
   const [form, setForm] = useState({
     title: "",
@@ -18,7 +20,6 @@ import PostService from "../../services/post.service";
     available: false
   });
   const navigate = useNavigate();
-
   const submitHandler = (e) => {
     e.preventDefault();
     PostService.newPost({
@@ -29,7 +30,8 @@ import PostService from "../../services/post.service";
       batch: form.batch,
       price: form.price,
       category: form.category,
-      available: true
+      available: true,
+      author: user._id
     })
       .then((result) => {
         getPosts();

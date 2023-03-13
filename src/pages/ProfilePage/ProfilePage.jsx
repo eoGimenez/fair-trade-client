@@ -15,53 +15,48 @@ function ProfilePage() {
   const { user, authenticateUser } = useContext(AuthContext);
   const { post, getPosts } = useContext(postContext);
 
-  const [postUser, setPostUser] = useState([]);
+  const { user, authenticateUser } = useContext(AuthContext)
+  //const { userId } = useParams();
+  //console.log('PARAMS:', userId)
+  //const [user, setUser] = useState('')
+  //const { usersCTX, getUsers} = useContext(userContext); 
+  /* const {userId} = us */
+  /* const userId = "64089a6f8523c7de64ad1eea" */
 
-  console.log("currentUserPost:", post);
- 
+  //console.log("USERCXTPROFILE: ", usersCTX)
 
-  const getPost = () => {
-    let currentUserPost = post.find((posts) => posts.author === user._id);
-    setPostUser(currentUserPost);
-  };
-
+  /*   const getUser = () => {
+      let currentUser = usersCTX.find(user => user._id === userId);
+      console.log("CURRENT USER: ", currentUser);
+      setUser(currentUser);
+    }
+    */
   useEffect(() => {
     authenticateUser();
-
-  }, []);
-
-  console.log("post: ", post);
+  }, [])
 
   return (
     <>
       <Navbar2 />
-
-      <div id="containerprofile" className="container  ">
-        <div className="row ">
-          <div className="col-5 /* vh-100 */">{/*  bg-primary */}
-          
-              <FormUser user={user}  authenticateUser={authenticateUser} />
-            
+      <div className="card mb-3" /* style="max-width: 540px;" */>
+        <div className="row g-0">
+          <div className="col-md-4">
+            <img src="..." className="img-fluid rounded-start" alt="..." />
           </div>
-          <div className="col-6  ">
-            {" "}
-            {/* bg-info */}
-            <div className="container ">
-              <div className="row">
-               <CommerceForm  user={user}  authenticateUser={authenticateUser}/>
-                </div>
-              </div>
-              <div className="row mt-5">
-                <div className="col bg-warning "> POSTEOS!!!!!</div>
-              </div>
+          <div className="col-md-8">
+            <div className="card-body">
+              <h5 className="card-title">{user.name}</h5>
+              <p className="card-text">{user.surname}</p>
+              <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
+              {/* //CLOUDINARY!!!!! 
+        <img src={user.avatar} alt="Avatar" width={200}/> */}
             </div>
-          </div>
-        </div>
-    
-
-
-    </>
-  );
+            {/* <ChatBox /> */}
+            </div>
+            </div>
+            </div>
+          </>
+          );
 }
 
-export default ProfilePage;
+          export default ProfilePage;
