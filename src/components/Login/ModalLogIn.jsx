@@ -43,21 +43,21 @@ function ModalLogIn(props) {
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
-    const requestBody = { email, password };
-      console.log("REQUEST BODY ANTES DEL LOGIN", requestBody)
+    //const requestBody = { email, password };
+      //console.log("REQUEST BODY ANTES DEL LOGIN", requestBody)
 
     authService
-      .login(requestBody)
+      .login({ email, password })
       .then((response) => {
         console.log("CONSOL DEL RESPONSE", response)
         storeToken(response.data.authToken);
         authenticateUser();
         navigate(`/profile/${user._id}`);
       })
-      .authService.verify()
+   /*    .authService.verify()
       .then((result)=>{
         console.log("RESULT DE VERY", result)
-      })
+      }) */
       .catch((error) => {
         // If the request resolves with an error, set the error message in the state
         const errorDescription = error.response.data.message;

@@ -24,7 +24,7 @@ function Navbar2() {
 /*  const[usuario, setUsuario]= useState(user) */
 
 
- console.log("USER EN NAVBAR", user)
+ //console.log("USER EN NAVBAR", user)
 
  useEffect(() => {
 /*   authenticateUser(); */

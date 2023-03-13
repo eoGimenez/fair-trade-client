@@ -1,13 +1,14 @@
 import { useContext, useEffect, useRef, useState } from "react"
 import Talk from "talkjs"
 import { AuthContext } from "../context/auth.context"
+import userService from "../services/user.services";
 
-
-export default function ChatBox() {
+export default function ChatBox({author:{_id, name, email}}) {
     const chatBoxDiv = useRef();
-    
+
     const [ talkLoaded, setTalkLoaded ] = useState(false);
     const { user } = useContext(AuthContext);
+    
     Talk.ready
     .then(result => {
         setTalkLoaded(true)
@@ -24,9 +25,9 @@ export default function ChatBox() {
                 role: "defaul"
             });
             const contactedUser = new Talk.User({
-                id: "2313",
-                name: "Pepito",
-                email: "user@email",
+                id: _id,
+                name: name,
+                email: email,
                 photoUrl: "https://picsum.photos/200/300",
                 welcomeMessage: 'Hello!',
                 role: "defaul"
@@ -41,18 +42,27 @@ export default function ChatBox() {
             const chat = session.getOrCreateConversation(chatId);
             chat.setParticipant(currentUser);
             chat.setParticipant(contactedUser);
-            
             const chatBox = session.createChatbox();
             chatBox.select(chat);
             
             chatBox.mount(chatBoxDiv.current)
             
+            userService.addChatId(contactedUser.id, {chatId})
+            .then(result => {
+                console.log("RESULTADO DEL UPDATE DE CHATID",result)
+            })
+            .catch(err => console.log(err))
+
+            userService.addChatId(currentUser.id, {chatId})
+            .then(result => {
+                console.log("RESULTADO DEL UPDATE DE CHATID", result)
+            })
+            .catch(err => console.log(err))
+
             console.log("CHAT BOX CURRENT:", chatBox)
-            //return () =>  session.destroy();
+            return () =>  session.destroy();
         }
     }, [talkLoaded])
-    console.log("CurreNT: ", chatBoxDiv)
-
-    return <div className="chat" ref={chatBoxDiv} />
+    return <div  className="chat" ref={chatBoxDiv} />
        
 }

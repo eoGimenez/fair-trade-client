@@ -26,8 +26,8 @@ function AuthProviderWrapper(props) {
          /*  const user = response.data; */
           console.log("VERIFY AUTH CTX", response.data)
           setIsLoggedIn(true);
-          setUser(response.data);
           setIsLoading(false);
+          setUser(response.data);
         })
         .catch((error) => {
 
