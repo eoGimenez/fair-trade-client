@@ -53,7 +53,7 @@ function HomePage() {
 
       <InitialFocus/>
       <Link to='/signup'> <Button  color="rgb(79, 37, 120)" variant="ghost" size='lg' mx='auto'>Sign Up</Button></Link>
-    </div>
+    
     </>
   );
 }
