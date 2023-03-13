@@ -3,14 +3,17 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import img2 from "../../pages/HomePage/slide3.jpg";
 import userService from "../../services/user.services";
+import { AuthContext } from "../../context/auth.context";
+import { useContext } from "react";
 
 
-function FormUser(props) {
 
-  const { user, authenticateUser} = props;
+function FormUser(currentUser) {
+
+  const { user, authenticateUser , isLoading, isLoggedIn} = useContext(AuthContext);
 
   const navigate = useNavigate()
-   /* console.log("AVATAR:", user) */
+  console.log("AVATAR:", currentUser)
   const [form, setForm] = useState(false);
   const [email, setEmail] = useState(user.email);
   const [name, setName] = useState(user.name);
@@ -21,6 +24,8 @@ function FormUser(props) {
   const [img, setImg] = useState(img2);
   const [error, setError]= useState("")
   const [changePass, setChangePass]=useState(false);
+
+  const [usuario, setUsuario] = useState(user)
 
 
 
@@ -76,7 +81,7 @@ function FormUser(props) {
  */
     userService.updateUser(user._id, requestBody)
     .then(response=>{
-       authenticateUser()
+       setUsuario(response.data)
 
       console.log('RESPONSE CAMBIO', response.data)
 
@@ -107,7 +112,9 @@ function FormUser(props) {
         <div>{error}</div>
       </div>}
 
-      <div
+      
+      {!isLoading && isLoggedIn &&
+      <><div
         id="cajafoto"
         class="card mx-auto border-0 ratio-1x1  "
         style={{ width: "25rem" }}>
@@ -128,19 +135,19 @@ function FormUser(props) {
             <div classNameName="row g-0">
               <div classNameName="col-md-8">
                 <div classNameName="card-body">
-                  <h5 classNameName="card-title">{user.name}</h5>
-                  <p classNameName="card-text">{user.surname}</p>
-                  <p classNameName="card-text">{user.location}</p>
-                  <p classNameName="card-text">{email}</p>
-                  <p classNameName="card-text">{user.cif}</p>
-                  <p classNameName="card-text">{user.role}</p>
+                  <h5 classNameName="card-title">{usuario.name}</h5>
+                  <p classNameName="card-text">{usuario.surname}</p>
+                  <p classNameName="card-text">{usuario.location}</p>
+                  <p classNameName="card-text">{usuario.email}</p>
+                  <p classNameName="card-text">{usuario.cif}</p>
+                  <p classNameName="card-text">{usuario.role}</p>
                  
-                  <button
+                  {currentUser.user._id === user._id ? (<button
                     type="submit"
                     class="btn btn-primary"
                     onClick={formHandler}>
                     Edit
-                  </button>
+                  </button>) : <p>Patata</p>}
                 </div>
               </div>
             </div>
@@ -236,6 +243,7 @@ function FormUser(props) {
             </form></>
         )}
       </div>
+      </>}
     </>
   );
 }
