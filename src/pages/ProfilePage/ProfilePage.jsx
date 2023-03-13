@@ -15,7 +15,7 @@ function ProfilePage() {
   const { user, authenticateUser } = useContext(AuthContext);
   const { post, getPosts } = useContext(postContext);
 
-  const { user, authenticateUser } = useContext(AuthContext)
+  
   //const { userId } = useParams();
   //console.log('PARAMS:', userId)
   //const [user, setUser] = useState('')
