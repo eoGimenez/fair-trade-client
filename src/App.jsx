@@ -1,6 +1,6 @@
 import "./App.css";
 import { Routes, Route, useParams } from "react-router-dom";
-
+import PostNewPost from './pages/PostPage/PostNewPage'
 import HomePage from "./pages/HomePage/HomePage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import SignupPage from "./pages/SignupPage/SignupPage";
@@ -19,7 +19,7 @@ function App() {
       
     
     <div className="App">
-      {/* <Navbar /> */}
+    
 
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -42,6 +42,14 @@ function App() {
           element={
             <IsAnon>
               <LoginPage />
+            </IsAnon>
+          }
+        />
+        <Route
+          path="/logout"
+          element={
+            <IsAnon>
+              <HomePage/>
             </IsAnon>
           }
         />
