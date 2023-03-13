@@ -92,7 +92,7 @@ function LoginPage() {
 
           <Stack direction="row" spacing={4} align="center" mt='20px' >
             <Button onClick={handleLoginSubmit}  colorScheme="teal" variant="ghost" size='lg' mx='auto'>
-              Login
+              Log In
             </Button>
           </Stack>
         </AbsoluteCenter>

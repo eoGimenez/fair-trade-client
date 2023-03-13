@@ -37,7 +37,10 @@ function HomePage() {
           data-bs-target="#carouselExampleInterval"
           data-bs-slide="prev"
         >
-          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span
+            className="carousel-control-prev-icon"
+            aria-hidden="true"
+          ></span>
           <span className="visually-hidden">Previous</span>
         </button>
         <button
@@ -51,25 +54,29 @@ function HomePage() {
         </button>
       </div>
 
-      <div className="container" >
+      <div className="container">
         <h1 className="h1">
           Local Art Co. connects artisans with physical stores. Artisans leave
           their products in consignment, set the price, and stores sell the
-          products and earn a percentage. <br></br><strong>We guarantee a fair deal
-          for all parties involved.</strong>
+          products and earn a percentage. <br></br>
+          <strong>We guarantee a fair deal for all parties involved.</strong>
         </h1>
         <div id="buttongs">
           <Link to="/signup">
-          <button class="cta">
-  <span>Get started</span>
-  <svg viewBox="0 0 13 10" height="10px" width="15px">
-    <path d="M1,5 L11,5"></path>
-    <polyline points="8 1 12 5 8 9"></polyline>
-  </svg>
-</button>
+            <button class="cta">
+              <span>Get started</span>
+              <svg viewBox="0 0 13 10" height="10px" width="15px">
+                <path d="M1,5 L11,5"></path>
+                <polyline points="8 1 12 5 8 9"></polyline>
+              </svg>
+            </button>
           </Link>
         </div>
       </div>
+      <ProfileForm></ProfileForm>
+      <footer className="footer">
+      Copyright Local Art Co.  2023.  All rights reserved.
+        </footer>
     </>
   );
 }
