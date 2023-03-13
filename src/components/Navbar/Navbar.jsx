@@ -9,6 +9,7 @@ import { useContext } from "react";
    const { user } = useContext(AuthContext)
    
   return (
+<<<<<<< HEAD
     <>
       <nav className="navbar navbar-expand-lg">
         <div className="container-fluid">
@@ -82,6 +83,9 @@ import { useContext } from "react";
         </div>
       </nav>
     </>
+=======
+    <></>
+>>>>>>> 7731024 (no)
   );
 }
 

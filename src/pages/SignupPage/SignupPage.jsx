@@ -84,7 +84,7 @@ function SignupPage() {
     })
     .then((response) => {}) */
     
-    let requestBody
+    //let requestBody
     // Or using a service
     authService
       .signup(requestBody)
