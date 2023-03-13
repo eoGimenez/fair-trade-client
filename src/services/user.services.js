@@ -34,4 +34,12 @@ class UserService {
 
 const userService = new UserService();
 
+// //CLOUDINARY!!!!
+// const uploadImage = (file) => {
+//   return api.post("/upload", file)
+//     .then(res => res.data)
+//     .catch(errorHandler);
+// };
+
+
 export default userService;
