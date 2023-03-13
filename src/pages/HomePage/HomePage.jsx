@@ -1,7 +1,7 @@
 import Navbar from "../../components/Navbar/Navbar";
 import "./HomePage.css";
-//import InitialFocus from "../../components/modal/InitialFocus";
-//import { Box } from "@chakra-ui/layout";
+import InitialFocus from "../../components/modal/InitialFocus";
+import { Button } from "@chakra-ui/react";
 import slide1 from "./slide1.jpg";
 import slide2 from "./slide2.jpg";
 import slide3 from "./slide3.jpg";
@@ -51,25 +51,9 @@ function HomePage() {
         </button>
       </div>
 
-      <div className="container" >
-        <h1 className="h1">
-          Local Art Co. connects artisans with physical stores. Artisans leave
-          their products in consignment, set the price, and stores sell the
-          products and earn a percentage. <br></br><strong>We guarantee a fair deal
-          for all parties involved.</strong>
-        </h1>
-        <div id="buttongs">
-          <Link to="/signup">
-          <button class="cta">
-  <span>Get started</span>
-  <svg viewBox="0 0 13 10" height="10px" width="15px">
-    <path d="M1,5 L11,5"></path>
-    <polyline points="8 1 12 5 8 9"></polyline>
-  </svg>
-</button>
-          </Link>
-        </div>
-      </div>
+      <InitialFocus/>
+      <Link to='/signup'> <Button  color="rgb(79, 37, 120)" variant="ghost" size='lg' mx='auto'>Sign Up</Button></Link>
+    </div>
     </>
   );
 }

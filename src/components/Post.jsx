@@ -6,6 +6,7 @@ import Navbar2 from "./Navbar/Navbar2";
 export default function Post() {
 
     const { posts, getPosts } = useContext(postContext);
+    console.log("POSTS", posts)
 
     useEffect(() => {
         getPosts();

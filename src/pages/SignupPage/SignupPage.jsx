@@ -15,9 +15,7 @@ import {
   AbsoluteCenter,
   Stack,
   Button,
-  Tooltip,
-  Flex,
-  Spacer,
+  
 } from "@chakra-ui/react";
 import SignupPage2 from "./SignUpPage2";
 
@@ -53,7 +51,8 @@ function SignupPage() {
       commercename,
       role,
       cif,
-    };
+      avatar:""
+    }
 
     // Or using a service
     authService
@@ -62,8 +61,9 @@ function SignupPage() {
         console.log("RESPONSE FRONT:", response);
 
         // If the POST request is successful redirect to the login page
-        navigate("/login");
+        return response;
       })
+      authService.login()
       .catch((error) => {
         // If the request resolves with an error, set the error message in the state
         const errorDescription = error;
@@ -87,10 +87,10 @@ function SignupPage() {
 
     // Or using a service
     authService
-      .signup(requestBody)
+      .signup(/* requestBody */)
       .then((response) => {
         // If the POST request is successful redirect to the login page
-        navigate("/login");
+        navigate("/");
       })
       .catch((error) => {
         // If the request resolves with an error, set the error message in the state
@@ -101,13 +101,14 @@ function SignupPage() {
 
   return (
     <>
-      <Navbar />
-      <SignupPage2 />
+  
+     {/* <Navbar2/> */}
+     
       <Box
         position="relative"
         ml="auto"
         mr="auto"
-        mt="400px"
+        mt="500px"
         w={[300, 400, 500]}
       >
         <AbsoluteCenter w="500px">

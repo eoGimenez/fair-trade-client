@@ -4,7 +4,7 @@ import Navbar2 from "../../components/Navbar/Navbar2";
 import { postContext } from "../../context/posts.context";
 import PostService from "../../services/post.service";
 
-export default function PostNewPage() {
+ function PostNewPage() {
   const { posts, getPosts } = useContext(postContext);
 
   const [form, setForm] = useState({
@@ -135,3 +135,4 @@ export default function PostNewPage() {
     </>
   );
 }
+ export default PostNewPage;
