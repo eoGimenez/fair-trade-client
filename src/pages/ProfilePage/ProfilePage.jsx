@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import Navbar2 from "../../components/Navbar/Navbar2";
+import Navbar from "../../components/Navbar/Navbar";
 import { useContext, useEffect, useState } from "react";
   import { useParams } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
@@ -8,6 +8,7 @@ import CommerceForm from "../../components/profile/CommerceForm"
 import { postContext } from "../../context/posts.context";
 import FormUser from "../../components/profile/FormUser";
 import userService from "../../services/user.services";
+import "./ProfilePage.css"
 
 function ProfilePage() {
   const { userId } = useParams();
@@ -45,25 +46,26 @@ function ProfilePage() {
 
   return (
     <>
-      <Navbar2 />
+      <Navbar />
 
-      {currentUser ? (<div id="containerprofile" className="container  ">
-        <div className="row ">
-          <div className="col-5 /* vh-100 */">{/*  bg-primary */}<FormUser user={currentUser}/></div> 
-          <div className="col-6  ">
+      {currentUser ? (<div id="containerprofile" >
+        <div className="containerprofile">
+          <div className="chau1"><FormUser user={currentUser}/></div> 
+          <div className="yo">
             {" "}
-            {/* bg-info */}
-            <div className="container ">
-              <div className="row">
+            <div className="hola">
+              </div>
+
+              <div className="chau2">
                <CommerceForm user={currentUser}  />
                 </div>
-              </div>
-              <div className="row mt-5">
-                <div className="col bg-warning "> POSTEOS!!!!!</div>
-              </div>
             </div>
           </div>
         </div>) : <p>Loading...</p>}
+
+              <div className="posteos">
+                <div className="col bg-warning "> POSTEOS!!!!!</div>
+              </div>
     
 
 

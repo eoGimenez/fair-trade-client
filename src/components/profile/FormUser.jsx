@@ -1,10 +1,12 @@
 /* eslint-disable no-unused-expressions */
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import img2 from "../../pages/HomePage/slide3.jpg";
+import img2 from "../profile/emptyavatar.png";
 import userService from "../../services/user.services";
 import { AuthContext } from "../../context/auth.context";
 import { useContext } from "react";
+import "./ProfilePage.css"
+
 
 
 
@@ -26,6 +28,28 @@ function FormUser(currentUser) {
   const [changePass, setChangePass]=useState(false);
 
   const [usuario, setUsuario] = useState(user)
+
+
+ // ******** this function handles the file upload ********
+ const handleFileUpload = (e) => {
+  // console.log("The file to be uploaded is: ", e.target.files[0]);
+
+  const uploadData = new FormData();
+
+  // imageUrl => this name has to be the same as in the model since we pass
+  // req.body to .create() method when creating a new movie in '/api/movies' POST route
+  uploadData.append("imageUrl", e.target.files[0]);
+
+  user.services
+    .uploadImage(uploadData)
+    .then((response) => {
+      // console.log("response is: ", response);
+      // response carries "fileUrl" which we can use to update the state
+      setImg(response.fileUrl);
+    })
+    .catch((err) => console.log("Error while uploading the file: ", err));
+};
+
 
 
 
@@ -119,14 +143,16 @@ function FormUser(currentUser) {
         class="card mx-auto border-0 ratio-1x1  "
         style={{ width: "25rem" }}>
         {/* bg-warning */}
+        <div className="avatar">
+        <img src="../profile/emptyavatar.png" alt="avatar"/>
+        </div>
         <div
           id="avatar"
           class="ratio ratio-1x1  rounded-circle overflow-hidden mb-2 mt-3 mx-auto">
-
-          <img 
+          {/* <img 
           src={user.avatar === "" ? (img):(user.avatar)} 
           class="card-img-top " 
-          alt="..." />
+          alt="Avatar"/> */}
         </div>
       </div>
       <div class="card-body ">
