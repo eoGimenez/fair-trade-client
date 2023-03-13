@@ -5,7 +5,7 @@ import { AuthContext } from "../../context/auth.context";
 import { postContext } from "../../context/posts.context";
 import PostService from "../../services/post.service";
 
- function PostNewPage() {
+export default function PostNewPage() {
   const { posts, getPosts } = useContext(postContext);
   const { user, autheticateUser } = useContext(AuthContext)
 
@@ -137,4 +137,4 @@ import PostService from "../../services/post.service";
     </>
   );
 }
- export default PostNewPage;
+
