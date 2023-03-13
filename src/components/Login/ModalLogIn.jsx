@@ -50,12 +50,7 @@ function ModalLogIn(props) {
       .login(requestBody)
       .then((response) => {
         console.log("CONSOL DEL RESPONSE", response)
-        // If the POST request is successful store the authentication token,
-        // after the token is stored authenticate the user
-        // and at last navigate to the home page
-
         storeToken(response.data.authToken);
-       
         authenticateUser();
         navigate(`/profile/${user._id}`);
       })

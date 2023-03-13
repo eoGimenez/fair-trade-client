@@ -2,10 +2,9 @@
 /* eslint-disable no-unused-vars */
 import Navbar from "../../components/Navbar/Navbar";
 import { useContext, useEffect, useState } from "react";
-  import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
 import CommerceForm from "../../components/profile/CommerceForm"
-import { postContext } from "../../context/posts.context";
 import FormUser from "../../components/profile/FormUser";
 import userService from "../../services/user.services";
 import "./ProfilePage.css"
@@ -19,6 +18,7 @@ function ProfilePage() {
  /*  const { post, getPosts } = useContext(postContext); */
 
   const [currentUser, setCurrentUser] = useState(null); 
+  console.log("CURRENTUSER", currentUser)
 
  /*  console.log("currentUserPost:", post); */
  
@@ -59,6 +59,10 @@ function ProfilePage() {
               <div className="chau2">
                <CommerceForm user={currentUser}  />
                 </div>
+              </div>
+              <div className="row mt-5">
+                <PostUser user={currentUser} isLoading={isLoading}  isLoggedIn={isLoggedIn}/>
+              </div>
             </div>
           </div>
         </div>) : <p>Loading...</p>}
