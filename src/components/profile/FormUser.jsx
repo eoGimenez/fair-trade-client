@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-expressions */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import img2 from "../../pages/HomePage/slide3.jpg";
 import userService from "../../services/user.services";
@@ -15,12 +15,12 @@ function FormUser(currentUser) {
   const navigate = useNavigate()
   console.log("AVATAR:", currentUser)
   const [form, setForm] = useState(false);
-  const [email, setEmail] = useState(user.email);
-  const [name, setName] = useState(user.name);
-  const [surname, setSurname] = useState(user.surname);
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [surname, setSurname] = useState("");
   const [password, setPassword] = useState("");
   const [passwordRe, setPasswordRe] = useState("");
-  const [cif, setCif] = useState(user.cif);
+  const [cif, setCif] = useState("");
   const [img, setImg] = useState(img2);
   const [error, setError]= useState("")
   const [changePass, setChangePass]=useState(false);
@@ -94,7 +94,13 @@ function FormUser(currentUser) {
    
 
   };
+ useEffect(()=>{
+  setEmail(user.email)
+  setName(user.name)
+  setSurname(user.surname)
+  setCif(user.cif)
 
+ },[user])
 
   return (
     <>
@@ -131,23 +137,23 @@ function FormUser(currentUser) {
       </div>
       <div class="card-body ">
         {!form ? (
-          <div classNameName="card mb-3 " style={{ width: "25rem" }}> {/* bg-warning */}
-            <div classNameName="row g-0">
-              <div classNameName="col-md-8">
-                <div classNameName="card-body">
-                  <h5 classNameName="card-title">{usuario.name}</h5>
-                  <p classNameName="card-text">{usuario.surname}</p>
-                  <p classNameName="card-text">{usuario.location}</p>
-                  <p classNameName="card-text">{usuario.email}</p>
-                  <p classNameName="card-text">{usuario.cif}</p>
-                  <p classNameName="card-text">{usuario.role}</p>
+          <div className="card mb-3 " style={{ width: "25rem" }}> {/* bg-warning */}
+            <div className="row g-0">
+              <div className="col-md-8">
+                <div className="card-body">
+                  <h5 className="card-title">{usuario?.name}</h5>
+                  <p className="card-text">{usuario?.surname}</p>
+                  <p className="card-text">{usuario?.location}</p>
+                  <p className="card-text">{usuario?.email}</p>
+                  <p className="card-text">{usuario?.cif}</p>
+                  <p className="card-text">{usuario?.role}</p>
                  
                   {currentUser.user._id === user._id ? (<button
                     type="submit"
                     class="btn btn-primary"
                     onClick={formHandler}>
                     Edit
-                  </button>) : <p>Patata</p>}
+                  </button>) : <p>BORRARRRRRR!!!!!!</p>}
                 </div>
               </div>
             </div>

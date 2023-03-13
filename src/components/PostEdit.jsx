@@ -117,9 +117,8 @@ export default function PostEdit({getPosts, toggleEdit, getPost, postId, setPost
         </div>
         <div className="col col-md-6">
           <label htmlFor="category" className="form-label">
-          category
           </label>
-          <input
+          {/* <input
             type="text"
             className="form-control"
             id="category"
@@ -127,7 +126,17 @@ export default function PostEdit({getPosts, toggleEdit, getPost, postId, setPost
             onChange={(e) =>
               setForm({ ...form, category: e.target.value })
             }
-          />
+          /> */}
+          <select class="form-select" 
+          aria-label="Default select example"
+          onChange={(e) => setForm({ ...form, category: e.target.value })}
+          >
+            <option selected>Select a Category</option>
+            <option value="Natural Cosmetic">Natural Cosmetic</option>
+            <option value="Home Deco">Home Deco</option>
+            <option value="Fabric & Fashion">Fabric & Fashion</option>
+            <option value="Misellaneous">Misellaneous</option>
+          </select>
         </div>
         <div className="col col-md-6">
          {/*  <input

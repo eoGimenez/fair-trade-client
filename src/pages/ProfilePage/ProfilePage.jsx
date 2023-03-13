@@ -2,12 +2,12 @@
 /* eslint-disable no-unused-vars */
 import Navbar2 from "../../components/Navbar/Navbar2";
 import { useContext, useEffect, useState } from "react";
-  import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
 import CommerceForm from "../../components/profile/CommerceForm"
-import { postContext } from "../../context/posts.context";
 import FormUser from "../../components/profile/FormUser";
 import userService from "../../services/user.services";
+import PostUser from "../../components/profile/PostsUser";
 
 function ProfilePage() {
   const { userId } = useParams();
@@ -18,6 +18,7 @@ function ProfilePage() {
  /*  const { post, getPosts } = useContext(postContext); */
 
   const [currentUser, setCurrentUser] = useState(null); 
+  console.log("CURRENTUSER", currentUser)
 
  /*  console.log("currentUserPost:", post); */
  
@@ -49,7 +50,7 @@ function ProfilePage() {
 
       {currentUser ? (<div id="containerprofile" className="container  ">
         <div className="row ">
-          <div className="col-5 /* vh-100 */">{/*  bg-primary */}<FormUser user={currentUser}/></div> 
+          <div className="col-5 /* vh-100 */">{/*  bg-primary */}<FormUser user={currentUser} isLoading={isLoading}  isLoggedIn={isLoggedIn} /></div> 
           <div className="col-6  ">
             {" "}
             {/* bg-info */}
@@ -59,7 +60,7 @@ function ProfilePage() {
                 </div>
               </div>
               <div className="row mt-5">
-                <div className="col bg-warning "> POSTEOS!!!!!</div>
+                <PostUser user={currentUser} isLoading={isLoading}  isLoggedIn={isLoggedIn}/>
               </div>
             </div>
           </div>

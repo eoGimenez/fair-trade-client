@@ -1,16 +1,18 @@
 import "./ProfilePage.css";
-import { useState } from "react";
+import { useState , useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import img2 from "../../pages/HomePage/slide3.jpg";
 import userService from "../../services/user.services";
 
 function CommerceForm(props) {
-  const { user, authenticateUser } = props;
+  const { user, authenticateUser, isLoading, isLoggedIn ,currentUser} = props;
   const [form, setForm] = useState(false);
-  const [commercename, setCommercename] = useState(user.commercename);
-  const [location, setLocation] = useState(user.location);
-  const [aboutme, setAboutme] = useState(user.aboutme);
+  const [commercename, setCommercename] = useState("");
+  const [location, setLocation] = useState("");
+  const [aboutme, setAboutme] = useState("");
   const [error, setError] = useState("");
+
+  const [usuario, setUsuario] = useState(user)
 
   const formHandler = () => {
     setForm(true);
@@ -34,23 +36,30 @@ function CommerceForm(props) {
     userService
       .updateCommerce(user._id, requestBody)
       .then((response) => {
+        setUsuario(response.data)
         /* authenticateUser ();*/
 
-        console.log("RESPONSE CAMBIO", response.data);
+        /* console.log("RESPONSE CAMBIO", response.data); */
 
-        /* navigate(`/profile/ ${user._id}`) */
+      
         setForm(false);
       })
       .catch((err) => console.log("ERROR PUT", err));
   };
 
+  useEffect(()=>{
+    setCommercename(user.commercename)
+    setLocation(user.location)
+    setAboutme(user.aboutme)
+  
+   },[user])
   return (
     <>
       {error && (
-        <div class="alert alert-danger  d-flex align-items-center" role="alert">
+        <div className="alert alert-danger  d-flex align-items-center" role="alert">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2"
+            className="bi bi-exclamation-triangle-fill flex-shrink-0 me-2"
             viewBox="0 0 16 16"
             role="img"
             aria-label="Warning:"
@@ -61,35 +70,37 @@ function CommerceForm(props) {
         </div>
       )}
 
+{/* {!isLoading && isLoggedIn && */}
       <div className="col  float-md-start">
         {" "}
         {/* bg-success */}
-        <div class="card border-0 ">
-          {/*  <img src="..." class="card-img-top" alt="..." /> */}
-          <div class="card-body">
-            <div class="mb-3">
+        <div className="card border-0 ">
+          {/*  <img src="..." className="card-img-top" alt="..." /> */}
+          <div className="card-body">
+            <div className="mb-3">
               {!form ? (
                 <>
                   <div
-                    class="card text-bg-light mb-3"
+                    className="card text-bg-light mb-3"
                     style={{ width: "20rem" }}
                   >
-                    <div class="card-body">
-                      <h5 class="card-title">
+                    <div className="card-body">
+                      <h5 className="card-title">
                         About My work:
                         <br />
-                        {user.aboutme}
+                        {usuario.aboutme}
                       </h5>
-                      <p class="card-text">Commername: {user.commercename}</p>
+                      <p className="card-text">Commername: {usuario.commercename}</p>
 
-                      <p class="card-text">Location:{user.location}</p>
-                      <button
+                      <p className="card-text">Location:{usuario.location}</p>
+                     
+                    {/*   {currentUser.user._id === user._id ? ( */}<button
                         type="submit"
-                        class="btn btn-primary"
+                        className="btn btn-primary"
                         onClick={formHandler}
                       >
                         Edit
-                      </button>
+                      </button>{/* ) : <p>BORRARRRRRR!!!!!!</p>} */}
                     </div>
                   </div>
                 </>
@@ -97,36 +108,36 @@ function CommerceForm(props) {
                 <>
                   {" "}
                   <form>
-                    <label for="exampleInputPassword1" class="form-label">
+                    <label for="exampleInputPassword1" className="form-label">
                       Commerce Name
                     </label>
                     <input
                       type="texttext"
-                      class="form-control"
+                      className="form-control"
                       id="exampleInputPassword1"
                       value={commercename}
                       onChange={(e) => setCommercename(e.target.value)}
                     />
 
-                    <div class="mb-3">
-                      <label for="exampleInputPassword1" class="form-label">
+                    <div className="mb-3">
+                      <label for="exampleInputPassword1" className="form-label">
                         Location
                       </label>
                       <input
                         type="text"
-                        class="form-control"
+                        className="form-control"
                         id="exampleInputPassword1"
                         value={location}
                         onChange={(e) => setLocation(e.target.value)}
                       />
                     </div>
-                    <div class="mb-3">
-                      <label for="exampleInputPassword1" class="form-label">
+                    <div className="mb-3">
+                      <label for="exampleInputPassword1" className="form-label">
                         About My work
                       </label>
                       <input
                         type="text"
-                        class="form-control"
+                        className="form-control"
                         id="exampleInputPassword1"
                         value={aboutme}
                         onChange={(e) => setAboutme(e.target.value)}
@@ -134,7 +145,7 @@ function CommerceForm(props) {
                     </div>
                     <button
                       type="submit"
-                      class="btn btn-primary"
+                      className="btn btn-primary"
                       onClick={SubmitHandler}
                     >
                       Confirm
@@ -145,7 +156,7 @@ function CommerceForm(props) {
             </div>
           </div>
         </div>
-      </div>
+      </div>{/* } */}
     </>
   );
 }
