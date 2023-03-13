@@ -4,6 +4,7 @@ import { postContext } from "../../context/posts.context";
 import PostEdit from "../../components/PostEdit";
 import PostService from "../../services/post.service";
 import Navbar2 from "../../components/Navbar/Navbar2";
+import ChatBox from "../../components/ChatBox";
 //import { AuthContext } from "../../context/auth.context";
 
 export default function PostDetailPage() {
@@ -17,6 +18,7 @@ export default function PostDetailPage() {
     const navigate = useNavigate();
 
     const [showEdit, setShowEdit] = useState(false);
+    const[ showChat, setShowChat ] = useState(false)
 
     const getPost = () => {
         const currentPost = posts.find(result => result._id === postId);
@@ -38,6 +40,9 @@ export default function PostDetailPage() {
             navigate("/post");
 
         })
+    }
+    const handleChat = () => {
+        setShowChat(!showChat)
     }
 
     return (
@@ -62,7 +67,9 @@ export default function PostDetailPage() {
 
                     {!showEdit && <button className="btn btn-warning mx-2" onClick={toggleEdit}>Edit</button>}
                     {!showEdit && <button className="btn btn-danger mx-2" onClick={deleteHandler}>Delete</button>}
+                <button onClick={handleChat}  className="m-2 btn btn-info">Contact</button>
                 </div>
+                {showChat && <ChatBox handleChat={handleChat} />}
         </>
     );
 };

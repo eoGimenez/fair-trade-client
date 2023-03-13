@@ -12,7 +12,7 @@ function UserProviderWrapper({ children }) {
   const getUsers = () => {
     userService.getUsers()
       .then((result) => {
-       /*  console.log("RESULT-GET USER", result); */
+       console.log("RESULT-GET USER", result); 
         SetUsersCTX(result.data);
       })
       .catch((err) => console.log(err));
