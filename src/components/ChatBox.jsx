@@ -48,7 +48,7 @@ export default function ChatBox() {
             chatBox.mount(chatBoxDiv.current)
             
             console.log("CHAT BOX CURRENT:", chatBox)
-            //return () =>  session.destroy();
+            return () =>  session.destroy();
         }
     }, [talkLoaded])
     console.log("CurreNT: ", chatBoxDiv)

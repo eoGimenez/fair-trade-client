@@ -76,22 +76,22 @@ function ProfilePage() {
               ml="200px"
               mr="5px"
             ></Button>
-          </Stack>
+           </Stack>
           <Stack spacing={3} mt="10px">
             {editar && (
               <Editable defaultValue={usuario.name}>
                 <EditablePreview />
-                <EditableInput onChange={cambiarNombre} />
+                {/* <EditableInput onChange={cambiarNombre} /> */}
               </Editable>
             )}
 
-            <Button colorScheme="teal" size="lg" onClick={guardarUsuario}>
+            {/*<Button colorScheme="teal" size="lg" onClick={guardarUsuario}>
               Guardar
-            </Button >
+            </Button >*/}
 
-            {/*  <Input variant="flushed" placeholder="Email" />
-            <Input variant="flushed" placeholder="Location" /> */}
-          </Stack>
+             <Input variant="flushed" placeholder="Email" />
+            <Input variant="flushed" placeholder="Location" /> 
+          </Stack> 
         </GridItem>
         <GridItem
           colSpan={2}
