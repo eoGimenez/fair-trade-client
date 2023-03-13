@@ -73,7 +73,7 @@ function HomePage() {
           </Link>
         </div>
       </div>
-      <ProfileForm></ProfileForm>
+      {/* <ProfileForm></ProfileForm> */}
       <footer className="footer">
       Copyright Local Art Co.  2023.  All rights reserved.
         </footer>

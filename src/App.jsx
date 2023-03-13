@@ -11,6 +11,7 @@ import IsPrivate from "./components/IsPrivate/IsPrivate";
 import IsAnon from "./components/IsAnon/IsAnon";
 import PostList from "./pages/PostPage/PostList";
 import PostDetailPage from "./pages/PostPage/PostDetailPage";
+import ChatPage from "./pages/ChatPage/ChatPage";
 
 function App() {
   
@@ -27,6 +28,7 @@ function App() {
         <Route path="/post" element={<PostList />} />
         <Route path="/post/:postId" element={<PostDetailPage />} />
         <Route path="/post/new" element={<PostNewPost />} />
+        <Route path="chat" element={<ChatPage />} />
         <Route
           path="/signup"
           element={
