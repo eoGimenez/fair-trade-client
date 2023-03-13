@@ -81,11 +81,11 @@ function ProfilePage() {
             {editar && (
               <Editable defaultValue={usuario.name}>
                 <EditablePreview />
-                <EditableInput onChange={cambiarNombre} />
+                <EditableInput onChange={"cambiarNombre"} />
               </Editable>
             )}
 
-            <Button colorScheme="teal" size="lg" onClick={guardarUsuario}>
+            <Button colorScheme="teal" size="lg" onClick={"guardarUsuario"}>
               Guardar
             </Button >
 
