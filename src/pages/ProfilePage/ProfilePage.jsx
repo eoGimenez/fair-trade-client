@@ -42,6 +42,8 @@ useEffect(()=>{
         <h5 className="card-title">{user._id}</h5>
         <p className="card-text">{user.commercename}</p>
         <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
+       {/* //CLOUDINARY!!!!! */}
+        <img src={user.avatar} alt="Avatar" width={200}/>
       </div>
     </div>
   </div>
