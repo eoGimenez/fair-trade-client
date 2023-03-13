@@ -27,11 +27,23 @@ class UserService {
     return this.api.put(`/user/${userId}/edit`, requestBody);
   }
 
+  updateCommerce = (userId, requestBody)=>{
+    return this.api.put(`/user/${userId}/edit/commerce`, requestBody)
+  }
+
   deleteUser=  (userId) => {
     return this.api.delete(`/user/${userId}/delete`);
   } 
 }
 
 const userService = new UserService();
+
+// //CLOUDINARY!!!!
+// const uploadImage = (file) => {
+//   return api.post("/upload", file)
+//     .then(res => res.data)
+//     .catch(errorHandler);
+// };
+
 
 export default userService;

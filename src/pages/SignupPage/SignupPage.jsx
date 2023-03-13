@@ -15,9 +15,7 @@ import {
   AbsoluteCenter,
   Stack,
   Button,
-  Tooltip,
-  Flex,
-  Spacer,
+  
 } from "@chakra-ui/react";
 import SignupPage2 from "./SignUpPage2";
 
@@ -53,7 +51,8 @@ function SignupPage() {
       commercename,
       role,
       cif,
-    };
+      avatar:""
+    }
 
     // Or using a service
     authService
@@ -62,8 +61,9 @@ function SignupPage() {
         console.log("RESPONSE FRONT:", response);
 
         // If the POST request is successful redirect to the login page
-        navigate("/login");
+        return response;
       })
+      authService.login()
       .catch((error) => {
         // If the request resolves with an error, set the error message in the state
         const errorDescription = error;
@@ -84,13 +84,13 @@ function SignupPage() {
     })
     .then((response) => {}) */
     
-
+    //let requestBody
     // Or using a service
     authService
-      .signup(requestBody)
+      .signup(/* requestBody */)
       .then((response) => {
         // If the POST request is successful redirect to the login page
-        navigate("/login");
+        navigate("/");
       })
       .catch((error) => {
         // If the request resolves with an error, set the error message in the state
@@ -101,23 +101,27 @@ function SignupPage() {
 
   return (
     <>
-      <Navbar />
-      <SignupPage2 />
+  
+     {/* <Navbar2/> */}
+     
       <Box
         position="relative"
+        pt="5px"
+        bg="white"
         ml="auto"
         mr="auto"
-        mt="400px"
-        w={[300, 400, 500]}
+        mt="100px"
+        w={[600]}
+        h="900"
       >
         <AbsoluteCenter w="500px">
-          <FormControl mt="50px" mb="15" isRequired >
+          <FormControl  bg="white" mb="15" mt="10" isRequired >
             <FormLabel color="rgb(79, 37, 120)" mt="15px" mb="15px" >
               Name
             </FormLabel>
             <Input
               type="text"
-              placeholder="Lucia"
+              placeholder="John"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
@@ -128,7 +132,7 @@ function SignupPage() {
             </FormLabel>
             <Input
               type="text"
-              placeholder="Gomez"
+              placeholder="Doe"
               value={surname}
               onChange={(e) => setSurname(e.target.value)}
             />
@@ -138,7 +142,7 @@ function SignupPage() {
             </FormLabel>
             <Input
               type="text"
-              placeholder="Artesanias Lulu"
+              placeholder="Doe's Handcrafted"
               value={commercename}
               onChange={(e) => setCommercename(e.target.value)}
             />
@@ -148,7 +152,7 @@ function SignupPage() {
             </FormLabel>
             <Input
               type="email"
-              placeholder="artesaniaslucia@gmail.com"
+              placeholder="johndoe@gmail"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -191,11 +195,12 @@ function SignupPage() {
             />
           </FormControl>
 
-          <FormControl isRequired>
-            <FormLabel color="rgb(79, 37, 120)" mt="15px" mb="15px">
+          <FormControl bg="white" isRequired>
+            <FormLabel color="rgb(79, 37, 120)" bg="white" mt="15px" mb="15px">
               You are joining as:
             </FormLabel>
             <Select
+              bg="white"
               placeholder="Select an option"
               onChange={(e) => setRole(e.target.value)}
             >
@@ -212,7 +217,7 @@ function SignupPage() {
               mx="auto"
               onClick={handleSignupSubmit}
             >
-              Sing Up
+              Sign Up
             </Button>
           </Stack>
         </AbsoluteCenter>

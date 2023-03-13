@@ -21,7 +21,7 @@ function LoginPage() {
   const [errorMessage, setErrorMessage] = useState(undefined);
   const navigate = useNavigate();
 
-  const { storeToken, authenticateUser } = useContext(AuthContext);
+  const { storeToken, authenticateUser, user } = useContext(AuthContext);
 
   /*   const handleEmail = (e) => setEmail(e.target.value);
     const handlePassword = (e) => setPassword(e.target.value);
@@ -44,13 +44,14 @@ function LoginPage() {
     authService
       .login(requestBody)
       .then((response) => {
-        console.log("CONSOL DEL RESPONSE", response)
         // If the POST request is successful store the authentication token,
         // after the token is stored authenticate the user
         // and at last navigate to the home page
+        console.log("RESPONSE LOGIN")
         storeToken(response.data.authToken);
+        console.log("USER-DATA", user)
         authenticateUser();
-        navigate("/profile");
+        navigate(`/profile/${user._id}`);
       })
       .catch((error) => {
         // If the request resolves with an error, set the error message in the state
@@ -92,7 +93,7 @@ function LoginPage() {
 
           <Stack direction="row" spacing={4} align="center" mt='20px' >
             <Button onClick={handleLoginSubmit}  colorScheme="teal" variant="ghost" size='lg' mx='auto'>
-              Login
+              Log In
             </Button>
           </Stack>
         </AbsoluteCenter>
