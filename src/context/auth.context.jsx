@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router";
 import authService from "../services/auth.service";
 
 const AuthContext = React.createContext();
@@ -8,23 +9,25 @@ function AuthProviderWrapper(props) {
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
 
+  const navigate = useNavigate()
+
   const storeToken = (token) => {
     localStorage.setItem("authToken", token);
   };
+  
   const authenticateUser = () => {
+    console.log("CARGANDO USUARIO")
     setIsLoading(true);
     const storedToken = localStorage.getItem("authToken");
     if (storedToken) {
-
-      // Or using a service
       authService
         .verify()
         .then((response) => {
-          const user = response.data;
-
+         /*  const user = response.data; */
+             console.log("VERIFY AUTH CTX", response.data)
           setIsLoggedIn(true);
+          setUser(response.data);
           setIsLoading(false);
-          setUser(user);
         })
         .catch((error) => {
 
@@ -48,6 +51,7 @@ function AuthProviderWrapper(props) {
     // Upon logout, remove the token from the localStorage
     removeToken();
     authenticateUser();
+    navigate('/')
   };
 
   useEffect(() => {

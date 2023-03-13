@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { postContext } from "../../context/posts.context";
 import PostEdit from "../../components/PostEdit";
+import Navbar2 from "../../components/Navbar/Navbar2";
 
 export default function PostDetailPage() {
     const [post, setPost] = useState({});
@@ -26,6 +27,7 @@ export default function PostDetailPage() {
 
     return (
         <>
+        <Navbar2/>
             {!showEdit && <div className="card mx-auto" style={{ "width": "18rem" }}>
                 <img src="https://bit.ly/sage-adebayo" className="card-img-top " alt="user's avatar" />
                 <div className="card-body">

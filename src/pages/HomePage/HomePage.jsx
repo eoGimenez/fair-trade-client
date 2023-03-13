@@ -1,10 +1,11 @@
 import Navbar2 from "../../components/Navbar/Navbar2";
 import "./HomePage.css";
 import InitialFocus from "../../components/modal/InitialFocus";
-import { Box } from "@chakra-ui/layout";
+import { Button } from "@chakra-ui/react";
 import slide1 from "./slide1.jpg";
 import slide2 from "./slide2.jpg";
 import slide3 from "./slide3.jpg";
+import { Link } from "react-router-dom";
 
 
 function HomePage() {
@@ -49,6 +50,7 @@ function HomePage() {
       </div>
 
       <InitialFocus/>
+      <Link to='/signup'> <Button  color="rgb(79, 37, 120)" variant="ghost" size='lg' mx='auto'>Sign Up</Button></Link>
     </div>
     </>
   );

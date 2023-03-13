@@ -13,6 +13,7 @@ import {
   Stack,
   Button,
 } from "@chakra-ui/react";
+import { userContext } from "../../context/user.context";
 
 
 function ModalLogIn(props) {
@@ -23,7 +24,14 @@ function ModalLogIn(props) {
 
   const {onClose} = props
 
-  const { storeToken, authenticateUser, user } = useContext(AuthContext);
+  const { storeToken, authenticateUser, user} = useContext(AuthContext);
+ /*  const {  usersCTX } = useContext(userContext);
+  const [userST, setUserST] = useState([]) */
+
+/*   const getUser = () => {
+    let currentUser = usersCTX.find(user => user._id === id);
+    console.log("CURRENT USER: ", currentUser);
+    setUser(currentUser); */
    
 
   /*   const handleEmail = (e) => setEmail(e.target.value);
@@ -36,14 +44,8 @@ function ModalLogIn(props) {
   const handleLoginSubmit = (e) => {
     e.preventDefault();
     const requestBody = { email, password };
-
-    // Send a request to the server using axios
-    /* 
-    axios.post(`${process.env.REACT_APP_SERVER_URL}/auth/login`)
-      .then((response) => {})
-    */
       console.log("REQUEST BODY ANTES DEL LOGIN", requestBody)
-    // Or using a service
+
     authService
       .login(requestBody)
       .then((response) => {
@@ -53,9 +55,13 @@ function ModalLogIn(props) {
         // and at last navigate to the home page
 
         storeToken(response.data.authToken);
+       
         authenticateUser();
-        console.log('USERCXT:',response.data)
-        navigate("/profile/:id");
+        navigate(`/profile/${user._id}`);
+      })
+      .authService.verify()
+      .then((result)=>{
+        console.log("RESULT DE VERY", result)
       })
       .catch((error) => {
         // If the request resolves with an error, set the error message in the state
@@ -75,7 +81,7 @@ function ModalLogIn(props) {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-{/*             <FormHelperText color="rgb(79, 37, 120)" textAlign="flex-end">We'll never share your email.</FormHelperText> */}
+            {/*  <FormHelperText color="rgb(79, 37, 120)" textAlign="flex-end">We'll never share your email.</FormHelperText> */}
             <FormLabel color="rgb(79, 37, 120)" mt='10px'>Password</FormLabel>
             <Input
             id='password'
@@ -98,5 +104,6 @@ function ModalLogIn(props) {
     </>
   );
 }
+
 
 export default ModalLogIn;

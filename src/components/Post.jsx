@@ -5,6 +5,7 @@ import { postContext } from "../context/posts.context"
 export default function Post() {
 
     const { posts, getPosts } = useContext(postContext);
+    console.log("POSTS", posts)
 
     useEffect(() => {
         getPosts();
