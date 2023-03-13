@@ -5,9 +5,11 @@ import { AuthContext } from "../../context/auth.context";
 import { postContext } from "../../context/posts.context";
 import PostService from "../../services/post.service";
 
- function PostNewPage() {
+function PostNewPage() {
   const { posts, getPosts } = useContext(postContext);
-  const { user, autheticateUser } = useContext(AuthContext)
+  const { user, autheticateUser } = useContext(AuthContext);
+  const[ check, setCheck]=useState(false)
+
 
   const [form, setForm] = useState({
     title: "",
@@ -17,7 +19,7 @@ import PostService from "../../services/post.service";
     batch: "",
     price: "",
     category: "",
-    available: false
+    available: false,
   });
   const navigate = useNavigate();
   const submitHandler = (e) => {
@@ -31,7 +33,7 @@ import PostService from "../../services/post.service";
       price: form.price,
       category: form.category,
       available: true,
-      author: user._id
+      author: user._id,
     })
       .then((result) => {
         getPosts();
@@ -40,9 +42,14 @@ import PostService from "../../services/post.service";
       .catch((err) => console.log(err));
   };
 
+  const checkSubmit =()=>{
+    setCheck(true)
+
+  }
+
   return (
     <>
-    <Navbar2 />
+      <Navbar2 />
       <form className="row " onSubmit={submitHandler}>
         <div className="col col-md-6">
           <label htmlFor="title" className="form-label">
@@ -117,15 +124,39 @@ import PostService from "../../services/post.service";
           />
         </div>
         <div className="col col-md-6">
-          <label htmlFor="category" className="form-label">
-            category
-          </label>
-          <input
+          <label htmlFor="category" className="form-label"></label>
+
+          {/* <input
             type="text"
             className="form-control"
             id="category"
             form={form.category}
             onChange={(e) => setForm({ ...form, category: e.target.value })}
+          /> */}
+          <select
+            class="form-select"
+            aria-label="Default select example"
+            onChange={(e) => setForm({ ...form, category: e.target.value })}
+          >
+            <option selected>Select a Category</option>
+            <option value="Natural Cosmetic">Natural Cosmetic</option>
+            <option value="Home Deco">Home Deco</option>
+            <option value="Fabric & Fashion">Fabric & Fashion</option>
+            <option value="Misellaneous">Misellaneous</option>
+          </select>
+        </div>
+        <div class="form-check form-switch">
+          
+          <label class="form-check-label" for="flexSwitchCheckChecked">
+            Available
+          </label>
+          <input
+            class="form-check-input"
+            type="checkbox"
+            role="switch"
+            id="flexSwitchCheckChecked"
+             checked 
+             onClick={checkSubmit}
           />
         </div>
         <div className="col col-md-6">
@@ -137,4 +168,4 @@ import PostService from "../../services/post.service";
     </>
   );
 }
- export default PostNewPage;
+export default PostNewPage;

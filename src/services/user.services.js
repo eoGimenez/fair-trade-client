@@ -34,16 +34,15 @@ class UserService {
   deleteUser=  (userId) => {
     return this.api.delete(`/user/${userId}/delete`);
   } 
+  // //CLOUDINARY!!!!
+  uploadImage = (file) => {
+    return this.api.post("/upload", file) 
+  };
+  // //CLOUDINARY!!!!
 }
 
 const userService = new UserService();
 
-// //CLOUDINARY!!!!
-// const uploadImage = (file) => {
-//   return api.post("/upload", file)
-//     .then(res => res.data)
-//     .catch(errorHandler);
-// };
 
 
 export default userService;

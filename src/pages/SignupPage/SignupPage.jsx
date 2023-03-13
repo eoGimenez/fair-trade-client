@@ -101,9 +101,10 @@ function SignupPage() {
 
   return (
     <>
-  
-     {/* <Navbar2/> */}
-     
+    <div>
+      <Navbar />
+      <SignupPage2 />     
+
       <Box
         position="relative"
         pt="5px"
@@ -249,6 +250,7 @@ function SignupPage() {
       <p>Already have account?</p>
       <Link to={"/login"}> Login</Link>
     </div>  */}
+    </div>
     </>
   );
 }

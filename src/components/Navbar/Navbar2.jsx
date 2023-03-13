@@ -51,11 +51,7 @@ function Navbar2() {
               Post
             </Button>
           </Link>
-          <Link to="/signup">
-            <Button colorScheme="teal" variant="ghost" size="lg">
-              Sign Up
-            </Button>
-          </Link>
+          
 
           <Link to="/post/new"><Button colorScheme='teal' variant='ghost' size='lg' >
     New Post
