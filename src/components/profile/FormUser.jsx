@@ -6,6 +6,7 @@ import userService from "../../services/user.services";
 import { AuthContext } from "../../context/auth.context";
 import { useContext } from "react";
 import "./ProfilePage.css"
+import { addAvatar } from "../../services/uploads.services";
 
 function FormUser(currentUser) {
 
@@ -20,41 +21,31 @@ function FormUser(currentUser) {
   const [password, setPassword] = useState("");
   const [passwordRe, setPasswordRe] = useState("");
   const [cif, setCif] = useState("");
-  const [img, setImg] = useState(img2);
+  const [img, setImg] = useState("");
   const [error, setError]= useState("")
   const [changePass, setChangePass]=useState(false);
 
   const [usuario, setUsuario] = useState(user)
 
 
- // ******** this function handles the file upload ********
  const handleFileUpload = (e) => {
-  // console.log("The file to be uploaded is: ", e.target.files[0]);
 
   const uploadData = new FormData();
 
-  // imageUrl => this name has to be the same as in the model since we pass
-  // req.body to .create() method when creating a new movie in '/api/movies' POST route
-  uploadData.append("imageUrl", e.target.files[0]);
+  uploadData.append("avatar", e.target.files[0]);
 
-  user.services
-    .uploadImage(uploadData)
+  
+    addAvatar(uploadData)
     .then((response) => {
-      // console.log("response is: ", response);
-      // response carries "fileUrl" which we can use to update the state
+      console.log(response);
       setImg(response.fileUrl);
     })
     .catch((err) => console.log("Error while uploading the file: ", err));
 };
 
-
-
-
   const formHandler = () => {
     setForm(true);
   };
-
-
 
   const SubmitHandler = (e) => {
 
@@ -89,7 +80,7 @@ function FormUser(currentUser) {
       name,
       surname,
       cif,
-      avatar:""
+      avatar: img
     }
 
      if(changePass){
@@ -147,7 +138,7 @@ function FormUser(currentUser) {
         style={{ width: "25rem" }}>
         {/* bg-warning */}
         <div className="avatar">
-        <img src="../profile/emptyavatar.png" alt="avatar"/>
+        <img src={usuario.avatar} alt="avatar"/>
         </div>
         <div id="avatar">
           {/* <img 
@@ -266,8 +257,10 @@ function FormUser(currentUser) {
               >
                 Confirm
               </button>
+              <input type="file" onChange={(e) => handleFileUpload(e)} name="avatar" />
 
-            </form></>
+            </form>
+            </>
         )}
       </div>
       </>}
@@ -276,3 +269,4 @@ function FormUser(currentUser) {
 }
 
 export default FormUser;
+

@@ -1,7 +1,9 @@
-import { Carousel } from 'react-bootstrap';
-import slide1 from "./slide1.mp4"
-import slide2 from "./slide2.mp4"
-import slide3 from "./slide3.mp4"
+import { Carousel } from "react-bootstrap";
+import slide1 from "./slide1.mp4";
+import slide2 from "./slide2.mp4";
+import slide3 from "./slide3.mp4";
+
+
 
 function CarruselVideo() {
   return (
@@ -30,7 +32,9 @@ function CarruselVideo() {
         </video>
         <Carousel.Caption>
           <h3>Third slide label</h3>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+          </p>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
@@ -39,13 +43,10 @@ function CarruselVideo() {
 
 export default CarruselVideo;
 
-
 // import { Carousel } from 'react-bootstrap';
 // import slide1 from "./slide1.mp4"
 // import slide2 from "./slide2.mp4"
 // import slide3 from "./slide3.mp4"
-
-
 
 // function CarruselVideo() {
 //   return (
