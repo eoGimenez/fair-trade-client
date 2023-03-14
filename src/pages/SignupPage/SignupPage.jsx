@@ -102,10 +102,14 @@ function SignupPage() {
   return (
     <>
     <div>
-      <Navbar />
-      <SignupPage2 />     
 
-      <Box
+      <Navbar />
+
+      <SignupPage2 />  
+
+    <div id="signup">
+      <Box  
+        className="box-rounded"
         position="relative"
         pt="5px"
         bg="white"
@@ -223,6 +227,7 @@ function SignupPage() {
           </Stack>
         </AbsoluteCenter>
       </Box>
+      </div>
 
       {/*  <div className="SignupPage">
       <h1>Sign Up</h1>

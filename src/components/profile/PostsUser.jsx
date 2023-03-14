@@ -9,12 +9,12 @@ function PostUser(props){
     console.log("USER-POSTS-USER", user)
     return(
         <>
-   <div class="card border-success mb-3" style={{maxWidth: "18rem"}}>
-  <div class="card-header">{user.posts.map((post)=>{
+   <div id="posteos" >
+  <div className="posteosIn">{user.posts.map((post)=>{
     return(
         <>
         <Link to={`/post/${post._id}`}><p>Title: {post.title}</p></Link>
-        <div class="card-body text-success">
+        <div class="">
     <h5 class="card-title">Description:{post.description}</h5>
     <p class="card-text"> </p>
   </div>
