@@ -34,18 +34,10 @@ class UserService {
   deleteUser=  (userId) => {
     return this.api.delete(`/user/${userId}/delete`);
   } 
-<<<<<<< HEAD
-  // //CLOUDINARY!!!!
-  uploadImage = (file) => {
-    return this.api.post("/upload", file) 
-  };
-  // //CLOUDINARY!!!!
-=======
 
   addChatId = (userId, chatId) => {
     return this.api.put(`/user/${userId}/edit/chatsId`, chatId)
   }
->>>>>>> euge
 }
 
 const userService = new UserService();
