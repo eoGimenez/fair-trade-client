@@ -4,16 +4,17 @@ import { AuthContext } from "../context/auth.context"
 import userService from "../services/user.services";
 
 export default function ChatBox({author:{_id, name, email}}) {
-    const inboxDiv = useRef();
+    const inBoxDiv = useRef();
 
     const [ talkLoaded, setTalkLoaded ] = useState(false);
     const { user } = useContext(AuthContext);
-    
+
     Talk.ready
     .then(result => {
         setTalkLoaded(true)
     });
     
+   
     useEffect(() => {
         if(talkLoaded) {
             const currentUser = new Talk.User({
@@ -42,10 +43,10 @@ export default function ChatBox({author:{_id, name, email}}) {
             const chat = session.getOrCreateConversation(chatId);
             chat.setParticipant(currentUser);
             chat.setParticipant(contactedUser);
-            const inbox = session.createInbox();
-            inbox.select(chat);
+            const inBox = session.createInbox();
+            inBox.select(chat);
             
-            inbox.mount(inboxDiv.current)
+            inBox.mount(inBoxDiv.current)
             
             userService.addChatId(contactedUser.id, {chatId})
             .then(result => {
@@ -59,10 +60,10 @@ export default function ChatBox({author:{_id, name, email}}) {
             })
             .catch(err => console.log(err))
 
-            console.log("CHAT BOX CURRENT:", inbox)
+            console.log("CHAT BOX CURRENT:", inBox)
             return () =>  session.destroy();
         }
     }, [talkLoaded])
-    return <div  className="chat" ref={inboxDiv} />
+    return <div  className="chat" ref={inBoxDiv} />
        
 }

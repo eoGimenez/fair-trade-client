@@ -159,7 +159,7 @@ function PostNewPage() {
             />
           </div>
 
-          <div class="mb-3">
+          <div className="mb-3">
             <div className="col col-md-4">
               <label htmlFor="category" className="form-label fw-bold"></label>
 
@@ -171,7 +171,7 @@ function PostNewPage() {
             onChange={(e) => setForm({ ...form, category: e.target.value })}
           /> */}
               <select
-                class="form-select col col-md-4"
+                className="form-select col col-md-4"
                 aria-label="Default select example"
                 onChange={(e) => setForm({ ...form, category: e.target.value })}
               >
@@ -184,16 +184,16 @@ function PostNewPage() {
             </div>
           </div>
 
-          <div class="mb-3">
-            <div class="form-check form-switch col col-md-4">
+          {/* <div className="mb-3">
+            <div className="form-check form-switch col col-md-4">
               <label
-                class="form-check-label fw-bold "
+                className="form-check-label fw-bold "
                 for="flexSwitchCheckChecked"
               >
                 Available
               </label>
               <input
-                class="form-check-input"
+                className="form-check-input"
                 type="checkbox"
                 role="switch"
                 id="flexSwitchCheckChecked"
@@ -201,14 +201,14 @@ function PostNewPage() {
                 onClick={checkSubmit}
               />
             </div>
-          </div>
+          </div> */}
           <div className="col col-md-4">
             {/* <button type="submit" className="btn btn-primary">
               Create
             </button> */}
 
             <div class="d-grid gap-2 col-6 mx-auto">
-              <button class="btn btn-primary" type="button">
+              <button class="btn btn-primary" type="submit">
                 Button
               </button>
             </div>

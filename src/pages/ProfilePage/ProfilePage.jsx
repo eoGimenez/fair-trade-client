@@ -10,6 +10,7 @@ import userService from "../../services/user.services";
 import "./ProfilePage.css"
 import PostUser from "../../components/profile/PostsUser"
 import Navbar2 from "../../components/Navbar/Navbar2";
+import InBox from "../../components/chat/InBox";
 
 function ProfilePage() {
   const { userId } = useParams();
@@ -18,6 +19,8 @@ function ProfilePage() {
   /*  const { usersCTX, getUsers} = useContext(userContext);  */
   const { user, isLoggedIn, isLoading } = useContext(AuthContext);
   /*  const { post, getPosts } = useContext(postContext); */
+
+  const [ showChat, setShowChat ] = useState(false)
 
   const [currentUser, setCurrentUser] = useState(null);
   console.log("CURRENTUSER", currentUser)
@@ -44,9 +47,10 @@ function ProfilePage() {
     })
 
   }, []);
+  const handleChat = () => {
+    setShowChat(!showChat)
+}
 
-  /* console.log("post: ", post); */
-  const testCHAT = "e3517551f1d165805460"
   return (
     <>
       <Navbar />
@@ -71,7 +75,11 @@ function ProfilePage() {
         </div>
       </div>
         </div>) : <p>Loading...</p>}
-
+      {!showChat && <button onClick={handleChat}  className="m-2 btn btn-info">Contact</button>}
+      {showChat && <>
+      <InBox  />
+                <button onClick={handleChat} className="m-2 btn btn-info">Go back!</button>
+                </>}
     </>
   );
 }
