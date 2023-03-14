@@ -185,13 +185,8 @@ function PostNewPage() {
             </div>
           </div>
 
-<<<<<<< HEAD
-          {/* <div className="mb-3">
-            <div className="form-check form-switch col col-md-4">
-=======
           {/* <div class="mb-3">
             <div class="form-check form-switch col col-md-4">
->>>>>>> lulu
               <label
                 className="form-check-label fw-bold "
                 for="flexSwitchCheckChecked"
