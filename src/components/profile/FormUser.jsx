@@ -117,10 +117,10 @@ function FormUser(currentUser) {
   return (
     <>
 
-       {error && <div class="alert alert-danger  d-flex align-items-center" role="alert">
+       {error && <div class="alert alert-danger d-flex align-items-center" role="alert">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2"
+          className="bi bi-exclamation-triangle-fill flex-shrink-0 me-2"
           viewBox="0 0 16 16"
           role="img"
           aria-label="Warning:"
