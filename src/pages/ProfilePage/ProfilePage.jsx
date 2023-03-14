@@ -51,14 +51,14 @@ function ProfilePage() {
 
       {currentUser ? (<div id="containerprofile" >
         <div className="containerprofile">
-          <div className="chau1"><FormUser user={currentUser} />
+          <div className="col-7" id="chau1"><FormUser user={currentUser} />
           
-          <div className="yo">
+          <div className="aboutme">
             {" "}
             <div className="hola">
             </div>
 
-            <div className="chau2">
+            <div className="text-center" id="chau2">
               <CommerceForm user={currentUser} />
             </div>
           </div>

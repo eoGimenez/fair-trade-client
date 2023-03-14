@@ -1,26 +1,73 @@
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
 .containerprofile {
-display: flex;
-flex-direction: row;
-align-items: center;
-justify-content: center;
-border: solid 2px blue;
-}
-
-.chau1 {
-    border: solid 2px yellow;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: solid 2px blue;
 }
 
 
-.yo {
-    border: solid 2px red;  
-}
+/* **************************************************************** */
 
-.posteos{
-    flex-direction: row;
-    border: solid 2px orange;
-    padding: 5vw;
+/* AVATAR !!!!! */
+#cajafoto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: solid 2px orange;
 }
 
 .avatar {
-    border: solid 2px black;
+  border: solid 2px black;
+  height: 20vh;
+  width: 20vw;
 }
+
+/* **************************************************************** */
+
+
+#chau1 {
+  border: solid 2px yellow;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#chau2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: solid 2px red;
+
+}
+
+.aboutme {
+  border: solid 2px red;
+}
+
+.posteosIn{
+    flex-direction: column;
+    border: solid 2px blueviolet;
+}
+
+#posteos {
+  flex-direction: column;
+  border: solid 2px blueviolet;
+}
+
+
+.adios1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid 2px orange;
+}
+
+

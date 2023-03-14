@@ -152,9 +152,7 @@ function FormUser(currentUser) {
         <div className="avatar">
         <img src="../profile/emptyavatar.png" alt="avatar"/>
         </div>
-        <div
-          id="avatar"
-          class="ratio ratio-1x1  rounded-circle overflow-hidden mb-2 mt-3 mx-auto">
+        <div id="avatar">
           {/* <img 
           src={user.avatar === "" ? (img):(user.avatar)} 
           class="card-img-top " 
@@ -164,7 +162,7 @@ function FormUser(currentUser) {
       <div class="card-body ">
         {!form ? (
           <div className="card mb-3 " style={{ width: "25rem" }}> {/* bg-warning */}
-            <div className="row g-0">
+            <div className="adios1">
               <div className="col-md-8">
                 <div className="card-body">
                   <h5 className="card-title">{usuario?.name}</h5>

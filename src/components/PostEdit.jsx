@@ -127,7 +127,7 @@ export default function PostEdit({getPosts, toggleEdit, getPost, postId, setPost
               setForm({ ...form, category: e.target.value })
             }
           /> */}
-          <select class="form-select" 
+          <select className="form-select" 
           aria-label="Default select example"
           onChange={(e) => setForm({ ...form, category: e.target.value })}
           >

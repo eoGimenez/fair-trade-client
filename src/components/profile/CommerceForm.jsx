@@ -71,7 +71,7 @@ function CommerceForm(props) {
       )}
 
 {/* {!isLoading && isLoggedIn && */}
-      <div className="col  float-md-start">
+      <div className="aboutme">
         {" "}
         {/* bg-success */}
         <div className="card border-0 ">
