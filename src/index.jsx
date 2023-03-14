@@ -6,7 +6,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { AuthProviderWrapper } from "./context/auth.context";
 import { ChakraProvider } from "@chakra-ui/react";
 import { PostProvicerWrapper } from "./context/posts.context";
-import { UserProviderWrapper } from "./context/user.context";
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
