@@ -70,7 +70,7 @@ function ProfilePage() {
           </div>
         </div>
       </div>
-        </div>) : <p>Loading...</p>}
+        </div>) : <p>Loading </p>}
 
     </>
   );
