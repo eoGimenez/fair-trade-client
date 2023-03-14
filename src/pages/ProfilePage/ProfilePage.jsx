@@ -9,6 +9,7 @@ import FormUser from "../../components/profile/FormUser";
 import userService from "../../services/user.services";
 import "./ProfilePage.css"
 import PostUser from "../../components/profile/PostsUser"
+import Navbar2 from "../../components/Navbar/Navbar2";
 
 function ProfilePage() {
   const { userId } = useParams();
@@ -39,6 +40,7 @@ function ProfilePage() {
     /* authenticateUser(); */
     userService.getUser(userId).then((response) => {
       setCurrentUser(response.data)
+      console.log("RESPONSE-CURRENT-USER", response.data)
     })
 
   }, []);
@@ -48,6 +50,7 @@ function ProfilePage() {
   return (
     <>
       <Navbar />
+      <Navbar2/>
 
       {currentUser ? (<div id="containerprofile" >
         <div className="containerprofile">

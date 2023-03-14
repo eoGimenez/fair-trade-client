@@ -13,13 +13,13 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Router>
     <AuthProviderWrapper>
-      <UserProviderWrapper>
+     {/*  <UserProviderWrapper> */}
         <PostProvicerWrapper>
           <ChakraProvider>
             <App />
           </ChakraProvider>
         </PostProvicerWrapper>
-      </UserProviderWrapper>
+      {/* </UserProviderWrapper> */}
     </AuthProviderWrapper>
   </Router>
 );
