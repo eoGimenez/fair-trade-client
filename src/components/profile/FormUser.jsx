@@ -7,12 +7,9 @@ import { AuthContext } from "../../context/auth.context";
 import { useContext } from "react";
 import "./ProfilePage.css"
 
-
-
-
 function FormUser(currentUser) {
 
-  const { user, authenticateUser , isLoading, isLoggedIn} = useContext(AuthContext);
+  const { user, isLoading, isLoggedIn} = useContext(AuthContext);
 
   const navigate = useNavigate()
   console.log("AVATAR:", currentUser)

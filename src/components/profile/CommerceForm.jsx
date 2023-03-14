@@ -1,11 +1,14 @@
 import "./ProfilePage.css";
-import { useState , useEffect} from "react";
+import { useContext, useState , useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import img2 from "../../pages/HomePage/slide3.jpg";
 import userService from "../../services/user.services";
+import { AuthContext } from "../../context/auth.context";
 
-function CommerceForm(props) {
-  const { user, authenticateUser, isLoading, isLoggedIn ,currentUser} = props;
+function CommerceForm(currentUser) {
+  const { user,  isLoading, isLoggedIn} = useContext(AuthContext);
+
+  console.log("CURRENT-USER-COMMERCEFORM", currentUser)
   const [form, setForm] = useState(false);
   const [commercename, setCommercename] = useState("");
   const [location, setLocation] = useState("");
@@ -37,11 +40,6 @@ function CommerceForm(props) {
       .updateCommerce(user._id, requestBody)
       .then((response) => {
         setUsuario(response.data)
-        /* authenticateUser ();*/
-
-        /* console.log("RESPONSE CAMBIO", response.data); */
-
-      
         setForm(false);
       })
       .catch((err) => console.log("ERROR PUT", err));
@@ -70,10 +68,9 @@ function CommerceForm(props) {
         </div>
       )}
 
-{/* {!isLoading && isLoggedIn && */}
-      <div className="aboutme">
-        {" "}
-        {/* bg-success */}
+      {!isLoading && isLoggedIn && 
+      <div className="col  float-md-start">
+      
         <div className="card border-0 ">
           {/*  <img src="..." className="card-img-top" alt="..." /> */}
           <div className="card-body">
@@ -94,19 +91,17 @@ function CommerceForm(props) {
 
                       <p className="card-text">Location:{usuario.location}</p>
                      
-                    {/*   {currentUser.user._id === user._id ? ( */}<button
+                         {currentUser._id === user._id ? (  <button
                         type="submit"
                         className="btn btn-primary"
-                        onClick={formHandler}
-                      >
+                        onClick={formHandler}>
                         Edit
-                      </button>{/* ) : <p>BORRARRRRRR!!!!!!</p>} */}
+                      </button>    ) : <p>NO HAY CURRENT USER!!!!!!</p> }  
                     </div>
                   </div>
                 </>
               ) : (
                 <>
-                  {" "}
                   <form>
                     <label for="exampleInputPassword1" className="form-label">
                       Commerce Name
@@ -156,7 +151,7 @@ function CommerceForm(props) {
             </div>
           </div>
         </div>
-      </div>{/* } */}
+        </div>}
     </>
   );
 }
