@@ -32,6 +32,15 @@ function LoginPage() {
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    if(!emailRegex.test(email)) {
+      setErrorMessage("Please provide a valir email adress.")
+      return;
+    }
+    if(!password) {
+      setErrorMessage("Please complete the 'Password' field.")
+    }
+
     const requestBody = { email, password };
 
     // Send a request to the server using axios
@@ -39,7 +48,7 @@ function LoginPage() {
     axios.post(`${process.env.REACT_APP_SERVER_URL}/auth/login`)
       .then((response) => {})
     */
-      console.log("REQUEST BODY ANTES DEL LOGIN", requestBody)
+      //console.log("REQUEST BODY ANTES DEL LOGIN", requestBody)
     // Or using a service
     authService
       .login(requestBody)
