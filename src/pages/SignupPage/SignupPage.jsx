@@ -53,7 +53,13 @@ function SignupPage() {
       cif,
       avatar:""
     }
-
+    if(email === "" || password === "" || name === "" || passwordRe === "" || surname === "" || commercename === "" || role === "" || cif === "") {
+      setErrorMessage("Please complete the mandatory fields.")
+      return;
+    }
+    if(password!==passwordRe){
+      setErrorMessage("Passwords dont match")
+    }
     // Or using a service
     authService
       .signup(requestBody)
