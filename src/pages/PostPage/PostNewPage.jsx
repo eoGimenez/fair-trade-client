@@ -10,6 +10,7 @@ function PostNewPage() {
   const { posts, getPosts } = useContext(postContext);
   const { user, autheticateUser } = useContext(AuthContext);
   const [check, setCheck] = useState(false);
+  
 
   const [form, setForm] = useState({
     title: "",
@@ -50,7 +51,7 @@ function PostNewPage() {
     <>
       <Navbar />
      
-      <div id="div" class=" container mb-3 d-flex justify-content-center ">
+      <div id="div" class=" containerform  mb-3 d-flex justify-content-center ">
         <form className="row " onSubmit={submitHandler}>
           <div class="mb-3">
             <div className="col col-md-4 ">
@@ -100,7 +101,7 @@ function PostNewPage() {
           <div class="mb-3">
             <div className="col col-md-4">
               <label
-                for="exampleFormControlTextarea1"
+                htmlfor="exampleFormControlTextarea1"
                 class="form-label fw-bold"
               >
                 Description
@@ -176,7 +177,7 @@ function PostNewPage() {
                 onChange={(e) => setForm({ ...form, category: e.target.value })}
               >
                 <option selected> Select a Category</option>
-                <option value="Natural Cosmetic">Natural Cosmetic</option>
+                <option value="Natural Cosmetics">Natural Cosmetic</option>
                 <option value="Home Deco">Home Deco</option>
                 <option value="Fabric & Fashion">Fabric & Fashion</option>
                 <option value="Misellaneous">Misellaneous</option>
@@ -184,8 +185,13 @@ function PostNewPage() {
             </div>
           </div>
 
+<<<<<<< HEAD
           {/* <div className="mb-3">
             <div className="form-check form-switch col col-md-4">
+=======
+          {/* <div class="mb-3">
+            <div class="form-check form-switch col col-md-4">
+>>>>>>> lulu
               <label
                 className="form-check-label fw-bold "
                 for="flexSwitchCheckChecked"

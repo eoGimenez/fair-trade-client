@@ -147,13 +147,14 @@ function FormUser(currentUser) {
         style={{ width: "25rem" }}>
         {/* bg-warning */}
         <div className="avatar">
-        <img src="../profile/emptyavatar.png" alt="avatar"/>
-        </div>
-        <div id="avatar">
-          {/* <img 
+       {/*  <img src={user.avatar} alt="avatar"/> */}
+       <img 
           src={user.avatar === "" ? (img):(user.avatar)} 
           class="card-img-top " 
-          alt="Avatar"/> */}
+          alt="Avatar"/> 
+        </div>
+        <div id="avatar">
+           
         </div>
       </div>
       <div class="card-body ">
