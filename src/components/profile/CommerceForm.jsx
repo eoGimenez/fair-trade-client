@@ -91,7 +91,8 @@ function CommerceForm(currentUser) {
 
                       <p className="card-text">Location:{usuario.location}</p>
                      
-                         {currentUser._id === user._id ? (  <button
+                         
+                         {currentUser.user._id === user._id ? (  <button
                         type="submit"
                         className="btn btn-primary"
                         onClick={formHandler}>

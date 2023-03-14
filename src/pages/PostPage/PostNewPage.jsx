@@ -10,6 +10,7 @@ function PostNewPage() {
   const { posts, getPosts } = useContext(postContext);
   const { user, autheticateUser } = useContext(AuthContext);
   const [check, setCheck] = useState(false);
+  
 
   const [form, setForm] = useState({
     title: "",
@@ -50,7 +51,7 @@ function PostNewPage() {
     <>
       <Navbar />
      
-      <div id="div" class=" container mb-3 d-flex justify-content-center ">
+      <div id="div" class=" containerform  mb-3 d-flex justify-content-center ">
         <form className="row " onSubmit={submitHandler}>
           <div class="mb-3">
             <div className="col col-md-4 ">
@@ -100,7 +101,7 @@ function PostNewPage() {
           <div class="mb-3">
             <div className="col col-md-4">
               <label
-                for="exampleFormControlTextarea1"
+                htmlfor="exampleFormControlTextarea1"
                 class="form-label fw-bold"
               >
                 Description
@@ -171,12 +172,12 @@ function PostNewPage() {
             onChange={(e) => setForm({ ...form, category: e.target.value })}
           /> */}
               <select
-                class="form-select col col-md-4"
+                className="form-select col col-md-4"
                 aria-label="Default select example"
                 onChange={(e) => setForm({ ...form, category: e.target.value })}
               >
                 <option selected> Select a Category</option>
-                <option value="Natural Cosmetic">Natural Cosmetic</option>
+                <option value="Natural Cosmetics">Natural Cosmetic</option>
                 <option value="Home Deco">Home Deco</option>
                 <option value="Fabric & Fashion">Fabric & Fashion</option>
                 <option value="Misellaneous">Misellaneous</option>
@@ -184,7 +185,7 @@ function PostNewPage() {
             </div>
           </div>
 
-          <div class="mb-3">
+          {/* <div class="mb-3">
             <div class="form-check form-switch col col-md-4">
               <label
                 class="form-check-label fw-bold "
@@ -201,14 +202,14 @@ function PostNewPage() {
                 onClick={checkSubmit}
               />
             </div>
-          </div>
+          </div> */}
           <div className="col col-md-4">
             {/* <button type="submit" className="btn btn-primary">
               Create
             </button> */}
 
             <div class="d-grid gap-2 col-6 mx-auto">
-              <button class="btn btn-primary" type="button">
+              <button class="btn btn-primary" type="submit">
                 Button
               </button>
             </div>

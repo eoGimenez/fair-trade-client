@@ -1,5 +1,5 @@
 
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
 import authService from "../../services/auth.service";
@@ -49,10 +49,10 @@ function ModalLogIn(props) {
     authService
       .login({ email, password })
       .then((response) => {
-        console.log("CONSOL DEL RESPONSE", response)
         storeToken(response.data.authToken);
         authenticateUser();
-        navigate(`/profile/${user._id}`);
+        console.log("USER", user)
+        
       })
    /*    .authService.verify()
       .then((result)=>{
@@ -60,10 +60,15 @@ function ModalLogIn(props) {
       }) */
       .catch((error) => {
         // If the request resolves with an error, set the error message in the state
+        console.log("ERROR", error )
         const errorDescription = error.response.data.message;
         setErrorMessage(errorDescription);
       });
   };
+
+  useEffect(()=>{
+    if(user) navigate(`/profile/${user._id}`);
+  },[user])
 
   return (
     <>
