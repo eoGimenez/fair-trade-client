@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PostService from "../services/post.service";
+import { uploadImage } from "../services/uploads.services";
 
 export default function PostEdit({getPosts, toggleEdit, getPost, postId, setPost, currentPost }) {
   const [form, setForm] = useState({
     title: currentPost.title,
     contract: currentPost.contract,
-    image: currentPost.image,
+   /*  image: currentPost.image, */
     description: currentPost.description,
     batch: currentPost.batch,
     price: currentPost.price,
@@ -14,13 +15,28 @@ export default function PostEdit({getPosts, toggleEdit, getPost, postId, setPost
     available: currentPost.available,
   });
   const navigate = useNavigate();
+  const [img, setImg] = useState("");
+ 
+
+  const handleFileUpload = (e) => {
+    const uploadData = new FormData();
+    uploadData.append("image", e.target.files[0]);
+    uploadImage(uploadData)
+      .then((response) => {
+        setImg(response.fileUrl);
+      })
+      .catch((err) => console.log("Error while uploading the file: ", err));
+  };
+
+       
 
   const submitHandler = (e) => {
+    console.log("IMG!!!!", img)
     e.preventDefault();
     PostService.updateOne(postId, {
       title: form.title,
       contract: form.contract,
-      image: form.image,
+      image: img,
       description: form.description,
       batch: form.batch,
       price: form.price,
@@ -28,6 +44,7 @@ export default function PostEdit({getPosts, toggleEdit, getPost, postId, setPost
       available: form.available
     }, {new: true})
     .then(result => {
+      /* console.log("RESULT EDIT POST:", result) */
       getPosts();
       toggleEdit();
       getPost();
@@ -39,11 +56,12 @@ export default function PostEdit({getPosts, toggleEdit, getPost, postId, setPost
 
   return (
     <>
-    
+    <div id="div" class=" containerform  mb-3 d-flex justify-content-center ">
       <form className="row " onSubmit={submitHandler}>
-        <div className="col col-md-6">
+      <div class="mb-3">
+        <div className="col col-md-4 ">
           <label htmlFor="title" className="form-label">
-          title
+          Title
           </label>
           <input
             type="text"
@@ -53,9 +71,12 @@ export default function PostEdit({getPosts, toggleEdit, getPost, postId, setPost
             onChange={(e) => setForm({ ...form, title: e.target.value })}
           />
         </div>
-        <div className="col col-md-6">
+        </div>
+
+        <div class="mb-3">
+            <div className="col col-md-4">
           <label htmlFor="contract" className="form-label">
-            contract
+            Contract
           </label>
           <input
             type="text"
@@ -65,7 +86,8 @@ export default function PostEdit({getPosts, toggleEdit, getPost, postId, setPost
             onChange={(e) => setForm({ ...form, contract: e.target.value })}
           />
         </div>
-        <div className="col-12">
+        </div>
+       {/*  <div className="col-12">
           <label htmlFor="image" className="form-label">
           image
           </label>
@@ -76,10 +98,11 @@ export default function PostEdit({getPosts, toggleEdit, getPost, postId, setPost
             value={form.image}
             onChange={(e) => setForm({ ...form, image: e.target.value })}
           />
-        </div>
-        <div className="col col-6">
+        </div> */}
+        <div class="mb-3">
+            <div className="col col-md-4">
           <label htmlFor="description" className="form-label">
-          description
+          Description
           </label>
           <input
             type="text"
@@ -89,9 +112,10 @@ export default function PostEdit({getPosts, toggleEdit, getPost, postId, setPost
             onChange={(e) => setForm({ ...form, description: e.target.value })}
           />
         </div>
-        <div className="col col-md-6">
+        </div>
+        <div className="col col-md-2">
           <label htmlFor="batch" className="form-label">
-          batch{" "}
+          Batch{" "}
           </label>
           <input
             type="number"
@@ -101,9 +125,9 @@ export default function PostEdit({getPosts, toggleEdit, getPost, postId, setPost
             onChange={(e) => setForm({ ...form, batch: e.target.value })}
           />
         </div>
-        <div className="col col-md-6">
+        <div className="col col-md-2">
           <label htmlFor="price" className="form-label">
-          price{" "}
+          Price{" "}
           </label>
           <input
             type="number"
@@ -115,19 +139,13 @@ export default function PostEdit({getPosts, toggleEdit, getPost, postId, setPost
             }
           />
         </div>
-        <div className="col col-md-6">
+        
+        <div className="mb-3">
+        <div className="col col-md-4">
           <label htmlFor="category" className="form-label">
           </label>
-          {/* <input
-            type="text"
-            className="form-control"
-            id="category"
-            form={form.category}
-            onChange={(e) =>
-              setForm({ ...form, category: e.target.value })
-            }
-          /> */}
-          <select className="form-select" 
+         
+          <select className="form-select col-md-4" 
           aria-label="Default select example"
           onChange={(e) => setForm({ ...form, category: e.target.value })}
           >
@@ -138,7 +156,13 @@ export default function PostEdit({getPosts, toggleEdit, getPost, postId, setPost
             <option value="Misellaneous">Misellaneous</option>
           </select>
         </div>
-        <div className="col col-md-6">
+        </div>
+        
+
+        
+        <div className="mb-3">
+        <div className="col col-md-4">
+        <input type="file" onChange={(e) => handleFileUpload(e)} name="image" />
          {/*  <input
             type="boolean"
             className="form-control"
@@ -149,12 +173,17 @@ export default function PostEdit({getPosts, toggleEdit, getPost, postId, setPost
             }
           /> */}
         </div>
-        <div className="col col-md-6">
+        </div>
+
+
+        <div className="d-grid gap-2 col-2 mx-auto">
           <button type="submit" className="btn btn-primary">
-            edit!
+            Edit!
           </button>
         </div>
       </form>
+      </div>
+    
     </>
   );
 }

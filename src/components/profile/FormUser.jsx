@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-expressions */
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import img2 from "../profile/emptyavatar.png";
+/* import img2 from "../profile/emptyavatar.png"; */
 import userService from "../../services/user.services";
 import { AuthContext } from "../../context/auth.context";
 import { useContext } from "react";
@@ -13,7 +13,7 @@ function FormUser(currentUser) {
   const { user, isLoading, isLoggedIn} = useContext(AuthContext);
 
   const navigate = useNavigate()
-  console.log("AVATAR:", currentUser)
+ /*  console.log("AVATAR:", currentUser) */
   const [form, setForm] = useState(false);
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -27,17 +27,15 @@ function FormUser(currentUser) {
 
   const [usuario, setUsuario] = useState(user)
 
+/*   console.log('USUARIOOOOOO', usuario) */
+
 
  const handleFileUpload = (e) => {
-
   const uploadData = new FormData();
-
   uploadData.append("avatar", e.target.files[0]);
-
-  
     addAvatar(uploadData)
     .then((response) => {
-      console.log(response);
+      /* console.log("RTA CLOUDINADRYYYYY:",response.fileUrl); */
       setImg(response.fileUrl);
     })
     .catch((err) => console.log("Error while uploading the file: ", err));
@@ -48,8 +46,6 @@ function FormUser(currentUser) {
   };
 
   const SubmitHandler = (e) => {
-
-    console.log("adentro e lsubmit")
     e.preventDefault();
 
     if (
@@ -87,17 +83,12 @@ function FormUser(currentUser) {
       requestBody.password= password;
        requestBody.passwordRe = passwordRe;
     }
- /* 
-    console.log("ID", user._id)
-    console.log("REQ>BODY", requestBody)
- */
+
     userService.updateUser(user._id, requestBody)
     .then(response=>{
        setUsuario(response.data)
 
-      console.log('RESPONSE CAMBIO', response.data)
-
-      /* navigate(`/profile/ ${user._id}`) */
+      /* console.log('RESPONSE CAMBIO', response.data) */
       setForm(false)
 
     })
@@ -111,6 +102,7 @@ function FormUser(currentUser) {
   setName(user.name)
   setSurname(user.surname)
   setCif(user.cif)
+  
 
  },[user])
 
@@ -260,6 +252,7 @@ function FormUser(currentUser) {
               >
                 Confirm
               </button>
+
               <input type="file" onChange={(e) => handleFileUpload(e)} name="avatar" />
 
             </form>

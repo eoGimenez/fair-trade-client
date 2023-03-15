@@ -9,6 +9,8 @@ export default function Post() {
 
     const { posts, getPosts } = useContext(postContext);
     const[ showChat, setShowChat ] = useState(false)
+
+    console.log("POSTS!!!", posts)
  
 
 
@@ -29,7 +31,7 @@ export default function Post() {
                     <div key={post._id} className="card mb-3 w-50 mx-auto" style={{ "max-width": "540px;" }}>
                         <div className="row g-0">
                             <div className="col col-md-4">
-                                <img src={post.image} className="img-fluid rounded-start" alt={post.title} />
+                                <img src={post.image} className="img-fluid rounded-start" alt="Img" />
                             </div>
                             <div className="col-md-8">
                                 <div className="card-body">

@@ -10,6 +10,11 @@ const errorHandler = (err) => {
     throw err;
 };
 
+const uploadImage = (image) => {
+    return api.post("/post/upload", image)
+        .then(res => res.data)
+        .catch(errorHandler);
+};
 
 const addAvatar = (avatar) => {
     return api.post("/user/upload", avatar)
@@ -18,4 +23,4 @@ const addAvatar = (avatar) => {
 }
 
 
-export { addAvatar }
+export { addAvatar, uploadImage }

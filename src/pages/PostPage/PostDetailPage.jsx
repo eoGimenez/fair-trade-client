@@ -13,7 +13,7 @@ export default function PostDetailPage() {
     const { posts, getPosts } = useContext(postContext);
     //const { currentUser, setCurrentUser} = useContext(AuthContext)
 
-    //console.log("POST:", post)
+    console.log("POST:", post)
 
     const navigate = useNavigate();
 
@@ -37,14 +37,14 @@ export default function PostDetailPage() {
     const deleteHandler = () => {
         PostService.deletePost(post._id)
         .then(response => {
-            console.log(response);
+           /*  console.log(response); */
             navigate("/post");
 
         })
     }
     const handleChat = () => {
         setShowChat(!showChat)
-        console.log("SESION ID ??", ChatBox)
+        /* console.log("SESION ID ??", ChatBox) */
 
     }
 
@@ -52,7 +52,7 @@ export default function PostDetailPage() {
         <>
         <Navbar2 />
             {!showEdit && <div className="card mx-auto" style={{ "width": "15rem" }}>
-                <img src="https://bit.ly/sage-adebayo" className="card-img-top rounded-circle img-fluid" style={{ "width": "8rem" }} alt="user's avatar" />
+                <img src={post.image} className="card-img-top rounded-circle img-fluid" style={{ "width": "8rem" }} alt="Img" />
                 <div className="card-body">
                     <h5 className="card-title">{post.title}</h5>
                     <p className="card-text">{post.description}</p>

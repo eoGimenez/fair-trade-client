@@ -28,6 +28,7 @@ class PostServiceConst {
   }
 
   updateOne (postId, reqBody){
+    console.log("REQ>BODY-POST",reqBody)
     return this.api.put(`/post/${postId}/edit`, reqBody);
   }
 

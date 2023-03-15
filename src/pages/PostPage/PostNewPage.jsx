@@ -5,30 +5,44 @@ import Navbar2 from "../../components/Navbar/Navbar2";
 import { AuthContext } from "../../context/auth.context";
 import { postContext } from "../../context/posts.context";
 import PostService from "../../services/post.service";
+import { uploadImage } from "../../services/uploads.services";
 
 function PostNewPage() {
   const { posts, getPosts } = useContext(postContext);
   const { user, autheticateUser } = useContext(AuthContext);
   const [check, setCheck] = useState(false);
+  const [img, setImg] = useState("");
   
 
   const [form, setForm] = useState({
     title: "",
     contract: "",
-    image: "",
+   /*  image: "", */
     description: "",
     batch: "",
     price: "",
     category: "",
     available: false,
   });
+
+  const handleFileUpload = (e) => {
+    const uploadData = new FormData();
+    uploadData.append("image", e.target.files[0]);
+    uploadImage(uploadData)
+      .then((response) => {
+         console.log("RTA CLOUDINADRYYYYY:",response.fileUrl);
+        setImg(response.fileUrl);
+      })
+      .catch((err) => console.log("Error while uploading the file: ", err));
+  };
+
   const navigate = useNavigate();
   const submitHandler = (e) => {
     e.preventDefault();
     PostService.newPost({
       title: form.title,
       contract: form.contract,
-      image: form.image,
+      image: img,
       description: form.description,
       batch: form.batch,
       price: form.price,
@@ -83,7 +97,7 @@ function PostNewPage() {
             </div>
           </div>
 
-          <div class="mb-3">
+         {/*  <div class="mb-3">
             <div className="col col-md-4">
               <label htmlFor="image" className="form-label fw-bold">
                 Image
@@ -96,7 +110,7 @@ function PostNewPage() {
                 onChange={(e) => setForm({ ...form, image: e.target.value })}
               />
             </div>
-          </div>
+          </div> */}
 
           <div class="mb-3">
             <div className="col col-md-4">
@@ -159,18 +173,12 @@ function PostNewPage() {
               onChange={(e) => setForm({ ...form, price: e.target.value })}
             />
           </div>
+          <input type="file" onChange={(e) => handleFileUpload(e)} name="image" />
 
           <div className="mb-3">
             <div className="col col-md-4">
               <label htmlFor="category" className="form-label fw-bold"></label>
 
-              {/* <input
-            type="text"
-            className="form-control"
-            id="category"
-            form={form.category}
-            onChange={(e) => setForm({ ...form, category: e.target.value })}
-          /> */}
               <select
                 className="form-select col col-md-4"
                 aria-label="Default select example"
@@ -203,17 +211,17 @@ function PostNewPage() {
               />
             </div>
           </div> */}
-          <div className="col col-md-4">
-            {/* <button type="submit" className="btn btn-primary">
+         {/*  <div className="col col-md-4">
+             <button type="submit" className="btn btn-primary">
               Create
-            </button> */}
+            </button>  */}
 
-            <div class="d-grid gap-2 col-6 mx-auto">
+            <div class="d-grid gap-2 col-2 mx-auto">
               <button class="btn btn-primary" type="submit">
-                Button
+                Create
               </button>
             </div>
-          </div>
+        {/*   </div> */}
         </form>
       </div>
     </>
