@@ -128,10 +128,6 @@ function FormUser(currentUser) {
                   {/* AVATAR CARD */}
                   <div id="avatar">
                   <img src={usuario.avatar} alt="avatar" height={200} width={200}/>
-                    {/* <img 
-                    src={user.avatar === "" ? (img):(user.avatar)} 
-                    class="card-img-top " 
-                    alt="Avatar"/> */}
                   </div>
                   {/* AVATAR CARD */}
 
@@ -142,7 +138,6 @@ function FormUser(currentUser) {
             <div className="adios1">
               <div className="col-md-8">
                 <div className="card-body">
-                  <p>LUCAS BÓRRAME</p>
                   <h5 className="card-title">{usuario?.name}</h5>
                   <p className="card-text">{usuario?.surname}</p>
                   <p className="card-text">{usuario?.location}</p>
