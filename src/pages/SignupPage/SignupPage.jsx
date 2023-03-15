@@ -14,7 +14,7 @@ import {
   AbsoluteCenter,
   Stack,
   Button,
-  
+
 } from "@chakra-ui/react";
 import SignupPage2 from "./SignUpPage2";
 
@@ -45,28 +45,38 @@ function SignupPage() {
       commercename,
       role,
       cif,
-      avatar:""
+      avatar: ""
     }
-    if(email === "" || password === "" || name === "" || passwordRe === "" || surname === "" || commercename === "" || role === "" || cif === "") {
+
+    if (email === "" || password === "" || name === "" || passwordRe === "" || surname === "" || commercename === "" || role === "" || cif === "") {
       setErrorMessage("Please complete the mandatory fields.")
       return;
     }
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       setErrorMessage("Provide a valid email address.")
+      return;
     }
-    if(password!==passwordRe){
+
+    if (password !== passwordRe) {
       setErrorMessage("Passwords dont match.")
       return;
     }
+
+    const passwordRegex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+    if (!passwordRegex.test(password)) {
+      setErrorMessage("Check for Password requirement")
+      return;
+    }
+
     // Or using a service
     authService
       .signup(requestBody)
       .then((response) => {
         return response;
       })
-      authService.login({email, password})
+    authService.login({ email, password })
       .catch((error) => {
         navigate("/")
       });
@@ -99,144 +109,144 @@ function SignupPage() {
         setErrorMessage(errorDescription);
       });
       */
-  
+
 
   return (
     <>
-    <div>
-      <Navbar />
-      <SignupPage2 />  
-    <div id="signup">
-      <Box  
-        className="box-rounded"
-        position="relative"
-        pt="5px"
-        bg="white"
-        ml="auto"
-        mr="auto"
-        mt="100px"
-        w={[600]}
-        h="900"
-      >
-        <AbsoluteCenter w="500px">
-        {errorMessage && <div className="alert alert-danger alerta " role="alert">
-        {errorMessage}
-      </div>}
-          <FormControl  bg="white" mb="15" mt="10" isRequired >
-            <FormLabel color="rgb(79, 37, 120)" mt="15px" mb="15px" >
-              Name
-            </FormLabel>
-            <Input
-              type="text"
-              placeholder="John"
-              id="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-            
-            <FormLabel color="rgb(79, 37, 120)" mt="15px" mb="15px">
-              Last Name
-            </FormLabel>
-            <Input
-              type="text"
-              placeholder="Doe"
-              id="LastName"
-              value={surname}
-              onChange={(e) => setSurname(e.target.value)}
-            />
+      <div>
+        <Navbar />
+        <SignupPage2 />
+        <div id="signup">
+          <Box
+            className="box-rounded"
+            position="relative"
+            pt="5px"
+            bg="white"
+            ml="auto"
+            mr="auto"
+            mt="100px"
+            w={[600]}
+            h="900"
+          >
+            <AbsoluteCenter w="500px">
+              {errorMessage && <div className="alert alert-danger alerta " role="alert">
+                {errorMessage}
+              </div>}
+              <FormControl bg="white" mb="15" mt="10" isRequired >
+                <FormLabel color="rgb(79, 37, 120)" mt="15px" mb="15px" >
+                  Name
+                </FormLabel>
+                <Input
+                  type="text"
+                  placeholder="John"
+                  id="name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
 
-            <FormLabel color="rgb(79, 37, 120)" mt="15px" mb="15px">
-              Commerce Name
-            </FormLabel>
-            <Input
-              type="text"
-              placeholder="Doe's Handcrafted"
-              id="CommerceName"
-              value={commercename}
-              onChange={(e) => setCommercename(e.target.value)}
-            />
+                <FormLabel color="rgb(79, 37, 120)" mt="15px" mb="15px">
+                  Last Name
+                </FormLabel>
+                <Input
+                  type="text"
+                  placeholder="Doe"
+                  id="LastName"
+                  value={surname}
+                  onChange={(e) => setSurname(e.target.value)}
+                />
 
-            <FormLabel color="rgb(79, 37, 120)" mt="15px" mb="15px">
-              Email address
-            </FormLabel>
-            <Input
-              type="email"
-              placeholder="johndoe@gmail"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <FormHelperText>We'll never share your email.</FormHelperText>
+                <FormLabel color="rgb(79, 37, 120)" mt="15px" mb="15px">
+                  Commerce Name
+                </FormLabel>
+                <Input
+                  type="text"
+                  placeholder="Doe's Handcrafted"
+                  id="CommerceName"
+                  value={commercename}
+                  onChange={(e) => setCommercename(e.target.value)}
+                />
 
-            <FormControl isRequired>
-            <FormLabel color="rgb(79, 37, 120)" mt="10px" mb="15px" >
-             Password 
-       
-            </FormLabel>
-            </FormControl>
-            <Input
-              id="password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <FormHelperText>
-              Must have at least 6 characters,at least one number, one lowercase
-              and one uppercase letter
-            </FormHelperText>
-            <FormLabel color="rgb(79, 37, 120)" mt="15px" mb="15px">
-              Repeat Password
-            </FormLabel>
-            <Input
-              id="passwordRe"
-              type="password"
-              value={passwordRe}
-              onChange={(e) => setPasswordRe(e.target.value)}
-            />
+                <FormLabel color="rgb(79, 37, 120)" mt="15px" mb="15px">
+                  Email address
+                </FormLabel>
+                <Input
+                  type="email"
+                  placeholder="johndoe@gmail"
+                  id="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <FormHelperText>We'll never share your email.</FormHelperText>
 
-            <FormLabel color="rgb(79, 37, 120)" mt="15px" mb="15px">
-              CIF
-            </FormLabel>
-            <Input
-              id="cif"
-              type="text"
-              placeholder="Y-9532595"
-              value={cif}
-              onChange={(e) => setCif(e.target.value)}
-            />
-          </FormControl>
+                <FormControl isRequired>
+                  <FormLabel color="rgb(79, 37, 120)" mt="10px" mb="15px" >
+                    Password
 
-          <FormControl bg="white" isRequired>
-            <FormLabel color="rgb(79, 37, 120)" bg="white" mt="15px" mb="15px">
-              You are joining as:
-            </FormLabel>
-            <Select
-              id="role"
-              bg="white"
-              placeholder="Select an option"
-              onChange={(e) => setRole(e.target.value)}
-            >
-              <option value="Artisan">Artisan</option>
-              <option value="Commerce">Commerce</option>
-            </Select>
-          </FormControl>
+                  </FormLabel>
+                </FormControl>
+                <Input
+                  id="password"
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                <FormHelperText>
+                  Must have at least 6 characters,at least one number, one lowercase
+                  and one uppercase letter
+                </FormHelperText>
+                <FormLabel color="rgb(79, 37, 120)" mt="15px" mb="15px">
+                  Repeat Password
+                </FormLabel>
+                <Input
+                  id="passwordRe"
+                  type="password"
+                  value={passwordRe}
+                  onChange={(e) => setPasswordRe(e.target.value)}
+                />
 
-          <Stack direction="row" spacing={4} align="center" mt="20px">
-            <Button
-              color="rgb(79, 37, 120)"
-              variant="ghost"
-              size="lg"
-              mx="auto"
-              onClick={handleSignupSubmit}
-            >
-              Sign Up
-            </Button>
-          </Stack>
-        </AbsoluteCenter>
-      </Box>
-      </div>
+                <FormLabel color="rgb(79, 37, 120)" mt="15px" mb="15px">
+                  CIF
+                </FormLabel>
+                <Input
+                  id="cif"
+                  type="text"
+                  placeholder="Y-9532595"
+                  value={cif}
+                  onChange={(e) => setCif(e.target.value)}
+                />
+              </FormControl>
 
-      {/*  <div className="SignupPage">
+              <FormControl bg="white" isRequired>
+                <FormLabel color="rgb(79, 37, 120)" bg="white" mt="15px" mb="15px">
+                  You are joining as:
+                </FormLabel>
+                <Select
+                  id="role"
+                  bg="white"
+                  placeholder="Select an option"
+                  onChange={(e) => setRole(e.target.value)}
+                >
+                  <option value="Artisan">Artisan</option>
+                  <option value="Commerce">Commerce</option>
+                </Select>
+              </FormControl>
+
+              <Stack direction="row" spacing={4} align="center" mt="20px">
+                <Button
+                  color="rgb(79, 37, 120)"
+                  variant="ghost"
+                  size="lg"
+                  mx="auto"
+                  onClick={handleSignupSubmit}
+                >
+                  Sign Up
+                </Button>
+              </Stack>
+            </AbsoluteCenter>
+          </Box>
+        </div>
+
+        {/*  <div className="SignupPage">
       <h1>Sign Up</h1>
 
       <form onSubmit={handleSignupSubmit}>
@@ -262,7 +272,7 @@ function SignupPage() {
       <p>Already have account?</p>
       <Link to={"/login"}> Login</Link>
     </div>  */}
-    </div>
+      </div>
     </>
   );
 }
