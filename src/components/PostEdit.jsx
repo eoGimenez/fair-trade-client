@@ -57,9 +57,7 @@ export default function PostEdit({getPosts, toggleEdit, getPost, postId, setPost
 
   return (
     <>
-
-
-    <div id="div" class=" containerform  mb-3 d-flex justify-content-center ">
+    <div id="newpost" class=" containerform  mb-3 d-flex justify-content-center ">
       <form className="row " onSubmit={submitHandler}>
 
       <div class="mb-3">

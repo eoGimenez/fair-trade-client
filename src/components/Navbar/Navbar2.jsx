@@ -5,19 +5,27 @@ import { useEffect } from "react";
 import "./Navbar2.css";
 import logoImg from "./navbarlogo.png";
 
-
 function Navbar2() {
-  const { logOutUser, isLoading, isLoggedIn } = useContext(AuthContext);
+  const { logOutUser, user, isLoading, isLoggedIn } = useContext(AuthContext);
 
   useEffect(() => {}, []);
 
   return (
     <>
-      <div id="navbar2">
+        <div className="container">
+        <div className="raw">
+
+      <div className="col col-sm-12 " id="navbar2">
         <ul>
           <li>
-            <Link to="/" className="active">
-              <img src={logoImg} alt="Logo" style={{ height: 50 }} />
+            <Link to="/" className="col col-sm-12">
+              <img src={logoImg} alt="Logo" /*style={{ height: 60, width: 500}}*/ />
+            </Link>
+          </li>
+
+          <li>
+            <Link to= {`/profile/${user._id}`}  className="active">
+            <i class="fa-solid fa-user"></i>    Profile
             </Link>
           </li>
 
@@ -41,6 +49,10 @@ function Navbar2() {
 
         </ul>
       </div>
+      </div>
+      </div>
+
+
     </>
   );
 }

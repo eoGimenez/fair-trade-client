@@ -14,16 +14,13 @@
 
 
 /* **************************************************************** */
-
 /* AVATAR !!!!! */
 
 #avatar {
   border: solid 2px black;
   height: 200px;
   width: 200px;
-
 }
-
 /* **************************************************************** */
 
 
@@ -43,10 +40,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: solid 2px red;
-
-}
-.aboutme {
   border: solid 2px red;
 }
 
