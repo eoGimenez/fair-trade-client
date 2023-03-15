@@ -7,7 +7,6 @@ import Navbar from "../../components/Navbar/Navbar";
 import {
   FormControl,
   FormLabel,
-  FormErrorMessage,
   FormHelperText,
   Input,
   Box,
@@ -24,19 +23,14 @@ function SignupPage() {
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [commercename, setCommercename] = useState("");
-  const [artisan, setArtisan] = useState("");
-  const [commerce, setCommerce] = useState("");
   const [cif, setCif] = useState("");
   const [password, setPassword] = useState("");
   const [passwordRe, setPasswordRe] = useState("");
   const [role, setRole] = useState("");
-  const [errorMessage, setErrorMessage] = useState(undefined);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const navigate = useNavigate();
 
-/*   const handleEmail = (e) => setEmail(e.target.value);
-  const handlePassword = (e) => setPassword(e.target.value);
-  const handleName = (e) => setName(e.target.value); */
   let requestBody
 
   const handleSignupSubmit = (e) => {
@@ -57,23 +51,24 @@ function SignupPage() {
       setErrorMessage("Please complete the mandatory fields.")
       return;
     }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    if (!emailRegex.test(email)) {
+      setErrorMessage("Provide a valid email address.")
+    }
     if(password!==passwordRe){
-      setErrorMessage("Passwords dont match")
+      setErrorMessage("Passwords dont match.")
+      return;
     }
     // Or using a service
     authService
       .signup(requestBody)
       .then((response) => {
-        console.log("RESPONSE FRONT:", response);
-
-        // If the POST request is successful redirect to the login page
         return response;
       })
-      authService.login()
+      authService.login({email, password})
       .catch((error) => {
-        // If the request resolves with an error, set the error message in the state
-        const errorDescription = error;
-        setErrorMessage(errorDescription);
+        navigate("/")
       });
   };
   /* const handleSignupSubmit2 = (e) => {
@@ -88,12 +83,12 @@ function SignupPage() {
       requestBody, 
       { headers: { Authorization: `Bearer ${authToken}` },
     })
-    .then((response) => {}) */
+    .then((response) => {}) 
     
     //let requestBody
     // Or using a service
     authService
-      .signup(/* requestBody */)
+      .signup(/* requestBody )
       .then((response) => {
         // If the POST request is successful redirect to the login page
         navigate("/");
@@ -103,16 +98,14 @@ function SignupPage() {
         const errorDescription = error.response.data.message;
         setErrorMessage(errorDescription);
       });
+      */
   
 
   return (
     <>
     <div>
-
       <Navbar />
-
       <SignupPage2 />  
-
     <div id="signup">
       <Box  
         className="box-rounded"
@@ -126,6 +119,9 @@ function SignupPage() {
         h="900"
       >
         <AbsoluteCenter w="500px">
+        {errorMessage && <div className="alert alert-danger alerta " role="alert">
+        {errorMessage}
+      </div>}
           <FormControl  bg="white" mb="15" mt="10" isRequired >
             <FormLabel color="rgb(79, 37, 120)" mt="15px" mb="15px" >
               Name
@@ -133,17 +129,18 @@ function SignupPage() {
             <Input
               type="text"
               placeholder="John"
+              id="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
-            <FormErrorMessage>Name is required.</FormErrorMessage>
-
+            
             <FormLabel color="rgb(79, 37, 120)" mt="15px" mb="15px">
               Last Name
             </FormLabel>
             <Input
               type="text"
               placeholder="Doe"
+              id="LastName"
               value={surname}
               onChange={(e) => setSurname(e.target.value)}
             />
@@ -154,6 +151,7 @@ function SignupPage() {
             <Input
               type="text"
               placeholder="Doe's Handcrafted"
+              id="CommerceName"
               value={commercename}
               onChange={(e) => setCommercename(e.target.value)}
             />
@@ -164,6 +162,7 @@ function SignupPage() {
             <Input
               type="email"
               placeholder="johndoe@gmail"
+              id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -176,7 +175,7 @@ function SignupPage() {
             </FormLabel>
             </FormControl>
             <Input
-           
+              id="password"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -189,7 +188,7 @@ function SignupPage() {
               Repeat Password
             </FormLabel>
             <Input
-            
+              id="passwordRe"
               type="password"
               value={passwordRe}
               onChange={(e) => setPasswordRe(e.target.value)}
@@ -199,6 +198,7 @@ function SignupPage() {
               CIF
             </FormLabel>
             <Input
+              id="cif"
               type="text"
               placeholder="Y-9532595"
               value={cif}
@@ -211,6 +211,7 @@ function SignupPage() {
               You are joining as:
             </FormLabel>
             <Select
+              id="role"
               bg="white"
               placeholder="Select an option"
               onChange={(e) => setRole(e.target.value)}

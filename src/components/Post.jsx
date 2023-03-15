@@ -41,7 +41,6 @@ export default function Post() {
                                     <p className="card-text">Price per unit: {post.price}€.</p>
                                     <p className="card-text"><small className="text-muted">{post.available}</small></p>
                                     <div className="col-6">
-                                    <button onClick={handleChat} test={post.title} className="m-2 btn btn-info">Contact</button>
                                     <Link to={`/post/${post._id}`} props={user} className="m-2 btn btn-info">Details</Link>
                                     </div>
                                 </div>

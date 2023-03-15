@@ -17,14 +17,14 @@ export default function PostDetailPage(props) {
 
     const [showEdit, setShowEdit] = useState(false);
     const [showChat, setShowChat] = useState(false)
-console.log("CONSOLE DEL USER", user);
+
     const getPost = () => {
         const currentPost = posts.find(result => result._id === postId);
         setPost(currentPost);
-         if (user._id === currentPost.author._id) {
+        if (user._id === currentPost.author._id) {
             setIsOwner(true);
             return;
-        } 
+        }
     };
 
     useEffect(() => {
@@ -37,17 +37,14 @@ console.log("CONSOLE DEL USER", user);
 
     const deleteHandler = () => {
         PostService.deletePost(post._id)
-        .then(response => {
-            console.log(response);
-            navigate("/post");
+            .then(response => {
+                navigate("/post");
+            })
+    };
 
-        })
-    }
-    const handleChat = () => {
-        setShowChat(!showChat)
-        console.log("SESION ID ??", ChatBox)
-
-    }
+    useEffect(() => {
+        setShowChat(true)
+    }, [post]);
 
     return (
         <>
@@ -69,12 +66,9 @@ console.log("CONSOLE DEL USER", user);
                 {showEdit && <PostEdit toggleEdit={toggleEdit} getPost={getPost} postId={postId} getPosts={getPosts} setPost={setPost} currentPost={post} />}
                 {isOwner && !showEdit && <button className="btn btn-warning mx-2" onClick={toggleEdit}>Edit</button>}
                 {isOwner && !showEdit && <button className="btn btn-danger mx-2" onClick={deleteHandler}>Delete</button>}
-                {!isOwner && <button onClick={handleChat} className="m-2 btn btn-info">Contact</button>}
             </div>
-            {showChat && <>
-                <ChatBox author={post.author} />
-                <button onClick={handleChat} className="m-2 btn btn-info">Go back!</button>
-            </>}
+
+            {!isOwner && showChat && <ChatBox author={post.author} />}
         </>
     );
 };

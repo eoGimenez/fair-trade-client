@@ -26,7 +26,7 @@ export default function InBox() {
             });
 
             const session = new Talk.Session({
-                appId: "t4w8AzfB",
+                appId: process.env.REACT_APP_YOUR_APP_ID,
                 me: currentUser
             })
             console.log("CURRENT USER: ",user)

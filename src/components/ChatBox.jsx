@@ -1,7 +1,7 @@
 import { useContext, useEffect, useRef, useState } from "react"
 import Talk from "talkjs"
 import { AuthContext } from "../context/auth.context"
-import userService from "../services/user.services";
+//import userService from "../services/user.services";
 
 export default function ChatBox({ author: { _id, name, email } }) {
     const inBoxDiv = useRef();
@@ -34,7 +34,7 @@ export default function ChatBox({ author: { _id, name, email } }) {
             });
 
             const session = new Talk.Session({
-                appId: "t4w8AzfB",
+                appId: process.env.REACT_APP_YOUR_APP_ID,
                 me: currentUser
             })
            
@@ -42,7 +42,7 @@ export default function ChatBox({ author: { _id, name, email } }) {
             const chat = session.getOrCreateConversation(chatId);
             chat.setParticipant(currentUser);
             chat.setParticipant(contactedUser);
-            const inBox = session.createInbox();
+            const inBox = session.createPopup();
             inBox.select(chat);
 
             inBox.mount(inBoxDiv.current)

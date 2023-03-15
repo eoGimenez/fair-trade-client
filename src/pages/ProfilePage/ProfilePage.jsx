@@ -45,11 +45,10 @@ function ProfilePage() {
     /* authenticateUser(); */
     userService.getUser(userId).then((response) => {
       setCurrentUser(response.data)
-      console.log("RESPONSE-CURRENT-USER", response.data)
+      //console.log("RESPONSE-CURRENT-USER", response.data)
       
       if (userId === response.data._id) {
         setSameUser(true)
-        console.log("ESTADO DEL USUARIO", sameUser)
         return;
       }
     })
