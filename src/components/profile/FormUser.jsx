@@ -116,6 +116,7 @@ function FormUser(currentUser) {
 
   return (
     <>
+  <div id="divRow">
 
        {error && <div class="alert alert-danger d-flex align-items-center" role="alert">
         <svg
@@ -133,15 +134,19 @@ function FormUser(currentUser) {
       
       {!isLoading && isLoggedIn &&
       <>
-        <div id="avatar">
-        <img src={usuario.avatar} alt="avatar"/>
-          {/* <img 
-          src={user.avatar === "" ? (img):(user.avatar)} 
-          class="card-img-top " 
-          alt="Avatar"/> */}
-        </div>
-      
-      <div class="card-body ">
+     
+                  {/* AVATAR CARD */}
+                  <div id="avatar">
+                  <img src={usuario.avatar} alt="avatar" height={200} width={200}/>
+                    {/* <img 
+                    src={user.avatar === "" ? (img):(user.avatar)} 
+                    class="card-img-top " 
+                    alt="Avatar"/> */}
+                  </div>
+                  {/* AVATAR CARD */}
+
+      {/* ARTISAN CARD */}
+        <div class="card-body ">
         {!form ? (
           <div className="card mb-3 " style={{ width: "25rem" }}> {/* bg-warning */}
             <div className="adios1">
@@ -153,7 +158,6 @@ function FormUser(currentUser) {
                   <p className="card-text">{usuario?.email}</p>
                   <p className="card-text">{usuario?.cif}</p>
                   <p className="card-text">{usuario?.role}</p>
-                 
                   {currentUser.user._id === user._id ? (<button
                     type="submit"
                     class="btn btn-primary"
@@ -161,11 +165,15 @@ function FormUser(currentUser) {
                     Edit
                   </button>) : <p>BORRARRRRRR!!!!!!</p>}
                 </div>
+        {/* ARTISAN CARD */}
+
+
               </div>
             </div>
           </div>
         ) : (
-          <><form>
+          <>
+          <form>
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">
                   Email address
@@ -258,6 +266,7 @@ function FormUser(currentUser) {
         )}
       </div>
       </>}
+      </div>  
     </>
   );
 }

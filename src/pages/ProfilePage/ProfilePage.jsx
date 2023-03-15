@@ -53,7 +53,7 @@ function ProfilePage() {
   return (
     <>
 
-     <div id="profilePage">
+     <div id="divRow">
       <Navbar2/>
 
       {currentUser ? (<div id="containerprofile" >
@@ -61,7 +61,6 @@ function ProfilePage() {
           <div className="col-7" id="chau1"><FormUser user={currentUser} />
           
           <div className="aboutme">
-            {" "}
             <div className="hola">
             </div>
 
