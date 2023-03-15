@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import Navbar from "../../components/Navbar/Navbar";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useDeferredValue, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
 import CommerceForm from "../../components/profile/CommerceForm"
@@ -20,10 +20,12 @@ function ProfilePage() {
   const { user, isLoggedIn, isLoading } = useContext(AuthContext);
   /*  const { post, getPosts } = useContext(postContext); */
 
-  const [ showChat, setShowChat ] = useState(false)
+  const [showChat, setShowChat] = useState(false)
 
   const [currentUser, setCurrentUser] = useState(null);
-  console.log("CURRENTUSER", currentUser)
+
+  const [sameUser, setSameUser] = useState(false);
+  //console.log("CURRENTUSER", currentUser)
 
   /*  console.log("currentUserPost:", post); */
 
@@ -44,42 +46,47 @@ function ProfilePage() {
     userService.getUser(userId).then((response) => {
       setCurrentUser(response.data)
       console.log("RESPONSE-CURRENT-USER", response.data)
+      
+      if (userId === response.data._id) {
+        setSameUser(true)
+        console.log("ESTADO DEL USUARIO", sameUser)
+        return;
+      }
     })
-
   }, []);
   const handleChat = () => {
     setShowChat(!showChat)
-}
+  }
 
   return (
     <>
       <Navbar />
-      <Navbar2/>
+      <Navbar2 />
 
       {currentUser ? (<div id="containerprofile" >
         <div className="containerprofile">
           <div className="col-7" id="chau1"><FormUser user={currentUser} />
-          
-          <div className="aboutme">
-            {" "}
-            <div className="hola">
-            </div>
 
-            <div className="text-center" id="chau2">
-              <CommerceForm user={currentUser} />
+            <div className="aboutme">
+              {" "}
+              <div className="hola">
+              </div>
+
+              <div className="text-center" id="chau2">
+                <CommerceForm user={currentUser} />
+              </div>
             </div>
-          </div>
-          <div className="row mt-5">
-            <PostUser user={currentUser} isLoading={isLoading} isLoggedIn={isLoggedIn} />
+            <div className="row mt-5">
+              <PostUser user={currentUser} isLoading={isLoading} isLoggedIn={isLoggedIn} />
+            </div>
           </div>
         </div>
-      </div>
-        </div>) : <p>Loading...</p>}
-      {!showChat && <button onClick={handleChat}  className="m-2 btn btn-info">Contact</button>}
+      </div>) : <p>Loading...</p>}
+      {!showChat && <button onClick={handleChat} className="m-2 btn btn-info">Contact</button>}
       {showChat && <>
-      <InBox  />
-                <button onClick={handleChat} className="m-2 btn btn-info">Go back!</button>
-                </>}
+        <InBox />
+        <button onClick={handleChat} className="m-2 btn btn-info">Go back!</button>
+      </>}
     </>
   );
 }
