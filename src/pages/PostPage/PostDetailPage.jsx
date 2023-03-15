@@ -5,25 +5,26 @@ import PostEdit from "../../components/PostEdit";
 import PostService from "../../services/post.service";
 import Navbar2 from "../../components/Navbar/Navbar2";
 import ChatBox from "../../components/ChatBox";
-//import { AuthContext } from "../../context/auth.context";
+import { AuthContext } from "../../context/auth.context";
 
-export default function PostDetailPage() {
+export default function PostDetailPage(props) {
     const [post, setPost] = useState({});
     const { postId } = useParams();
     const { posts, getPosts } = useContext(postContext);
-    //const { currentUser, setCurrentUser} = useContext(AuthContext)
-
-    //console.log("POST:", post)
-
+    const { user } = useContext(AuthContext)
+    const [isOwner, setIsOwner] = useState(false)
     const navigate = useNavigate();
 
     const [showEdit, setShowEdit] = useState(false);
-    const[ showChat, setShowChat ] = useState(false)
-    const [ chatId, setChatId ] = useState("")
-
+    const [showChat, setShowChat] = useState(false)
+console.log("CONSOLE DEL USER", user);
     const getPost = () => {
         const currentPost = posts.find(result => result._id === postId);
         setPost(currentPost);
+         if (user._id === currentPost.author._id) {
+            setIsOwner(true);
+            return;
+        } 
     };
 
     useEffect(() => {
@@ -36,21 +37,17 @@ export default function PostDetailPage() {
 
     const deleteHandler = () => {
         PostService.deletePost(post._id)
-        .then(response => {
-            console.log(response);
-            navigate("/post");
-
-        })
+            .then(response => {
+                navigate("/post");
+            })
     }
     const handleChat = () => {
         setShowChat(!showChat)
-        console.log("SESION ID ??", ChatBox)
-
     }
 
     return (
         <>
-        <Navbar2 />
+            <Navbar2 />
             {!showEdit && <div className="card mx-auto" style={{ "width": "15rem" }}>
                 <img src="https://bit.ly/sage-adebayo" className="card-img-top rounded-circle img-fluid" style={{ "width": "8rem" }} alt="user's avatar" />
                 <div className="card-body">
@@ -64,18 +61,16 @@ export default function PostDetailPage() {
                     {!post.available && <li className="list-group-item"><span>Out of Stock</span></li>}
                 </ul>
             </div>}
-                <div className="card-body my-3">
-                    {showEdit && <span className="mx-2 btn btn-info">Contact</span>}
-                    {showEdit && <PostEdit toggleEdit={toggleEdit} getPost={getPost} postId={postId} getPosts={getPosts} setPost={setPost} currentPost={post} />}
-
-                    {!showEdit && <button className="btn btn-warning mx-2" onClick={toggleEdit}>Edit</button>}
-                    {!showEdit && <button className="btn btn-danger mx-2" onClick={deleteHandler}>Delete</button>}
-                <button onClick={handleChat}  className="m-2 btn btn-info">Contact</button>
-                </div>
-                {showChat && <>
-                <ChatBox  author={post.author}/>
+            <div className="card-body my-3">
+                {showEdit && <PostEdit toggleEdit={toggleEdit} getPost={getPost} postId={postId} getPosts={getPosts} setPost={setPost} currentPost={post} />}
+                {isOwner && !showEdit && <button className="btn btn-warning mx-2" onClick={toggleEdit}>Edit</button>}
+                {isOwner && !showEdit && <button className="btn btn-danger mx-2" onClick={deleteHandler}>Delete</button>}
+                {!isOwner && <button onClick={handleChat} className="m-2 btn btn-info">Contact</button>}
+            </div>
+            {showChat && <>
+                <ChatBox author={post.author} />
                 <button onClick={handleChat} className="m-2 btn btn-info">Go back!</button>
-                </>}
+            </>}
         </>
     );
 };
