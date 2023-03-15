@@ -3,11 +3,11 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
-import CommerceForm from "../../components/profile/CommerceForm"
+import CommerceForm from "../../components/profile/CommerceForm";
 import FormUser from "../../components/profile/FormUser";
 import userService from "../../services/user.services";
-import "./ProfilePage.css"
-import PostUser from "../../components/profile/PostsUser"
+import "./ProfilePage.css";
+import PostUser from "../../components/profile/PostsUser";
 import Navbar2 from "../../components/Navbar/Navbar2";
 import InBox from "../../components/chat/InBox";
 
@@ -19,7 +19,7 @@ function ProfilePage() {
   const { user, isLoggedIn, isLoading } = useContext(AuthContext);
   /*  const { post, getPosts } = useContext(postContext); */
 
-  const [showChat, setShowChat] = useState(false)
+  const [showChat, setShowChat] = useState(false);
 
   const [currentUser, setCurrentUser] = useState(null);
 
@@ -27,7 +27,6 @@ function ProfilePage() {
   //console.log("CURRENTUSER", currentUser)
 
   /*  console.log("currentUserPost:", post); */
-
 
   /*   const getPost = () => {
       let currentUserPost = post.find((posts) => posts.author === user._id);
@@ -43,49 +42,64 @@ function ProfilePage() {
   useEffect(() => {
     /* authenticateUser(); */
     userService.getUser(userId).then((response) => {
-      setCurrentUser(response.data)
+      setCurrentUser(response.data);
       //console.log("RESPONSE-CURRENT-USER", response.data)
-      
+
       if (userId === response.data._id) {
-        setSameUser(true)
+        setSameUser(true);
         return;
       }
-    })
+    });
   }, []);
   const handleChat = () => {
-    setShowChat(!showChat)
-  }
+    setShowChat(!showChat);
+  };
 
   return (
     <>
+      <div id="divRow">
+        <Navbar2 />
 
-     <div id="divRow">
-      <Navbar2 />
+        {currentUser ? (
+          <div id="containerprofile">
+            <div className="containerprofile">
+              <div className="col-7" id="chau1">
+                <FormUser user={currentUser} sameUser={sameUser} />
 
-      {currentUser ? (<div id="containerprofile" >
-        <div className="containerprofile">
-          <div className="col-7" id="chau1"><FormUser user={currentUser} sameUser={sameUser} />
-          
-          <div className="aboutme">
-            <div className="hola">
-            </div>
+                <div className="aboutme">
+                  <div className="hola"></div>
 
-            <div className="text-center" id="chau2">
-              <CommerceForm user={currentUser} sameUser={sameUser} />
-            </div>
-          </div>
-          <div className="row mt-5">
-            <PostUser user={currentUser} isLoading={isLoading} isLoggedIn={isLoggedIn} />
-          </div>
-        </div>
-      </div>
-        </div>) : <p>Loading...</p>}
+                  <div className="text-center" id="chau2">
+                    <CommerceForm user={currentUser} sameUser={sameUser} />
+                  </div>
                 </div>
-      {!showChat && <button onClick={handleChat}  className="m-2 btn btn-info">Contact</button>}
-      {showChat && <>
-        <InBox />
-        <button onClick={handleChat} className="m-2 btn btn-info">Go back!</button>
-      </>}
+                <div className="row mt-5">
+                  <PostUser
+                    user={currentUser}
+                    isLoading={isLoading}
+                    isLoggedIn={isLoggedIn}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <p>Loading...</p>
+        )}
+      </div>
+      {!showChat && (
+        <button onClick={handleChat} className="m-2 btn btn-info">
+          Contact
+        </button>
+      )}
+      {showChat && (
+        <>
+          <InBox />
+          <button onClick={handleChat} className="m-2 btn btn-info">
+            Go back!
+          </button>
+        </>
+      )}
     </>
   );
 }

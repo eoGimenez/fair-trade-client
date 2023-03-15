@@ -6,10 +6,11 @@ import Categorias from "../../components/Posts/Categorias";
 function PostList() {
   
   return (
-    <>
+    <>      
     <Navbar2/>
     <Categorias/>
       <Post />
+    
     </>
   );
 }

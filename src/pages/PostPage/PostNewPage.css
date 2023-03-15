@@ -6,6 +6,16 @@
     color: #4f2579;
 }
 
+#details{
+    
+        /* width: 100vw; */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: #4f2579;
+    
+}
+
 #whitebutton {
     appearance: none;
     background-color: transparent;
@@ -47,4 +57,9 @@
    #whitebutton:active {
     box-shadow: none;
     transform: translateY(0);
+   }
+
+   #img{
+    border-radius: 20%;
+    padding: 15px;
    }

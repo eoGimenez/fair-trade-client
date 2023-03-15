@@ -6,69 +6,160 @@ import PostService from "../../services/post.service";
 import Navbar2 from "../../components/Navbar/Navbar2";
 import ChatBox from "../../components/ChatBox";
 import { AuthContext } from "../../context/auth.context";
+import "./PostNewPage.css";
 
 export default function PostDetailPage(props) {
-    const [post, setPost] = useState({});
-    const { postId } = useParams();
-    const { posts, getPosts } = useContext(postContext);
-    const { user } = useContext(AuthContext)
-    const [isOwner, setIsOwner] = useState(false)
-    const navigate = useNavigate();
+  const [post, setPost] = useState({});
+  const { postId } = useParams();
+  const { posts, getPosts } = useContext(postContext);
+  const { user } = useContext(AuthContext);
+  const [isOwner, setIsOwner] = useState(false);
+  const navigate = useNavigate();
 
-    const [showEdit, setShowEdit] = useState(false);
-    const [showChat, setShowChat] = useState(false)
+  const [showEdit, setShowEdit] = useState(false);
+  const [showChat, setShowChat] = useState(false);
 
-    const getPost = () => {
-        const currentPost = posts.find(result => result._id === postId);
-        setPost(currentPost);
-        if (user._id === currentPost.author._id) {
-            setIsOwner(true);
-            return;
-        }
-    };
+  const getPost = () => {
+    const currentPost = posts.find((result) => result._id === postId);
+    setPost(currentPost);
+    if (user._id === currentPost.author._id) {
+      setIsOwner(true);
+      return;
+    }
+  };
 
-    useEffect(() => {
-        getPost();
-    }, []);
+  useEffect(() => {
+    getPost();
+  }, []);
 
-    const toggleEdit = () => {
-        setShowEdit(!showEdit);
-    };
+  const toggleEdit = () => {
+    setShowEdit(!showEdit);
+  };
 
-    const deleteHandler = () => {
-        PostService.deletePost(post._id)
-            .then(response => {
-                navigate("/post");
-            })
-    };
+  const deleteHandler = () => {
+    PostService.deletePost(post._id).then((response) => {
+      navigate("/post");
+    });
+  };
 
-    useEffect(() => {
-        setShowChat(true)
-    }, [post]);
+  useEffect(() => {
+    setShowChat(true);
+  }, [post]);
 
-    return (
-        <>
-            <Navbar2 />
-            {!showEdit && <div className="card mx-auto" style={{ "width": "15rem" }}>
-                <img src={post.image} className="card-img-top rounded-circle img-fluid" style={{ "width": "8rem" }} alt="Img" />
-                <div className="card-body">
-                    <h5 className="card-title">{post.title}</h5>
-                    <p className="card-text">{post.description}</p>
-                </div>
-                <ul className="list-group list-group-flush">
-                    <li className="list-group-item">Batch: {post.batch}</li>
-                    <li className="list-group-item">Price: {post.price}</li>
-                    <li className="list-group-item">{post.category}</li>
-                    {!post.available && <li className="list-group-item"><span>Out of Stock</span></li>}
-                </ul>
-            </div>}
-            <div className="card-body my-3">
-                {showEdit && <PostEdit toggleEdit={toggleEdit} getPost={getPost} postId={postId} getPosts={getPosts} setPost={setPost} currentPost={post} />}
-                {isOwner && !showEdit && <button className="btn btn-warning mx-2" onClick={toggleEdit}>Edit</button>}
-                {isOwner && !showEdit && <button className="btn btn-danger mx-2" onClick={deleteHandler}>Delete</button>}
-            </div>
+  return (
+    <>
+      <Navbar2 />
+    {/*    {!showEdit && (
+        <div className="card mx-auto" style={{ width: "15rem" }}>
+          <img
+            src={post.image}
+            className="card-img-top rounded-circle img-fluid"
+            style={{ width: "8rem" }}
+            alt="Img"
+          />
+          <div className="card-body">
+            <h5 className="card-title">{post.title}</h5>
+            <p className="card-text">{post.description}</p>
+          </div>
+          <ul className="list-group list-group-flush">
+            <li className="list-group-item">Batch: {post.batch}</li>
+            <li className="list-group-item">Price: {post.price}</li>
+            <li className="list-group-item">{post.category}</li>
+            {!post.available && (
+              <li className="list-group-item">
+                <span>Out of Stock</span>
+              </li>
+            )}
+          </ul>
+        </div>
+      )} 
 
-            {!isOwner && showChat && <ChatBox author={post.author} />}
-        </>
-    );
-};
+       <div className="card-body my-3">
+        {showEdit && (
+          <PostEdit
+            toggleEdit={toggleEdit}
+            getPost={getPost}
+            postId={postId}
+            getPosts={getPosts}
+            setPost={setPost}
+            currentPost={post}
+          />
+        )}
+        {isOwner && !showEdit && (
+          <button className="btn btn-warning mx-2" onClick={toggleEdit}>
+            Edit
+          </button>
+        )}
+        {isOwner && !showEdit && (
+          <button className="btn btn-danger mx-2" onClick={deleteHandler}>
+            Delete
+          </button>
+        )}
+      </div>
+
+      {!isOwner && showChat && <ChatBox author={post.author} />} */}
+
+
+
+ 
+      {!showEdit && (
+        <div
+          class="card mb-3 mx-auto border-0 "
+          id="details"
+          style={{ width: "35rem" }}
+        >
+          <div class=" ">
+            <h1 class="card-title text-start fw-bold ">{post.title}</h1>
+          </div>
+
+          <img
+            src={post.image}
+            class="card-img-top rounded"
+            id="img "
+            alt="..."
+          />
+          <div class="card-body">
+            <p class=" text-star">{post.description}</p>
+            <p class="card-text text-star ">
+              Batch : <spam> {post.batch} units</spam>
+            </p>
+            <p class="card-text text-star ">Price: {post.price}€</p>
+            <p class="card-text text-star">{post.contract}</p>
+            <p class="card-text text-star">{post.category}</p>
+           
+            {!post.available && (
+              <p className="list-group-item">
+                <span>Out of Stock</span>
+              </p>
+            )}
+          </div>
+        </div>
+      )}
+
+      <div className="card-body my-3">
+        {showEdit && (
+          <PostEdit
+            toggleEdit={toggleEdit}
+            getPost={getPost}
+            postId={postId}
+            getPosts={getPosts}
+            setPost={setPost}
+            currentPost={post}
+          />
+        )}
+        {isOwner && !showEdit && (
+          <button className="btn btn-warning mx-2" onClick={toggleEdit}>
+            Edit
+          </button>
+        )}
+        {isOwner && !showEdit && (
+          <button className="btn btn-danger mx-2" onClick={deleteHandler}>
+            Delete
+          </button>
+        )}
+      </div>
+
+      {!isOwner && showChat && <ChatBox author={post.author} />}
+    </>
+  );
+}
