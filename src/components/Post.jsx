@@ -25,7 +25,7 @@ export default function Post() {
 
     return (
         <>
-        <Navbar2 />
+        
             {!showChat && posts.reverse().map(post => {
                 return (
                     <div key={post._id} className="card mb-3 w-50 mx-auto" style={{ "max-width": "540px;" }}>
