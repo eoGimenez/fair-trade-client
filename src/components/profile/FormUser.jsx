@@ -26,8 +26,7 @@ function FormUser(currentUser) {
   const [changePass, setChangePass]=useState(false);
 
   const [usuario, setUsuario] = useState(user)
-
-/*   console.log('USUARIOOOOOO', usuario) */
+  console.log('USUARIOOOOOO', usuario) 
 
 
  const handleFileUpload = (e) => {
@@ -87,8 +86,7 @@ function FormUser(currentUser) {
     userService.updateUser(user._id, requestBody)
     .then(response=>{
        setUsuario(response.data)
-
-      /* console.log('RESPONSE CAMBIO', response.data) */
+  /* console.log('RESPONSE CAMBIO', response.data) */
       setForm(false)
 
     })
