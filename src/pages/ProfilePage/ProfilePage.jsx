@@ -60,18 +60,18 @@ function ProfilePage() {
     <>
 
      <div id="divRow">
-      <Navbar2/>
+      <Navbar2 />
 
       {currentUser ? (<div id="containerprofile" >
         <div className="containerprofile">
-          <div className="col-7" id="chau1"><FormUser user={currentUser} />
+          <div className="col-7" id="chau1"><FormUser user={currentUser} sameUser={sameUser} />
           
           <div className="aboutme">
             <div className="hola">
             </div>
 
             <div className="text-center" id="chau2">
-              <CommerceForm user={currentUser} />
+              <CommerceForm user={currentUser} sameUser={sameUser} />
             </div>
           </div>
           <div className="row mt-5">
