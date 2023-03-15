@@ -9,7 +9,7 @@ import Navbar2 from "./Navbar/Navbar2";
 export default function Post() {
 
     const { posts, getPosts } = useContext(postContext);
-    const[ showChat, setShowChat ] = useState(false)
+    const [showChat, setShowChat] = useState(false)
     const { user } = useContext(AuthContext)
     console.log("USER DESDE POST", user)
 
@@ -25,7 +25,7 @@ export default function Post() {
 
     return (
         <>
-        <Navbar2 />
+            <Navbar2 />
             {!showChat && posts.reverse().map(post => {
                 return (
                     <div key={post._id} className="card mb-3 w-50 mx-auto" style={{ "max-width": "540px;" }}>
@@ -41,7 +41,7 @@ export default function Post() {
                                     <p className="card-text">Price per unit: {post.price}€.</p>
                                     <p className="card-text"><small className="text-muted">{post.available}</small></p>
                                     <div className="col-6">
-                                    <Link to={`/post/${post._id}`} props={user} className="m-2 btn btn-info">Details</Link>
+                                        <Link to={`/post/${post._id}`} props={user} className="m-2 btn btn-info">Details</Link>
                                     </div>
                                 </div>
                             </div>
@@ -50,10 +50,10 @@ export default function Post() {
                 )
             })
             }
-                {showChat && <>
-                <ChatBox  />
+            {showChat && <>
+                <ChatBox />
                 <button onClick={handleChat} className="m-2 btn btn-info">Go back!</button>
-                </>}
+            </>}
 
 
         </>
