@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import Navbar from "../../components/Navbar/Navbar";
-import { useContext, useDeferredValue, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
 import CommerceForm from "../../components/profile/CommerceForm"
@@ -59,29 +58,30 @@ function ProfilePage() {
 
   return (
     <>
-      <Navbar />
-      <Navbar2 />
+
+     <div id="divRow">
+      <Navbar2/>
 
       {currentUser ? (<div id="containerprofile" >
         <div className="containerprofile">
           <div className="col-7" id="chau1"><FormUser user={currentUser} />
-
-            <div className="aboutme">
-              {" "}
-              <div className="hola">
-              </div>
-
-              <div className="text-center" id="chau2">
-                <CommerceForm user={currentUser} />
-              </div>
+          
+          <div className="aboutme">
+            <div className="hola">
             </div>
-            <div className="row mt-5">
-              <PostUser user={currentUser} isLoading={isLoading} isLoggedIn={isLoggedIn} />
+
+            <div className="text-center" id="chau2">
+              <CommerceForm user={currentUser} />
             </div>
           </div>
+          <div className="row mt-5">
+            <PostUser user={currentUser} isLoading={isLoading} isLoggedIn={isLoggedIn} />
+          </div>
         </div>
-      </div>) : <p>Loading...</p>}
-      {!showChat && <button onClick={handleChat} className="m-2 btn btn-info">Contact</button>}
+      </div>
+        </div>) : <p>Loading...</p>}
+                </div>
+      {!showChat && <button onClick={handleChat}  className="m-2 btn btn-info">Contact</button>}
       {showChat && <>
         <InBox />
         <button onClick={handleChat} className="m-2 btn btn-info">Go back!</button>

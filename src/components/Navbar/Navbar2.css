@@ -1,0 +1,34 @@
+/* ALINEA EN FLEX ROW */
+#divRow {
+    display: flex;
+    flex-direction: row;
+}
+/* ALINEA EN FLEX ROW */
+
+
+#navbar2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    padding-top: 30px;
+    width: 25vw;
+    height: 100vh;
+    font-size: 15px;
+
+}
+
+ul {
+    list-style-type: none;
+    font-size: 15px;
+}
+
+li {
+    color: rgb(79, 37, 120);
+    line-height: 4;
+    font-size: 15px;
+}
+
+.active {
+    font-size: 15px;
+}

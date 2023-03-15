@@ -1,83 +1,46 @@
 import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
-import {
-  AbsoluteCenter,
-  Button,
-  ButtonGroup,
-  Stack,
-  Avatar,
-  AvatarGroup,
-  Flex,
-  Box,
-  Spacer,
-} from "@chakra-ui/react";
-import InitialFocus from "../modal/InitialFocus";
 import { AuthContext } from "../../context/auth.context";
 import { useEffect } from "react";
+import "./Navbar2.css";
+import logoImg from "./navbarlogo.png";
+
 
 function Navbar2() {
-  // Subscribe to the AuthContext to gain access to
-  // the values from AuthContext.Provider's `value` prop
- 
- const { logOutUser, user, authenticateUser, isLoading, isLoggedIn } = useContext(AuthContext)
+  const { logOutUser, isLoading, isLoggedIn } = useContext(AuthContext);
 
-/*  const[usuario, setUsuario]= useState(user) */
-
-
- //console.log("USER EN NAVBAR", user)
-
- useEffect(() => {
-/*   authenticateUser(); */
-}, []) 
+  useEffect(() => {}, []);
 
   return (
     <>
-     
-      <Flex ml="20px">
-        <Stack
-          direction="row"
-          spacing={4}
-          align="center"
-          w={[300, 400, 500]}
-        >
-          <Link>
-            <Button colorScheme="teal" variant="outline" size="lg">
-              Home
-            </Button>
-          </Link>
+      <div id="navbar2">
+        <ul>
+          <li>
+            <Link to="/" className="active">
+              <img src={logoImg} alt="Logo" style={{ height: 50 }} />
+            </Link>
+          </li>
 
-          <Link to="/post">
-            <Button colorScheme="teal" variant="ghost" size="lg">
-              Post
-            </Button>
-          </Link>
-          
+          <li>
+            <Link to="/post/new" href="#" className="active">
+            <i class="fa-solid fa-plus"></i>   New Post
+            </Link>
+          </li>
 
-          <Link to="/post/new"><Button colorScheme='teal' variant='ghost' size='lg' >
-    New Post
-    </Button>
-  </Link>
-          
-            <Button onClick={logOutUser} colorScheme="teal" variant="ghost" size="lg">
-              Log Out
-            </Button>
+          <li>
+            <Link to="/post" href="#" className="active">
+            <i class="fa-solid fa-signs-post"></i>  Posts
+            </Link>
+          </li>
 
-          
-        </Stack>
-        <Spacer />
+          <li>
+            <button onClick={logOutUser} className="active">
+              <i class="fa-solid fa-right-from-bracket"></i>   Log Out
+            </button>
+          </li>
 
-
-     {!isLoading && isLoggedIn &&   <Box p="4">
-          <AvatarGroup spacing="1rem" p="4">
-             <Link to={`/profile/${user._id}`}>
-              <Avatar bg="teal.500" />
-            </Link> 
-          </AvatarGroup>
-        </Box>  } 
-       
-      </Flex>
-
-      
+        </ul>
+      </div>
     </>
   );
 }
