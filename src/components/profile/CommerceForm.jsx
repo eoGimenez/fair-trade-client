@@ -1,4 +1,4 @@
-import "./ProfilePage.css";
+import "../../pages/ProfilePage/ProfilePage.css";
 import { useContext, useState , useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import img2 from "../../pages/HomePage/slide3.jpg";

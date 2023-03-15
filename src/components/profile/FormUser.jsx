@@ -5,7 +5,7 @@ import img2 from "../profile/emptyavatar.png";
 import userService from "../../services/user.services";
 import { AuthContext } from "../../context/auth.context";
 import { useContext } from "react";
-import "./ProfilePage.css"
+import "../../pages/ProfilePage/ProfilePage.css";
 import { addAvatar } from "../../services/uploads.services";
 
 function FormUser(currentUser) {
@@ -132,21 +132,15 @@ function FormUser(currentUser) {
 
       
       {!isLoading && isLoggedIn &&
-      <><div
-        id="cajafoto"
-        class="card mx-auto border-0 ratio-1x1  "
-        style={{ width: "25rem" }}>
-        {/* bg-warning */}
-        <div className="avatar">
-        <img src={usuario.avatar} alt="avatar"/>
-        </div>
+      <>
         <div id="avatar">
+        <img src={usuario.avatar} alt="avatar"/>
           {/* <img 
           src={user.avatar === "" ? (img):(user.avatar)} 
           class="card-img-top " 
           alt="Avatar"/> */}
         </div>
-      </div>
+      
       <div class="card-body ">
         {!form ? (
           <div className="card mb-3 " style={{ width: "25rem" }}> {/* bg-warning */}

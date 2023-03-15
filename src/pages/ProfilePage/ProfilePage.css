@@ -4,10 +4,12 @@
 
 .containerprofile {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   border: solid 2px blue;
+  width: 75vw;
+  height: 100vh;
 }
 
 
@@ -22,10 +24,11 @@
   border: solid 2px orange;
 }
 
-.avatar {
+#avatar {
   border: solid 2px black;
-  height: 20vh;
-  width: 20vw;
+  height: 250px;
+  width: 250px;
+
 }
 
 /* **************************************************************** */
@@ -37,6 +40,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 65vw;
+  height: 90vh;
 }
 
 #chau2 {

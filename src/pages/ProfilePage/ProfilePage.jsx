@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import Navbar from "../../components/Navbar/Navbar";
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
@@ -53,7 +52,8 @@ function ProfilePage() {
 
   return (
     <>
-      <Navbar />
+
+     <div id="profilePage">
       <Navbar2/>
 
       {currentUser ? (<div id="containerprofile" >
@@ -75,6 +75,7 @@ function ProfilePage() {
         </div>
       </div>
         </div>) : <p>Loading...</p>}
+                </div>
       {!showChat && <button onClick={handleChat}  className="m-2 btn btn-info">Contact</button>}
       {showChat && <>
       <InBox  />
