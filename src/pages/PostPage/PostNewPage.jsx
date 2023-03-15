@@ -5,6 +5,7 @@ import { AuthContext } from "../../context/auth.context";
 import { postContext } from "../../context/posts.context";
 import PostService from "../../services/post.service";
 import { uploadImage } from "../../services/uploads.services";
+import "./PostNewPage.css"
 
 function PostNewPage() {
   const { posts, getPosts } = useContext(postContext);
@@ -62,9 +63,10 @@ function PostNewPage() {
 
   return (
     <>
+    <div id="divRow">
       <Navbar2 />
      
-      <div id="div" class=" containerform  mb-3 d-flex justify-content-center ">
+      <div id="newpost" class=" containerform  mb-3 d-flex justify-content-center ">
         <form className="row " onSubmit={submitHandler}>
           <div class="mb-3">
             <div className="col col-md-4 ">
@@ -172,7 +174,7 @@ function PostNewPage() {
               onChange={(e) => setForm({ ...form, price: e.target.value })}
             />
           </div>
-          <input type="file" onChange={(e) => handleFileUpload(e)} name="image" />
+         
 
           <div className="mb-3">
             <div className="col col-md-4">
@@ -189,6 +191,18 @@ function PostNewPage() {
                 <option value="Fabric & Fashion">Fabric & Fashion</option>
                 <option value="Misellaneous">Misellaneous</option>
               </select>
+
+              <div class="mb-2 mt-5">
+            <div className="col col-md-4">
+            <input type="file" onChange={(e) => handleFileUpload(e)} name="image" />
+          </div>
+          </div>
+
+          <div className="mt-5">
+            <button id="whitebutton" type="submit">
+              Create
+            </button>
+          </div>
             </div>
           </div>
 
@@ -215,13 +229,9 @@ function PostNewPage() {
               Create
             </button>  */}
 
-            <div class="d-grid gap-2 col-2 mx-auto">
-              <button class="btn btn-primary" type="submit">
-                Create
-              </button>
-            </div>
         {/*   </div> */}
         </form>
+      </div>
       </div>
     </>
   );

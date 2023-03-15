@@ -1,5 +1,5 @@
 import "./SignupPage.css";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import authService from "../../services/auth.service";
 import Navbar from "../../components/Navbar/Navbar";
@@ -17,6 +17,7 @@ import {
 
 } from "@chakra-ui/react";
 import SignupPage2 from "./SignUpPage2";
+import { AuthContext } from "../../context/auth.context";
 
 function SignupPage() {
   const [email, setEmail] = useState("");
@@ -28,7 +29,8 @@ function SignupPage() {
   const [passwordRe, setPasswordRe] = useState("");
   const [role, setRole] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
-
+  const { authenticateUser, user, storeToken } = useContext(AuthContext)
+  const [userOk, setUserOk] = useState(false)
   const navigate = useNavigate();
 
   let requestBody
@@ -69,48 +71,31 @@ function SignupPage() {
       setErrorMessage("Check for Password requirement")
       return;
     }
-
-    // Or using a service
+    //debugger;
     authService
       .signup(requestBody)
       .then((response) => {
         return response;
       })
+      .catch(err => {
+        const errorDescription = err.response.data.message;
+        console.log("errorDescription", errorDescription)
+        setErrorMessage(errorDescription);
+        return;
+      })
     authService.login({ email, password })
-      .catch((error) => {
-        navigate("/")
-      });
-  };
-  /* const handleSignupSubmit2 = (e) => {
-   console.log(e.target)
-  } */
-
-  // Send a request to the server using axios
-  /* 
-    const authToken = localStorage.getItem("authToken");
-    axios.post(
-      `${process.env.REACT_APP_SERVER_URL}/auth/signup`, 
-      requestBody, 
-      { headers: { Authorization: `Bearer ${authToken}` },
-    })
-    .then((response) => {}) 
-    
-    //let requestBody
-    // Or using a service
-    authService
-      .signup(/* requestBody )
-      .then((response) => {
-        // If the POST request is successful redirect to the login page
-        navigate("/");
+      .then(response => {
+        storeToken(response.data.authToken);
+        console.log("DESPUES DEL TOKE", storeToken)
+        authenticateUser();
+        setUserOk(!userOk)
       })
       .catch((error) => {
-        // If the request resolves with an error, set the error message in the state
-        const errorDescription = error.response.data.message;
-        setErrorMessage(errorDescription);
       });
-      */
-
-
+  };
+  useEffect(() => {
+    if (user) navigate(`/profile/${user._id}`);
+  }, [userOk])
 
 
   return (
@@ -247,33 +232,6 @@ function SignupPage() {
             </AbsoluteCenter>
           </Box>
         </div>
-
-        {/*  <div className="SignupPage">
-      <h1>Sign Up</h1>
-
-      <form onSubmit={handleSignupSubmit}>
-        <label>Email:</label>
-        <input type="email" name="email" value={email} onChange={handleEmail} />
-
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePassword}
-        />
-
-        <label>Name:</label>
-        <input type="text" name="name" value={name} onChange={handleName} />
-
-        <button type="submit">Sign Up</button>
-      </form>
-
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
-
-      <p>Already have account?</p>
-      <Link to={"/login"}> Login</Link>
-    </div>  */}
       </div>
     </>
   );

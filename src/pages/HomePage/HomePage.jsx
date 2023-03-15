@@ -57,16 +57,16 @@ function HomePage() {
 <CarruselVideo />
       {/* //termina carruselconvideo */}
 
-      <div className="container">
-        <h2 className="hometext">
+      <div className="hometext">
+        <h2>
           Local Art Co. connects artisans with physical stores. <br></br>
           Artisans leave their products in consignment, set the price, and
           stores sell the products and earn a percentage.<br></br>
-          <strong> We guarantee a fair deal for all parties involved.</strong>
+          We guarantee a fair deal for all parties involved.
         </h2>
       </div>
-
-      <div className="container">
+      <br></br>
+      <div className="hometext">
         <Link to="/signup">
           <button class="cta">
             <span>Sign Up</span>
