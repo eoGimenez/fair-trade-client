@@ -7,7 +7,7 @@ export default function PostEdit({getPosts, toggleEdit, getPost, postId, setPost
   const [form, setForm] = useState({
     title: currentPost.title,
     contract: currentPost.contract,
-   /*  image: currentPost.image, */
+    image: currentPost.image,
     description: currentPost.description,
     batch: currentPost.batch,
     price: currentPost.price,
@@ -15,7 +15,8 @@ export default function PostEdit({getPosts, toggleEdit, getPost, postId, setPost
     available: currentPost.available,
   });
   const navigate = useNavigate();
-  const [img, setImg] = useState("");
+  const [img, setImg] = useState(currentPost.image);
+  console.log("CURRENTPOST!!!!", currentPost)
  
 
   const handleFileUpload = (e) => {
@@ -56,8 +57,18 @@ export default function PostEdit({getPosts, toggleEdit, getPost, postId, setPost
 
   return (
     <>
+
+
     <div id="div" class=" containerform  mb-3 d-flex justify-content-center ">
       <form className="row " onSubmit={submitHandler}>
+
+      <div class="mb-3">
+        <div className= "col col-md-2">
+        <div class="card" style={{width: "18rem"}}>
+  <img src={form.image} class="card-img-top" alt="..."/>
+</div>
+          
+</div></div>
       <div class="mb-3">
         <div className="col col-md-4 ">
           <label htmlFor="title" className="form-label">
@@ -87,18 +98,7 @@ export default function PostEdit({getPosts, toggleEdit, getPost, postId, setPost
           />
         </div>
         </div>
-       {/*  <div className="col-12">
-          <label htmlFor="image" className="form-label">
-          image
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="image"
-            value={form.image}
-            onChange={(e) => setForm({ ...form, image: e.target.value })}
-          />
-        </div> */}
+      
         <div class="mb-3">
             <div className="col col-md-4">
           <label htmlFor="description" className="form-label">
