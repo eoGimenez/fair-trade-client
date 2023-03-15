@@ -28,7 +28,7 @@ export default function Post() {
         
             {!showChat && posts.reverse().map(post => {
                 return (
-                    <div key={post._id} className="card mb-3 w-50 mx-auto" style={{ "max-width": "540px;" }}>
+                    <div key={post._id} className="card mb-3 w-50  mt-5 mx-auto" style={{ "max-width": "540px;" }}>
                         <div className="row g-0">
                             <div className="col col-md-4">
                                 <img src={post.image} className="img-fluid rounded-start" alt="Img" />
