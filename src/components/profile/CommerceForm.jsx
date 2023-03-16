@@ -1,21 +1,16 @@
 import "../../pages/ProfilePage/ProfilePage.css";
 import { useContext, useState , useEffect} from "react";
-import { useNavigate } from "react-router-dom";
-import img2 from "../../pages/HomePage/slide3.jpg";
 import userService from "../../services/user.services";
 import { AuthContext } from "../../context/auth.context";
 import "../../pages/PostPage/PostNewPage.css"
 
 function CommerceForm(currentUser) {
   const { user,  isLoading, isLoggedIn} = useContext(AuthContext);
-
-  console.log("CURRENT-USER-COMMERCEFORM", currentUser)
   const [form, setForm] = useState(false);
   const [commercename, setCommercename] = useState("");
   const [location, setLocation] = useState("");
   const [aboutme, setAboutme] = useState("");
   const [error, setError] = useState("");
-
   const [usuario, setUsuario] = useState(user)
 
   const formHandler = () => {
@@ -23,7 +18,6 @@ function CommerceForm(currentUser) {
   };
 
   const SubmitHandler = (e) => {
-    console.log("adentro e lsubmit");
     e.preventDefault();
 
     if (commercename === "" || location === "" || aboutme === "") {
@@ -78,7 +72,7 @@ function CommerceForm(currentUser) {
       <div className="col  float-md-start">
       
         <div className="card border-0 ">
-          {/*  <img src="..." className="card-img-top" alt="..." /> */}
+
           <div className="card-body">
             <div className="mb-3">
               {!form ? (
@@ -88,14 +82,16 @@ function CommerceForm(currentUser) {
                     style={{ width: "20rem" }}
                   >
                     <div className="card-body border-0">
+                      
+                      <p className="card-text">Commername: <br/>{usuario.commercename}</p>
+                      <br/>
+                      <p className="card-text">Location:{usuario.location}</p>
+                      <br/>
                       <h5 className="card-title">
                         About My work:
                         <br />
                         {usuario.aboutme}
                       </h5>
-                      <p className="card-text">Commername: {usuario.commercename}</p>
-
-                      <p className="card-text">Location:{usuario.location}</p>
                      
                          
                          {currentUser.user._id === user._id ? (  <button
@@ -134,10 +130,10 @@ function CommerceForm(currentUser) {
                       />
                     </div>
                     <div className="mb-3">
-                      <label for="exampleInputPassword1" className="form-label">
+                      <label htmlfor="exampleFormControlTextarea1" className="form-label">
                         About My work
                       </label>
-                      <input
+                      <textarea
                         type="text"
                         className="form-control"
                         id="exampleInputPassword1"

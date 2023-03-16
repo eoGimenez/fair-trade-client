@@ -75,40 +75,7 @@ function PostNewPage() {
                 onChange={(e) => setForm({ ...form, title: e.target.value })}
               />
             </div>
-          </div>
-
-            {/*  CONTRATO VIEJO */}
-            {/* <div class="mb-3">
-            <div className="col col-md-4">
-              <label htmlFor="contract" className="form-label fw-bold">
-                Contract
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                id="contract"
-                value={form.contract}
-                onChange={(e) => setForm({ ...form, contract: e.target.value })}
-              />
-            </div>
-          </div>
- */}
-
-            {/*  IMAGEN VIEJA */}
-            {/*  <div class="mb-3">
-            <div className="col col-md-4">
-              <label htmlFor="image" className="form-label fw-bold">
-                Image
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                id="image"
-                value={form.image}
-                onChange={(e) => setForm({ ...form, image: e.target.value })}
-              />
-            </div>
-          </div> */}
+          </div>  
 
             <div class="mb-3">
               <div className="col col-md-4">
@@ -129,23 +96,7 @@ function PostNewPage() {
                 ></textarea>
               </div>
             </div>
-            {/* DESCRIPTION VIEJA */}
-            {/*  <div class="mb-3">
-            <div className="col col-md-5">
-              <label htmlFor="description" className="form-label fw-bold">
-                Description
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                id="description"
-                value={form.description}
-                onChange={(e) =>
-                  setForm({ ...form, description: e.target.value })
-                }
-              />
-            </div>
-          </div> */}
+         
 
             <div className="mb-3">
               <div className="col col-md-4">

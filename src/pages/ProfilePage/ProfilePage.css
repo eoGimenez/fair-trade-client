@@ -1,6 +1,15 @@
 *{
     font-family: 'Poppins', sans-serif;
+    
 }
+
+/* ALINEA EN FLEX ROW */
+#divRow {
+  display: flex;
+  flex-direction: row;
+  /* border: solid red 2px; */
+}
+/* ALINEA EN FLEX ROW */
 
 .containerprofile {
   /* border: solid 2px yellow; */

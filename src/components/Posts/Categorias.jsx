@@ -3,12 +3,10 @@ import imgHome from "./Home2.jpg";
 import imgMis from "./Mis.jpg";
 import imgNc from "./NC.jpg";
 import "./Categorias.css";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 
 function Categorias(handleClick) {
-  //const [select, setSelect] = useState("")
-  //console.log(select)
+ 
   
   return (
     <>

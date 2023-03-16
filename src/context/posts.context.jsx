@@ -14,7 +14,6 @@ function PostProvicerWrapper({children}) {
     PostService.getAll()
       .then((results) => {
         setPosts(results.data);
-        console.log("RESULT CONTEXT POST:", results.data)
       })
       .catch((err) => console.log(err));
   };

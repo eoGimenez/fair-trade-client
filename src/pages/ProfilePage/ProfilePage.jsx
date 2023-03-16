@@ -24,6 +24,7 @@ function ProfilePage() {
   const [showChat, setShowChat] = useState(false);
 
   const [currentUser, setCurrentUser] = useState(null);
+  const [role, setRole] = useState(false)
 
   const [sameUser, setSameUser] = useState(false);
   //console.log("CURRENTUSER", currentUser)
@@ -35,24 +36,16 @@ function ProfilePage() {
       setPostUser(currentUserPost);
     }; */
 
-  /*   const getUser = () => {
-      let currentUser = usersCTX.find(user => user._id === userId);
-      console.log("CURRENT USER: ", currentUser);
-      setUser(currentUser);
-    }
-    */
   useEffect(() => {
-    /* authenticateUser(); */
     userService.getUser(userId).then((response) => {
       setCurrentUser(response.data);
-      //console.log("RESPONSE-CURRENT-USER", response.data)
-
+    
       if (userId === response.data._id) {
         setSameUser(true);
         return;
       }
     });
-  }, []);
+  }, [currentUser]);
   const handleChat = () => {
     setShowChat(!showChat);
   };
@@ -64,7 +57,7 @@ function ProfilePage() {
       <Navbar2 userFrom={currentUser} />
 
     {/* CURRENT USER!!!!! */}
-      {currentUser ? (<div id="containerprofile" >
+      {currentUser && !isLoading ? (<div id="containerprofile">
         <div className="containerprofile">
 
         {/* INFO USUARIO!!!!! */}
@@ -80,30 +73,28 @@ function ProfilePage() {
 
 
       {/* POSTEOS!!!!! */}
-          <div className="posteos">
-            <p>Your Posts: </p>
+
+      {currentUser.role === "Artisan" && 
+      <div className="posteos">
+            <p>Crafts: </p>
             <PostUser user={currentUser} isLoading={isLoading} isLoggedIn={isLoggedIn} />
           </div>
-           </div>
-           </div>) : <p>
-            <div class="text-center">
+          } </div>
+          </div>
+          ) :  <p><div class="text-center">
           <div class="spinner-border" role="status">
             <span class="visually-hidden">Loading...</span>
           </div>
-          </div>
-        </p>}
+        </div></p>}
       {/* POSTEOS!!!!! */}
-
-
-
-    {/* CURRENT USER!!!!! */}
+  {/* CURRENT USER!!!!! */}
 
 
 
       {/* CHAT!!!         */}
       <div id="chatjs">
-         {!showChat && <button id="whitebutton" onClick={handleChat}  className="m-2 btn btn-info">
-          Contact
+      {!showChat && <button id="whitebutton" onClick={handleChat}  className="m-2 btn btn-info">
+        Inbox
         </button>}
          {showChat && <>
         <InBox />
@@ -117,7 +108,7 @@ function ProfilePage() {
       </div> 
 
     {/* CIERRE RETURN!!!! */}
-       
+        
     </>
   );
 }

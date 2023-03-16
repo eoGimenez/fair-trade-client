@@ -1,7 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useContext, useEffect, useRef, useState } from "react"
 import Talk from "talkjs"
 import { AuthContext } from "../context/auth.context"
-//import userService from "../services/user.services";
 
 export default function ChatBox({ author: { _id, name, email } }) {
     const inBoxDiv = useRef();
@@ -47,17 +47,6 @@ export default function ChatBox({ author: { _id, name, email } }) {
 
             inBox.mount(inBoxDiv.current)
       
-           /*      userService.addChatId(contactedUser.id, { chatId })
-                    .then(result => {
-                        console.log("RESULTADO DEL UPDATE DE CHATID", result)
-                    })
-                    .catch(err => console.log(err))
-
-                userService.addChatId(currentUser.id, { chatId })
-                    .then(result => {
-                        console.log("RESULTADO DEL UPDATE DE CHATID", result)
-                    })
-                    .catch(err => console.log(err)) */
             
 
             console.log("CHAT BOX CURRENT:", inBox)

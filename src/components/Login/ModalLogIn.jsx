@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 
 import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -6,14 +7,10 @@ import authService from "../../services/auth.service";
 import {
   FormControl,
   FormLabel,
-  FormHelperText,
   Input,
-  Box,
-  AbsoluteCenter,
   Stack,
   Button,
 } from "@chakra-ui/react";
-import { userContext } from "../../context/user.context";
 
 
 function ModalLogIn(props) {
@@ -21,30 +18,13 @@ function ModalLogIn(props) {
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
   const navigate = useNavigate();
-
   const { onClose } = props
-
   const { storeToken, authenticateUser, user } = useContext(AuthContext);
-  /*  const {  usersCTX } = useContext(userContext);
-   const [userST, setUserST] = useState([]) */
-
-  /*   const getUser = () => {
-      let currentUser = usersCTX.find(user => user._id === id);
-      console.log("CURRENT USER: ", currentUser);
-      setUser(currentUser); */
-
-
-  /*   const handleEmail = (e) => setEmail(e.target.value);
-    const handlePassword = (e) => setPassword(e.target.value);
-  
-    const handleInputChange = (e) => setInput(e.target.value);*/
-
-  //const isError = input === ""; 
+ 
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
-    //const requestBody = { email, password };
-    //console.log("REQUEST BODY ANTES DEL LOGIN", requestBody)
+  
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
     if (!emailRegex.test(email)) {
       setErrorMessage("Please provide a valid email adress.")
@@ -52,7 +32,6 @@ function ModalLogIn(props) {
     }
     if (!password) {
       setErrorMessage("Please complete the 'Password' field.")
-     // return;
     }
 
     authService
@@ -60,16 +39,9 @@ function ModalLogIn(props) {
       .then((response) => {
         storeToken(response.data.authToken);
         authenticateUser();
-        console.log("USER", user)
-
       })
-      /*    .authService.verify()
-         .then((result)=>{
-           console.log("RESULT DE VERY", result)
-         }) */
+     
       .catch((error) => {
-        // If the request resolves with an error, set the error message in the state
-        //console.log("ERROR", error)
         const errorDescription = error.response.data.message;
         setErrorMessage(errorDescription);
       });
@@ -94,7 +66,7 @@ function ModalLogIn(props) {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        {/*  <FormHelperText color="rgb(79, 37, 120)" textAlign="flex-end">We'll never share your email.</FormHelperText> */}
+        
         <FormLabel color="rgb(79, 37, 120)" mt='10px'>Password</FormLabel>
         <Input
           id='password'
@@ -107,16 +79,12 @@ function ModalLogIn(props) {
 
       <Stack direction="row" spacing={1} ml='200px' mt='20px' >
         <Button onClick={handleLoginSubmit} color="rgb(79, 37, 120)" variant="ghost" size='lg' mx='auto'>
-          Login
+          Log in
         </Button>
         <Button onClick={onClose} color="rgb(79, 37, 120)" variant="ghost" size='lg' mx='auto'>Cancel</Button>
       </Stack>
 
-
-
     </>
   );
 }
-
-
 export default ModalLogIn;
