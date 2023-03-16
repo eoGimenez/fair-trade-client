@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Navbar2 from "../../components/Navbar/Navbar2";
+import Navbar3 from "../../components/Navbar/NavBar3";
 import { AuthContext } from "../../context/auth.context";
 import { postContext } from "../../context/posts.context";
 import PostService from "../../services/post.service";
@@ -58,8 +58,8 @@ function PostNewPage() {
 
   return (
     <>
+      <Navbar3 />
     <div className="divRow">
-      <Navbar2 />
      
       <div id="newpost" class=" containerform  mb-3 d-flex justify-content-center ">
         <form className="row " onSubmit={submitHandler}>

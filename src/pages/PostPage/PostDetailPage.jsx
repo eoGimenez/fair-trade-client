@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { postContext } from "../../context/posts.context";
 import PostEdit from "../../components/PostEdit";
 import PostService from "../../services/post.service";
-import Navbar2 from "../../components/Navbar/Navbar2";
+import Navbar3 from "../../components/Navbar/NavBar3";
 import ChatBox from "../../components/ChatBox";
 import { AuthContext } from "../../context/auth.context";
 import "../../pages/PostPage/PostNewPage.css"
@@ -58,8 +58,8 @@ export default function PostDetailPage(props) {
 
   return (
     <>
+      <Navbar3 />
     <div className="divRow">
-      <Navbar2 />
       <div id="postdetailspage">
 
       {/* CARD POSTEO!! */}

@@ -1,4 +1,4 @@
-import Navbar2 from "../../components/Navbar/Navbar2";
+import Navbar3 from "../../components/Navbar/NavBar3";
 import Post from "../../components/Post";
 
 
@@ -6,8 +6,8 @@ function PostList() {
 
   return (
     <> 
+    <Navbar3/>
     <div className="divRow">
-    <Navbar2/>
       <Post />
       </div>
          </>

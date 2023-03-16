@@ -4,7 +4,7 @@ import { AuthContext } from "../../context/auth.context";
 import CommerceForm from "../../components/profile/CommerceForm";
 import FormUser from "../../components/profile/FormUser";
 import userService from "../../services/user.services";
-//import "./ProfilePage.css";
+import "./ProfilePage.css";
 import PostUser from "../../components/profile/PostsUser";
 import Navbar3 from "../../components/Navbar/NavBar3";
 import InBox from "../../components/chat/InBox";
@@ -48,7 +48,6 @@ export default function ProfilePage2() {
                                 <FormUser user={currentUser} sameUser={sameUser} />
                             </div>
                             <div className="col-12 col-sm-12 col-md-4 m-auto fix">
-                                <p>Your Posts: </p>
                                 <PostUser user={currentUser} isLoading={isLoading} isLoggedIn={isLoggedIn} />
                             </div>
                             <div className="col-12   col-md-4 chat">

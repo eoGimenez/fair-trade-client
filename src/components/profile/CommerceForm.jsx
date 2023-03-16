@@ -89,7 +89,7 @@ function CommerceForm(currentUser) {
                   >
                     <div className="card-body border-0">
                       <h5 className="card-title">
-                        About My work:
+                        <span className="titlesPro">About My work:</span>
                         <br />
                         {usuario.aboutme}
                       </h5>

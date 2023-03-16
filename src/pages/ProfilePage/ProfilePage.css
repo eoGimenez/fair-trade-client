@@ -119,3 +119,19 @@
   height: 10px;
 }
 
+.fix {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.titlesPro {
+  font-size: 1.7em;
+}
+
+.commerce {
+  font-size: 1.8em;
+}
+.name {
+  font-size: 1.4em;
+}

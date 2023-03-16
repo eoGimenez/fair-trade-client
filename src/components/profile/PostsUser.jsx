@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
+//import "../../pages/ProfilePage/ProfilePage.css"
 
 function PostUser(props){
 
@@ -10,6 +11,8 @@ function PostUser(props){
     return(
         <>
    <div id="posteos" >
+        <span className="titlesPro">Your Posts:</span>
+        <br/>
   <div className="posteosIn">{user.posts.map((post)=>{
     return(
         <>
