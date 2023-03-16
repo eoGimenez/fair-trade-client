@@ -1,8 +1,6 @@
-<<<<<<< HEAD
-# LocalArtCo - server side
-=======
+
 # LocalArtCo - client side
->>>>>>> c75823322a753d1c5c914fc7e41abdfb0a276f90
+
 Developed of our final proyect at IronHack. It's a MERN Stack application, check the frontend repository [here](https://github.com/eoGimenez/fair-trade-client).
 
 ## About
