@@ -2,6 +2,11 @@
     font-family: 'Poppins', sans-serif;
 }
 
+#divRow {
+  display: flex;
+  flex-direction: row;
+}
+
 .containerprofile {
   /* border: solid 2px yellow; */
   border: 0;
@@ -110,3 +115,4 @@
 .alert {
   height: 10px;
 }
+

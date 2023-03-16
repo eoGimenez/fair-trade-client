@@ -68,7 +68,9 @@ function ProfilePage() {
           <div className="containerprofile">
 
             {/* INFO USUARIO!!!!! */}
-            <div id="chau1"><FormUser user={currentUser} sameUser={sameUser} /></div>
+            <div id="chau1">
+              <FormUser user={currentUser} sameUser={sameUser} />
+            </div>
             {/* INFO USUARIO!!!!! */}
 
 
@@ -88,11 +90,7 @@ function ProfilePage() {
         </div>) : <p>Loading...</p>}
         {/* POSTEOS!!!!! */}
 
-
-
         {/* CURRENT USER!!!!! */}
-
-
 
         {/* CHAT!!!         */}
         <div id="chatjs">
@@ -111,30 +109,7 @@ function ProfilePage() {
       </div>
 
       {/* CIERRE RETURN!!!! */}
-      ) : (
-      <p><div class="text-center">
-        <div class="spinner-border" role="status">
-          <span class="visually-hidden">Loading...</span>
-        </div>
-      </div></p>
-      )
-      {
-        !showChat && (
-          <button onClick={handleChat} className="m-2 btn btn-info">
-            Contact
-          </button>
-        )
-      }
-      {
-        showChat && (
-          <>
-            <InBox />
-            <button onClick={handleChat} className="m-2 btn btn-info">
-              Go back!
-            </button>
-          </>
-        )
-      }
+      
     </>
   );
 }
