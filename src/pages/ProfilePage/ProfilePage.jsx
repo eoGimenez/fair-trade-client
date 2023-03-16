@@ -60,78 +60,81 @@ function ProfilePage() {
   return (
     <>
 
-     <div id="divRow">
-      <Navbar2 userFrom={currentUser} />
+      <div id="divRow">
+        <Navbar2 userFrom={currentUser} />
 
-    {/* CURRENT USER!!!!! */}
-      {currentUser ? (<div id="containerprofile" >
-        <div className="containerprofile">
+        {/* CURRENT USER!!!!! */}
+        {currentUser ? (<div id="containerprofile" >
+          <div className="containerprofile">
 
-        {/* INFO USUARIO!!!!! */}
-          <div id="chau1"><FormUser user={currentUser} sameUser={sameUser} /></div>
-        {/* INFO USUARIO!!!!! */}
+            {/* INFO USUARIO!!!!! */}
+            <div id="chau1"><FormUser user={currentUser} sameUser={sameUser} /></div>
+            {/* INFO USUARIO!!!!! */}
 
 
-          {/* COMMERCE FORM */}
+            {/* COMMERCE FORM */}
             <div className="text-center" id="chau2">
               <CommerceForm user={currentUser} sameUser={sameUser} />
             </div>
-          {/* COMMERCE FORM */}
+            {/* COMMERCE FORM */}
 
 
-      {/* POSTEOS!!!!! */}
-          <div className="posteos">
-            <p>Your Posts: </p>
-            <PostUser user={currentUser} isLoading={isLoading} isLoggedIn={isLoggedIn} />
+            {/* POSTEOS!!!!! */}
+            <div className="posteos">
+              <p>Your Posts: </p>
+              <PostUser user={currentUser} isLoading={isLoading} isLoggedIn={isLoggedIn} />
+            </div>
           </div>
-           </div>
-           </div>) : <p>Loading...</p>}
-      {/* POSTEOS!!!!! */}
+        </div>) : <p>Loading...</p>}
+        {/* POSTEOS!!!!! */}
 
 
 
-    {/* CURRENT USER!!!!! */}
+        {/* CURRENT USER!!!!! */}
 
 
 
-      {/* CHAT!!!         */}
-      <div id="chatjs">
-      {!showChat && <button id="whitebutton" onClick={handleChat}  className="m-2 btn btn-info">
-        Contact
-        </button>}
-      {showChat && <>
-        <InBox />
-        <button id="whitebutton" onClick={handleChat} className="m-2 btn btn-info">
-          Go back!
-          </button>
-      </>}
-      </div>
+        {/* CHAT!!!         */}
+        <div id="chatjs">
+          {!showChat && <button id="whitebutton" onClick={handleChat} className="m-2 btn btn-info">
+            Contact
+          </button>}
+          {showChat && <>
+            <InBox />
+            <button id="whitebutton" onClick={handleChat} className="m-2 btn btn-info">
+              Go back!
+            </button>
+          </>}
+        </div>
         {/* CHAT!!!         */}
 
-      </div> 
-
-    {/* CIERRE RETURN!!!! */}
-        ) : (
-          <p><div class="text-center">
-          <div class="spinner-border" role="status">
-            <span class="visually-hidden">Loading...</span>
-          </div>
-        </div></p>
-        )}
       </div>
-      {!showChat && (
-        <button onClick={handleChat} className="m-2 btn btn-info">
-          Contact
-        </button>
-      )}
-      {showChat && (
-        <>
-          <InBox />
+
+      {/* CIERRE RETURN!!!! */}
+      ) : (
+      <p><div class="text-center">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div></p>
+      )
+      {
+        !showChat && (
           <button onClick={handleChat} className="m-2 btn btn-info">
-            Go back!
+            Contact
           </button>
-        </>
-      )}
+        )
+      }
+      {
+        showChat && (
+          <>
+            <InBox />
+            <button onClick={handleChat} className="m-2 btn btn-info">
+              Go back!
+            </button>
+          </>
+        )
+      }
     </>
   );
 }
