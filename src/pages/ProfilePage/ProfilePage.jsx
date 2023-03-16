@@ -63,9 +63,9 @@ function ProfilePage() {
       <div id="divRow">
         <Navbar2 userFrom={currentUser} />
 
-        {/* CURRENT USER!!!!! */}
-        {currentUser ? (<div id="containerprofile" >
-          <div className="containerprofile">
+    {/* CURRENT USER!!!!! */}
+      {currentUser ? (<div id="containerprofile">
+        <div className="containerprofile">
 
             {/* INFO USUARIO!!!!! */}
             <div id="chau1">
@@ -81,35 +81,43 @@ function ProfilePage() {
             {/* COMMERCE FORM */}
 
 
-            {/* POSTEOS!!!!! */}
-            <div className="posteos">
-              <p>Your Posts: </p>
-              <PostUser user={currentUser} isLoading={isLoading} isLoggedIn={isLoggedIn} />
-            </div>
+      {/* POSTEOS!!!!! */}
+          <div className="posteos">
+            <p>Your Posts: </p>
+            <PostUser user={currentUser} isLoading={isLoading} isLoggedIn={isLoggedIn} />
           </div>
-        </div>) : <p>Loading...</p>}
-        {/* POSTEOS!!!!! */}
+          </div>
+           </div>) :  <p><div class="text-center">
+          <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div></p>}
+      {/* POSTEOS!!!!! */}
+
+
 
         {/* CURRENT USER!!!!! */}
 
-        {/* CHAT!!!         */}
-        <div id="chatjs">
-          {!showChat && <button id="whitebutton" onClick={handleChat} className="m-2 btn btn-info">
-            Contact
-          </button>}
-          {showChat && <>
-            <InBox />
-            <button id="whitebutton" onClick={handleChat} className="m-2 btn btn-info">
-              Go back!
-            </button>
-          </>}
-        </div>
+
+
+      {/* CHAT!!!         */}
+      <div id="chatjs">
+      {!showChat && <button id="whitebutton" onClick={handleChat}  className="m-2 btn btn-info">
+        Inbox
+        </button>}
+      {showChat && <>
+        <InBox />
+        <button id="whitebutton" onClick={handleChat} className="m-2 btn btn-info">
+          Go back!
+          </button>
+      </>}
+      </div>
         {/* CHAT!!!         */}
 
       </div>
 
-      {/* CIERRE RETURN!!!! */}
-      
+    {/* CIERRE RETURN!!!! */}
+        
     </>
   );
 }
