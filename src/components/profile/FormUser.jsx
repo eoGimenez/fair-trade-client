@@ -26,7 +26,7 @@ function FormUser(currentUser) {
   const [img, setImg] = useState("");
   const [error, setError]= useState("")
   const [changePass, setChangePass]=useState(false);
-   const [usuario, setUsuario] = useState(user)
+  const [usuario, setUsuario] = useState(user)
   console.log("CURRENT-USER:", currentUser)
   console.log("USSER-AUTHCONTEXT:", user)
 

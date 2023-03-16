@@ -69,31 +69,31 @@ function Navbar2() {
                         <i class="fa-solid fa-signs-post"></i>  Craft
                       </Link>
                     </li>
-                  <li>
-                    {/* CHAT!!!         */}
-                    <div id="chatjs" className={""+index}>
-                      {!showChat && <button className="active" onClick={handleChat} >
-                      <i class="fa-solid fa-comment"></i> Inbox
-                      </button>}
-                      {showChat && <>
-                        <InBox />
-                        <button className="active" onClick={handleChat} >
-                        <i class="fa-solid fa-comment"></i> Go back!
-                        </button>
-                      </>}
-                    </div>
-                    {/* CHAT!!!         */}
-                  </li>
+                    <li>
+                      {/* CHAT!!!         */}
+                      <div id="chatjs" className={"" + index}>
+                        {!showChat && <button className="active" onClick={handleChat} >
+                          <i class="fa-solid fa-comment"></i> Inbox
+                        </button>}
+                        {showChat && <>
+                          <InBox />
+                          <button className="active" onClick={handleChat} >
+                            <i class="fa-solid fa-comment"></i> Go back!
+                          </button>
+                        </>}
+                      </div>
+                      {/* CHAT!!!         */}
+                    </li>
 
                   </>
                 </>}
-            <div>
-              <li>
-                <button onClick={logOutUser} className="active">
-                  <i className="fa-solid fa-right-from-bracket"></i>   Log Out
-                </button>
-              </li>
-            </div>
+              <div>
+                <li>
+                  <button onClick={logOutUser} className="active">
+                    <i className="fa-solid fa-right-from-bracket"></i>   Log Out
+                  </button>
+                </li>
+              </div>
             </ul>
           </div>
         </div>
