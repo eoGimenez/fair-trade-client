@@ -64,7 +64,7 @@ function ProfilePage() {
       <Navbar2 userFrom={currentUser} />
 
     {/* CURRENT USER!!!!! */}
-      {currentUser ? (<div id="containerprofile" >
+      {currentUser ? (
         <div className="containerprofile">
 
         {/* INFO USUARIO!!!!! */}
@@ -84,8 +84,11 @@ function ProfilePage() {
             <p>Your Posts: </p>
             <PostUser user={currentUser} isLoading={isLoading} isLoggedIn={isLoggedIn} />
           </div>
-           </div>
-           </div>) : <p>Loading...</p>}
+           </div>) :  <p><div class="text-center">
+          <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div></p>}
       {/* POSTEOS!!!!! */}
 
 
@@ -97,7 +100,7 @@ function ProfilePage() {
       {/* CHAT!!!         */}
       <div id="chatjs">
       {!showChat && <button id="whitebutton" onClick={handleChat}  className="m-2 btn btn-info">
-        Contact
+        Inbox
         </button>}
       {showChat && <>
         <InBox />
@@ -111,27 +114,12 @@ function ProfilePage() {
       </div> 
 
     {/* CIERRE RETURN!!!! */}
-        ) : (
-          <p><div class="text-center">
-          <div class="spinner-border" role="status">
-            <span class="visually-hidden">Loading...</span>
-          </div>
-        </div></p>
-        )}
-      </div>
-      {!showChat && (
-        <button onClick={handleChat} className="m-2 btn btn-info">
-          Contact
-        </button>
-      )}
-      {showChat && (
-        <>
-          <InBox />
-          <button onClick={handleChat} className="m-2 btn btn-info">
-            Go back!
-          </button>
-        </>
-      )}
+        
+    
+      
+      
+       
+     
     </>
   );
 }
