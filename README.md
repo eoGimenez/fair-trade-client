@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # LocalArtCo - server side
+=======
+# LocalArtCo - client side
+>>>>>>> c75823322a753d1c5c914fc7e41abdfb0a276f90
 Developed of our final proyect at IronHack. It's a MERN Stack application, check the frontend repository [here](https://github.com/eoGimenez/fair-trade-client).
 
 ## About
@@ -17,11 +21,16 @@ We decide to use [Trello](https://trello.com/b/pWR9rkVU/app) to organize the wor
 - Clone this repo 
 
 ```shell
+<<<<<<< HEAD
 $ cd fair-trade-server
+=======
+$ cd fair-trade-client
+>>>>>>> c75823322a753d1c5c914fc7e41abdfb0a276f90
 $ npm install
 $ npm start
 ```
 
+<<<<<<< HEAD
 ## Models
 #### User.model.js
 ```js
@@ -73,3 +82,28 @@ const postSchema = new Schema({
 |GET| /:postId| const { postId } = req.params | Navigate to the selected post|
 |PUT| /:postId/edit | const { postId, {post} } =req.params/req.body | Edits the selected post|
 |DELETE| /:postId/delete| const { postId } = req.params | Delete a post|
+=======
+## Routes
+| Route                | Privacy         | Renders                  |
+| -------------------- | :-------------: | ------------------------ |
+| /                    | public          | Home.page                |
+| /signup              | public          | Signup.page              |
+| /login               | public          | Login.page               |
+| /user/:userId        | private (user)  | ....                     |
+| /post                | private (user)  | Posts.page               |
+| /post/:postId.       | private (user)  | .....                    |
+| /post/new            | private (user)  | .....                    |
+| /contact             | private (user)  | ....                     |
+
+
+## Components
+- ArtisanSignupForm
+- CommerceSignUpForm
+- ArtisanProfile
+- CommerceProfile
+- Navbar
+- PostCard
+
+
+---
+>>>>>>> c75823322a753d1c5c914fc7e41abdfb0a276f90
