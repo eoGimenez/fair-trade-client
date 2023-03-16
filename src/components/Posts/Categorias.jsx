@@ -3,19 +3,25 @@ import imgHome from "./Home2.jpg";
 import imgMis from "./Mis.jpg";
 import imgNc from "./NC.jpg";
 import "./Categorias.css";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
-function Categorias() {
+function Categorias(handleClick) {
+  //const [select, setSelect] = useState("")
+  //console.log(select)
+  
   return (
     <>
       <div className="categorias">
         <div className="card-group w-75  mx-auto ">
-          
-          <div className="card border border-0 sm-col-2">
-            <img src={imgHome} className="card-img-top rounded" alt="..." />
-            <div className="card-body">
-              <h2 className="card-title fw-bold">Home Deco</h2>
+            <div className="card border border-0 sm-col-2">
+          <Link onClick={()=>handleClick("Home Deco")}>
+              <img src={imgHome} className="card-img-top rounded" alt="..." />
+          </Link>
+              <div className="card-body">
+                <h2 className="card-title fw-bold">Home Deco</h2>
+              </div>
             </div>
-          </div>
           <div className="card sm-col-2 border border-0">
             <img src={imgNc} className="card-img-top rounded " alt="..." />
             <div className="card-body">
@@ -34,8 +40,8 @@ function Categorias() {
               <h3 className="card-title fw-bold">Misellaneous</h3>
             </div>
           </div>
-          </div>
-        
+        </div>
+
       </div>
     </>
   );
