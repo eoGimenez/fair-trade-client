@@ -96,10 +96,10 @@ function ProfilePage() {
 
       {/* CHAT!!!         */}
       <div id="chatjs">
-      {!showChat && <button id="whitebutton" onClick={handleChat}  className="m-2 btn btn-info">
-        Contact
+         {!showChat && <button id="whitebutton" onClick={handleChat}  className="m-2 btn btn-info">
+          Contact
         </button>}
-      {showChat && <>
+         {showChat && <>
         <InBox />
         <button id="whitebutton" onClick={handleChat} className="m-2 btn btn-info">
           Go back!
@@ -112,11 +112,13 @@ function ProfilePage() {
 
     {/* CIERRE RETURN!!!! */}
         ) : (
-          <p><div class="text-center">
+          <p>
+            <div class="text-center">
           <div class="spinner-border" role="status">
             <span class="visually-hidden">Loading...</span>
           </div>
-        </div></p>
+          </div>
+        </p>
         )}
       </div>
       {!showChat && (
