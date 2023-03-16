@@ -5,6 +5,7 @@ import imgNc from "./NC.jpg";
 import "./Categorias.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import "./Categorias.css"
 
 function Categorias(handleClick) {
   //const [select, setSelect] = useState("")

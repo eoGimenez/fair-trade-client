@@ -1,0 +1,18 @@
+#categories {
+    margin-top: 12vh;
+    display: flex;
+    flex-direction: column;
+    width: 300vw;
+}
+
+.categorias{
+    gap: 20px;
+}
+ .card-img-top{
+    padding: 7px;
+} 
+
+.postcard {
+    width: 25vw;
+    padding: 5vh;
+}
