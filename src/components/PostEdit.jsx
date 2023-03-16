@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import PostService from "../services/post.service";
 import { uploadImage } from "../services/uploads.services";
 
+
 export default function PostEdit({getPosts, toggleEdit, getPost, postId, setPost, currentPost }) {
   const [form, setForm] = useState({
     title: currentPost.title,
@@ -175,7 +176,7 @@ export default function PostEdit({getPosts, toggleEdit, getPost, postId, setPost
 
 
         <div className="d-grid gap-2 col-2 mx-auto">
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" id="whitebutton">
             Edit!
           </button>
         </div>

@@ -1,7 +1,8 @@
 /* ALINEA EN FLEX ROW */
-#divRow {
+.divRow {
     display: flex;
     flex-direction: row;
+    /* border: solid red 2px; */
 }
 /* ALINEA EN FLEX ROW */
 

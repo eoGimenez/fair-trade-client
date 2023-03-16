@@ -7,8 +7,10 @@ function PostList() {
   
   return (
     <>
+    <div className="divRow">
     <Navbar2/>
     <Categorias/>
+    </div>
       <Post />
     </>
   );

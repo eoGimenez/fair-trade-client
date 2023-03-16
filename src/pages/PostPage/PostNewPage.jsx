@@ -63,7 +63,7 @@ function PostNewPage() {
 
   return (
     <>
-    <div id="divRow">
+    <div className="divRow">
       <Navbar2 />
      
       <div id="newpost" class=" containerform  mb-3 d-flex justify-content-center ">

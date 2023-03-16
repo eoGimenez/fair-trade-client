@@ -6,6 +6,8 @@ import PostService from "../../services/post.service";
 import Navbar2 from "../../components/Navbar/Navbar2";
 import ChatBox from "../../components/ChatBox";
 import { AuthContext } from "../../context/auth.context";
+import "../../pages/PostPage/PostNewPage.css"
+
 
 export default function PostDetailPage(props) {
     const [post, setPost] = useState({});
@@ -49,9 +51,9 @@ export default function PostDetailPage(props) {
     return (
         <>
             <Navbar2 />
-            {!showEdit && <div className="card mx-auto" style={{ "width": "15rem" }}>
+            {!showEdit && <div className="card border-0 mx-auto" style={{ "width": "15rem" }}>
                 <img src={post.image} className="card-img-top rounded-circle img-fluid" style={{ "width": "8rem" }} alt="Img" />
-                <div className="card-body">
+                <div className="card-body border-0">
                     <h5 className="card-title">{post.title}</h5>
                     <p className="card-text">{post.description}</p>
                 </div>
@@ -62,9 +64,9 @@ export default function PostDetailPage(props) {
                     {!post.available && <li className="list-group-item"><span>Out of Stock</span></li>}
                 </ul>
             </div>}
-            <div className="card-body my-3">
+            <div className="card-body border-0 my-3">
                 {showEdit && <PostEdit toggleEdit={toggleEdit} getPost={getPost} postId={postId} getPosts={getPosts} setPost={setPost} currentPost={post} />}
-                {isOwner && !showEdit && <button className="btn btn-warning mx-2" onClick={toggleEdit}>Edit</button>}
+                {isOwner && !showEdit && <button id="whitebutton" onClick={toggleEdit}>Edit</button>}
                 {isOwner && !showEdit && <button className="btn btn-danger mx-2" onClick={deleteHandler}>Delete</button>}
             </div>
 

@@ -31,7 +31,7 @@ function Categorias() {
           <div className="card sm-col-2 border border-0">
             <img src={imgMis} className="card-img-top rounded " alt="..." />
             <div className="card-body">
-              <h3 className="card-title fw-bold">Misellaneous</h3>
+              <h3 className="card-title fw-bold">Miscellaneous</h3>
             </div>
           </div>
           </div>

@@ -7,6 +7,8 @@ import { AuthContext } from "../../context/auth.context";
 import { useContext } from "react";
 import "../../pages/ProfilePage/ProfilePage.css";
 import { addAvatar } from "../../services/uploads.services";
+import "../../pages/PostPage/PostNewPage.css"
+
 
 function FormUser(currentUser) {
 
@@ -108,7 +110,6 @@ function FormUser(currentUser) {
 
   return (
     <>
-      <div id="divRow">
 
         {error && <div class="alert alert-danger d-flex align-items-center" role="alert">
           <svg
@@ -124,19 +125,23 @@ function FormUser(currentUser) {
         </div>}
 
 
+          {/* INFO PEOPLE!!! */}
+          <div id="people">
         {!isLoading && isLoggedIn &&
           <>
 
+
             {/* AVATAR CARD */}
             <div id="avatar">
-              <img src={usuario.avatar} alt="avatar" />
+              <img src={usuario.avatar} alt="avatar" width="300" className="user-img rounded-circle mr-2" />
             </div>
             {/* AVATAR CARD */}
 
+
             {/* ARTISAN CARD */}
-            <div class="card-body ">
+            <div className="card-body border-0">
               {!form ? (
-                <div className="card mb-3 " style={{ width: "25rem" }}> {/* bg-warning */}
+                <div className="card mb-3 border-0" style={{ width: "25rem" }}> {/* bg-warning */}
                   <div className="adios1">
                     <div className="col-md-8">
                       <div className="card-body">
@@ -148,17 +153,17 @@ function FormUser(currentUser) {
                         <p className="card-text">{usuario?.role}</p>
                         {currentUser.user._id === user._id ? (<button
                           type="submit"
-                          class="btn btn-primary"
+                          id="whitebutton"
                           onClick={formHandler}>
                           Edit
-                        </button>) : <p>BORRARRRRRR!!!!!!</p>}
+                        </button>) : <p><></></p>}
                       </div>
-                      {/* ARTISAN CARD */}
-
                     </div>
                   </div>
                 </div>
               ) : (
+
+                // FORM!!!!!!!!!!!
                 <>
                   <form>
                     <div class="mb-3">
@@ -239,22 +244,29 @@ function FormUser(currentUser) {
                         onChange={(e) => setCif(e.target.value)} />
                     </div>
 
+                    <input type="file" onChange={(e) => handleFileUpload(e)} name="avatar" />
+
                     <button
                       type="submit"
-                      class="btn btn-primary"
+                      id="whitebutton"
                       onClick={SubmitHandler}
                     >
                       Confirm
                     </button>
 
-                    <input type="file" onChange={(e) => handleFileUpload(e)} name="avatar" />
-
                   </form>
                 </>
+                // FORM!!!!!!!!!!!
+
               )}
             </div>
+
           </>}
-      </div>
+         </div>
+         {/* ARTISAN CARD */}
+
+          {/* INFO PEOPLE!!! */}
+
     </>
   );
 }

@@ -1,6 +1,8 @@
 
 .categorias{
     gap: 20px;
+    width: 60vw;
+    height: 100vh;;
 
 }
  .card-img-top{
