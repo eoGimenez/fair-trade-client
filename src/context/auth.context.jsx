@@ -16,15 +16,13 @@ function AuthProviderWrapper(props) {
   };
   
   const authenticateUser = () => {
-    console.log("CARGANDO USUARIO")
+    
     setIsLoading(true);
     const storedToken = localStorage.getItem("authToken");
     if (storedToken) {
       authService
         .verify()
         .then((response) => {
-         /*  const user = response.data; */
-          console.log("VERIFY AUTH CTX", response.data)
           setIsLoggedIn(true);
           setIsLoading(false);
           setUser(response.data);
@@ -48,15 +46,12 @@ function AuthProviderWrapper(props) {
   };
 
   const logOutUser = () => {
-    // Upon logout, remove the token from the localStorage
     removeToken();
     authenticateUser();
     navigate('/')
   };
 
   useEffect(() => {
-    // Run this code once the AuthProviderWrapper component in the App loads for the first time.
-    // This effect runs when the application and the AuthProviderWrapper component load for the first time.
     authenticateUser();
   }, []);
 

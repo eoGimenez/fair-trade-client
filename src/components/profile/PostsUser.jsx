@@ -16,9 +16,9 @@ function PostUser(props){
   <div className="posteosIn">{user.posts.map((post)=>{
     return(
         <>
-        <Link to={`/post/${post._id}`}><p>Title: {post.title}</p></Link>
+        <Link to={`/post/${post._id}`}><p> {post.title}</p></Link>
         <div class="">
-    <h5 class="card-title">Description:{post.description}</h5>
+   {/*  <h5 class="card-title">Description:{post.description}</h5> */}
     <p class="card-text"> </p>
   </div>
   </>

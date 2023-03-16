@@ -4,8 +4,6 @@ import PostService from "../services/post.service";
 import { uploadImage } from "../services/uploads.services";
 
 
-
-
 export default function PostEdit({
   getPosts,
   toggleEdit,
@@ -24,10 +22,11 @@ export default function PostEdit({
     category: currentPost.category,
     available: currentPost.available,
   });
+
+
   const navigate = useNavigate();
   const [img, setImg] = useState(currentPost.image);
   const [check, setCheck] = useState(currentPost.available);
-  console.log("CURRENT-POST!!!!", currentPost);
 
   const handleFileUpload = (e) => {
     const uploadData = new FormData();
@@ -44,7 +43,7 @@ export default function PostEdit({
   };
 
   const submitHandler = (e) => {
-    console.log("IMG!!!!", img);
+    
     e.preventDefault();
     PostService.updateOne(
       postId,
@@ -61,7 +60,6 @@ export default function PostEdit({
       { new: true }
     )
       .then((result) => {
-        /* console.log("RESULT EDIT POST:", result) */
         getPosts();
         toggleEdit();
         getPost();
@@ -99,21 +97,6 @@ export default function PostEdit({
               />
             </div>
           </div>
-
-          {/* <div class="mb-3">
-            <div className="col col-md-4">
-              <label htmlFor="contract" className="form-label">
-                Contract
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                id="contract"
-                value={form.contract}
-                onChange={(e) => setForm({ ...form, contract: e.target.value })}
-              />
-            </div>
-          </div> */}
 
           <div class="mb-3">
             <div className="col col-md-4">
@@ -195,7 +178,7 @@ export default function PostEdit({
                 <option value="Natural Cosmetic">Natural Cosmetic</option>
                 <option value="Home Deco">Home Deco</option>
                 <option value="Fabric & Fashion">Fabric & Fashion</option>
-                <option value="Misellaneous">Misellaneous</option>
+                <option value="Misellaneous">Miscellaneous</option>
               </select>
             </div>
           </div>
@@ -207,33 +190,8 @@ export default function PostEdit({
                 onChange={(e) => handleFileUpload(e)}
                 name="image"
               />
-              {/*  <input
-            type="boolean"
-            className="form-control"
-            id="available"
-            form={form.available}
-            onChange={(e) =>
-              setForm({ ...form, available: e.target.value })
-            }
-          /> */}
             </div>
           </div>
-
-{/*           <div class="mb-3">
-            <div class="form-check form-switch">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                role="switch" 
-                id="flexSwitchCheckDefault"
-              />
-              <label class="form-check-label" for="flexSwitchCheckDefault">
-               Available
-              </label>
-            </div>
-          </div> */}
-          
-           
 
           <div class="form-check form-switch col col-md-2">
               <label
@@ -247,7 +205,6 @@ export default function PostEdit({
                 type="checkbox"
                 role="switch"
                 id="flexSwitchCheckChecked"
-                 /*   {check === true ? checked : <></> }   */ 
                    checked={check}
                 onClick={checkSubmit}
               />

@@ -4,9 +4,6 @@ import  logoImg  from "./navbarlogo.png";
 import InitialFocus from "../modal/InitialFocus"
 
 
-// import { useContext } from "react";
-// import { AuthContext } from "../../context/auth.context";
-
 function Navbar() {
   
   return (
@@ -23,63 +20,15 @@ function Navbar() {
             data-bs-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown"
             aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
+            aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNavDropdown">
             <ul className="navbar-nav">
-              {/* <li className="nav-item">
-            <Link className="nav-link" to="/aboutus">About us</Link>
-          </li> */}
+           
               <li className="nav-item">
-                {/* Button trigger modal */}
-
                 <InitialFocus />
-                
-         
-              </li>
-
-              {/* <!-- Modal --> */}
-
-              <div
-                class="modal fade"
-                id="staticBackdrop"
-                data-bs-backdrop="static"
-                data-bs-keyboard="false"
-                tabIndex="-1"
-                aria-labelledby="staticBackdropLabel"
-                aria-hidden="true"
-              >
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h1 class="modal-title fs-5" id="staticBackdropLabel">
-                        Modal title
-                      </h1>
-                      <button
-                        type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"
-                      ></button>
-                    </div>
-                    <div class="modal-body">...</div>
-                    <div class="modal-footer">
-                      <button
-                        type="button"
-                        class="btn btn-secondary"
-                        data-bs-dismiss="modal"
-                      >
-                        Close
-                      </button>
-                      <button type="button" class="btn btn-primary">
-                        Understood
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                </li>
             </ul>
           </div>
         </div>

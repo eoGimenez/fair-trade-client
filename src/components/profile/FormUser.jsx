@@ -26,9 +26,9 @@ function FormUser(currentUser) {
   const [img, setImg] = useState("");
   const [error, setError]= useState("")
   const [changePass, setChangePass]=useState(false);
-
-  const [usuario, setUsuario] = useState(user)
-  console.log('USUARIOOOOOO', usuario) 
+   const [usuario, setUsuario] = useState(user)
+  console.log("CURRENT-USER:", currentUser)
+  console.log("USSER-AUTHCONTEXT:", user)
 
 
  const handleFileUpload = (e) => {
@@ -36,7 +36,6 @@ function FormUser(currentUser) {
   uploadData.append("avatar", e.target.files[0]);
     addAvatar(uploadData)
     .then((response) => {
-      /* console.log("RTA CLOUDINADRYYYYY:",response.fileUrl); */
       setImg(response.fileUrl);
     })
     .catch((err) => console.log("Error while uploading the file: ", err));
@@ -131,7 +130,7 @@ function FormUser(currentUser) {
 
             {/* AVATAR CARD */}
             <div id="avatar">
-              <img src={usuario.avatar} alt="avatar" width="300" className="user-img rounded-circle " />
+              <img src={currentUser.user.avatar} alt="avatar" width="200" className="user-img rounded-circle mr-2" />
             </div>
             {/* AVATAR CARD */}
 
@@ -139,16 +138,21 @@ function FormUser(currentUser) {
             {/* ARTISAN CARD */}
             <div className="card-body border-0">
               {!form ? (
-                <div className="card mb-3 border-0" style={{ width: "25rem" }}> {/* bg-warning */}
+                <div className="card mb-3 border-0" style={{ width: "25rem" }}> 
                   <div className="adios1">
                     <div className="col-md-8">
                       <div className="card-body">
-                        <h5 className="commerce">{usuario?.name}</h5>
-                        <p className="name">{usuario?.surname}</p>
-                        <p className="card-text">{usuario?.location}</p>
-                        <p className="card-text">{usuario?.email}</p>
-                        <p className="card-text">{usuario?.cif}</p>
-                        <p className="card-text">{usuario?.role}</p>
+                        <h5 className="card-title">{currentUser.user.name}</h5>
+                       
+                        <p className="card-text mt-2">{currentUser.user.surname}</p>
+                       
+                        <p className="card-text mt-2">{currentUser.user.location}</p>
+                        
+                        <p className="card-text mt-2">{currentUser.user.email}</p>
+                        
+                        <p className="card-text mt-2">{currentUser.user.cif}</p>
+                        
+                        <p className="card-text mt-2">{currentUser.user.role}</p>
                         {currentUser.user._id === user._id ? (<button
                           type="submit"
                           id="whitebutton"
@@ -172,7 +176,6 @@ function FormUser(currentUser) {
                         type="email"
                         class="form-control"
                         id="exampleInputEmail1"
-                        /*    placeholder={user.email} */
                         aria-describedby="emailHelp"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)} />

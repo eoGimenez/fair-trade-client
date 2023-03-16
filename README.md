@@ -1,70 +1,75 @@
-# Getting Started with Create React App
+# LocalArtCo - server side
+Developed of our final proyect at IronHack. It's a MERN Stack application, check the frontend repository [here](https://github.com/eoGimenez/fair-trade-client).
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## About
+We are Lucas, Lucia and Eugenio we met each other at the web development Bootcamp of IronHack. 
 
-## Available Scripts
+![Project Image](# "Project Image")
 
-In the project directory, you can run:
+## Deployment
+You can check the app fully deployed [here](#). If you wish to view the API deployment instead, check [here](#).
 
-### `npm start`
+## Work structure
+We decide to use [Trello](https://trello.com/b/pWR9rkVU/app) to organize the workflow.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Installation guide
+- Fork this repo
+- Clone this repo 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```shell
+$ cd fair-trade-server
+$ npm install
+$ npm start
+```
 
-### `npm test`
+## Models
+#### User.model.js
+```js
+const userSchema = new Schema({
+  commercename: { type: String, required: true },
+  name: { type: String, required: true },
+  surname: { type: String, required: true },
+  email: { type: String, unique: true, required: true, trim: true, },
+  password: { type: String, required: true },
+  role: { type: String, enum:["Artisan", "Commerce", "Admin"], required: true},
+  cif: {type: String, required: true, unique: true},
+  avatar: String,
+  aboutme: String,
+  location: String,
+  posts:[ {type: Schema.Types.ObjectId, ref:"post" }]
+});
+```
+#### Post.model.js
+```js
+const postSchema = new Schema({
+        contract:{ type: String, required: true },
+        image:{ type: String, required: true },
+        description:{ type: String, required: true },
+        bach:{ type: String, required: true },
+        price:{ type: String, required: true },
+         category:{ enum: ["Natural Cosmetics", "Home Deco", "Miscellaneous", "Fabric & Fashion" ],    require: true },
+        available:{ type: Boolean, require: true },
+        });
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## User roles
+| Role  | Capabilities                                                                                                                               | Property       |
+| :---: | ------------------------------------------------------------------------------------------------------------------------------------------ | -------------- |
+| Artisan  | Can login/logout. Can read all the projects. Can create a new post.                                                                       | role: Artisan |
+| Commerce | Can login/logout. Can read. Can read all user's post and contact them. | role: Commerce  |
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## API Reference
+| Method | Endpoint                    | Require                                             | Response (200)                                                        | Action                                                                    |
+| :----: | --------------------------- | --------------------------------------------------- |---------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| POST| /signup | const { username, email, password, role } = req.body | json({user: user}) | Registers the user in the database and returns the logged in user. |
+| POST | /login | const { commercename, password } = req.body | json({authToken: authToken}) | Log in an user already registered.|
+| GET| /verify | -| json ({profile}) | Navigate to user's profile|
+| GET| /:userId| const { userId } = req.params | json ({ json.response })| Return to user's profile|
+|PUT| /:userId/edit| const { userIs } = req.params| json ({ updatedProfile }) | Edits the User's profile|
+|GET| /posts| const {posts} | json ({ posts })| Return a post's list|
+|POST| /new| const {contract, description, image, bach, price, category, available} = req=body | json ({ post:post }) | Adds a new Post|
+|GET| /:postId| const { postId } = req.params | Navigate to the selected post|
+|PUT| /:postId/edit | const { postId, {post} } =req.params/req.body | Edits the selected post|
+|DELETE| /:postId/delete| const { postId } = req.params | Delete a post|

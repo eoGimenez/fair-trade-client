@@ -38,7 +38,7 @@ class PostServiceConst {
 
 }
 
-// Create one instance of the service
+
 const PostService = new PostServiceConst();
 
 export default PostService;
