@@ -165,10 +165,10 @@ function PostNewPage() {
                 >
                   <option selected> Select a Contract</option>
                   <option value="Total batch in concession">
-                    Total batch in concession
+                    Batch in concession
                   </option>
                   <option value="Percentages to arrenge">
-                    Percentages to arreng"
+                    Percentages to arrenge
                   </option>
                   <option value="Would like to sale by unit">
                     Would like to sale by unit

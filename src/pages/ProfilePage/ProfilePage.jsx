@@ -84,7 +84,11 @@ function ProfilePage() {
             </div>
           </div>
         ) : (
-          <p>Loading...</p>
+          <p><div class="text-center">
+          <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div></p>
         )}
       </div>
       {!showChat && (

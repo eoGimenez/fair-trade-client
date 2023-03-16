@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { postContext } from "../../context/posts.context";
 import PostEdit from "../../components/PostEdit";
 import PostService from "../../services/post.service";
@@ -15,19 +15,26 @@ export default function PostDetailPage(props) {
   const { user } = useContext(AuthContext);
   const [isOwner, setIsOwner] = useState(false);
   const navigate = useNavigate();
-
+ const [author, setAuthor]= useState({})
   const [showEdit, setShowEdit] = useState(false);
   const [showChat, setShowChat] = useState(false);
 
+  
+ 
+   
+  
+
   const getPost = () => {
-    const currentPost = posts.find((result) => result._id === postId);
+    let currentPost = posts.find((result) => result._id === postId);
     setPost(currentPost);
+    setAuthor(currentPost.author)
     if (user._id === currentPost.author._id) {
-      setIsOwner(true);
+      setIsOwner(true)
+      console.log("CURRENT- POST-getPost", isOwner)
       return;
     }
   };
-
+  
   useEffect(() => {
     getPost();
   }, []);
@@ -45,6 +52,7 @@ export default function PostDetailPage(props) {
   useEffect(() => {
     setShowChat(true);
   }, [post]);
+  console.log("CURRENT- POST", isOwner)
 
   return (
     <>
@@ -101,7 +109,7 @@ export default function PostDetailPage(props) {
 
 
 
- 
+      {/* CARD POSTEO!! */}
       {!showEdit && (
         <div
           class="card mb-3 mx-auto border-0 "
@@ -158,6 +166,22 @@ export default function PostDetailPage(props) {
           </button>
         )}
       </div>
+
+      {/* CARD POSTEO!! */}
+
+
+     {/*  CARD ARTESANO!!!! */}
+<>
+    {!isOwner &&  !showEdit && 
+    <div class="card" style={{width: "18rem"}}>
+  <img src={author.avatar} class="card-img-top rounded-circle mr-2 "  width="300" alt="..."/>
+  <div class="card-body">
+    <Link to={`/profile/${author._id}`}> Visit {author.name} {author.surname}  profile</Link>
+  </div>
+</div>  }   
+</>
+       
+     {/*  CARD ARTESANO!!!! */}
 
       {!isOwner && showChat && <ChatBox author={post.author} />}
     </>
