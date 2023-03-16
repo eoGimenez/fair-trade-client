@@ -23,6 +23,7 @@ export default function PostDetailPage(props) {
         setPost(currentPost);
         if (user._id === currentPost.author._id) {
             setIsOwner(true);
+            console.log("IS OWNER",isOwner)
             return;
         }
     };
@@ -45,10 +46,10 @@ export default function PostDetailPage(props) {
     useEffect(() => {
         setShowChat(true)
     }, [post]);
-
+    console.log("IS OWNER",isOwner)
     return (
         <>
-            <Navbar2 />
+            <Navbar2  />
             {!showEdit && <div className="card mx-auto" style={{ "width": "15rem" }}>
                 <img src={post.image} className="card-img-top rounded-circle img-fluid" style={{ "width": "8rem" }} alt="Img" />
                 <div className="card-body">

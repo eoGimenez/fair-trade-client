@@ -60,7 +60,7 @@ function ProfilePage() {
     <>
 
      <div id="divRow">
-      <Navbar2 />
+      <Navbar2 userFrom={currentUser} />
 
       {currentUser ? (<div id="containerprofile" >
         <div className="containerprofile">
