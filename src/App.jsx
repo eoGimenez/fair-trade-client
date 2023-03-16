@@ -25,7 +25,6 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="profile/:userId" element={<IsPrivate> <ProfilePage2 /> </IsPrivate>} />
-        {/* <Route path="/profile/:userId" element={<ProfilePage2 />} /> */}
         <Route path="/post" element={<IsPrivate><PostList /></IsPrivate>} />
         <Route path="/post/:postId" element={<IsPrivate> <PostDetailPage /></IsPrivate>} />
         <Route path="/post/new" element={<IsPrivate> <PostNewPost /></IsPrivate>} />
