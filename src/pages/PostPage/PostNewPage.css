@@ -1,10 +1,16 @@
 #newpost {
     /* width: 100vw; */
+    /* border: solid red 2px; */
     margin-top: 10vh;
-    display: flex;
+    display: grid;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     color: #4f2579;
+}
+#formnew {
+    /* border: solid blue 2px; */
+    width: 50vw;
 }
 
 #details{
