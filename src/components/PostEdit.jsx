@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import PostService from "../services/post.service";
 import { uploadImage } from "../services/uploads.services";
 
+
+
 export default function PostEdit({
   getPosts,
   toggleEdit,
@@ -250,14 +252,12 @@ export default function PostEdit({
               />
           </div>  
 
-          <div className="d-grid gap-2 col-2 mx-auto">
-            <button type="submit" className="btn btn-primary">
-              Edit!
-            </button>
-          </div>
-        </form>
-
-        
+        <div className="d-grid gap-2 col-2 mx-auto">
+          <button type="submit" id="whitebutton">
+            Edit!
+          </button>
+        </div>
+      </form>
       </div>
     </>
   );

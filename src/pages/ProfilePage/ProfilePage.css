@@ -3,11 +3,12 @@
 }
 
 .containerprofile {
+  /* border: solid 2px yellow; */
+  border: 0;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  border: solid 2px blue;
   width: 75vw;
   height: 100vh;
 }
@@ -17,48 +18,92 @@
 /* AVATAR !!!!! */
 
 #avatar {
-  border: solid 2px black;
+  /* border: solid 2px black; */
   height: 200px;
   width: 200px;
 }
 /* **************************************************************** */
 
 
-#chau1 {
-  background-color: green;
-  border: solid 2px green;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 65vw;
-  height: 90vh;
+.comercio {
+  /* border: solid green 1px; */
+  border: 0;
+}
+
+#chatjs {
+  border: solid 2px black;
+  width: 75vw;
+  height: 100vh;
 }
 
 #chau2 {
+  /* border: solid 2px green; */
+  border: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: solid 2px red;
+  width: 75vw;
+  height: 100vh;
+  width: 25vw;
+}
+
+#people {
+  /* border: solid 2px blue; */
+  border: 0;
+  margin-top: 150px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  height: 100vh;
+  width: 25vw;
+  padding: 2vh;
+}
+
+.aboutme{
+  /* border: solid 2px red; */
+  border: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 25vw;
+}
+
+.card-body {
+  border: 0;
+  background-color: white;
 }
 
 .posteosIn{
-    flex-direction: column;
-    border: solid 2px blueviolet;
+  /* border: solid 2px blueviolet; */
+  border: 0;
+  flex-direction: column;
 }
 
-#posteos {
+.posteos {
+  /* border: solid 2px blueviolet; */
+  border: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
-  border: solid 2px blueviolet;
+  height: 100vh;
+  width: 15vw;
 }
 
 
 .adios1 {
+  /* border: solid 2px orange; */
+  border: 0;
+  margin-top: 2vh;
+  background-color: white;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: solid 2px orange;
 }
 
 

@@ -2,6 +2,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../../context/auth.context";
 import Talk from "talkjs";
 
+
 export default function InBox() {
     const inBoxDiv = useRef();
 

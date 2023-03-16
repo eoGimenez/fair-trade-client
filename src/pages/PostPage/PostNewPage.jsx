@@ -57,28 +57,25 @@ function PostNewPage() {
 
   return (
     <>
-      <div id="divRow">
-        <Navbar2 />
-
-        <div
-          id="newpost"
-          class=" containerform  mb-3 d-flex justify-content-center "
-        >
-          <form className="row " onSubmit={submitHandler}>
-            <div class="mb-3">
-              <div className="col col-md-4 ">
-                <label htmlFor="title" className="form-label fw-bold">
-                  Title
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="title"
-                  value={form.title}
-                  onChange={(e) => setForm({ ...form, title: e.target.value })}
-                />
-              </div>
+    <div className="divRow">
+      <Navbar2 />
+     
+      <div id="newpost" class=" containerform  mb-3 d-flex justify-content-center ">
+        <form className="row " onSubmit={submitHandler}>
+          <div class="mb-3">
+            <div className="col col-md-4 ">
+              <label htmlFor="title" className="form-label fw-bold">
+                Title
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="title"
+                value={form.title}
+                onChange={(e) => setForm({ ...form, title: e.target.value })}
+              />
             </div>
+          </div>
 
             {/*  CONTRATO VIEJO */}
             {/* <div class="mb-3">

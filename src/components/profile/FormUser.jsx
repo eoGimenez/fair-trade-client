@@ -7,6 +7,8 @@ import { AuthContext } from "../../context/auth.context";
 import { useContext } from "react";
 import "../../pages/ProfilePage/ProfilePage.css";
 import { addAvatar } from "../../services/uploads.services";
+import "../../pages/PostPage/PostNewPage.css"
+
 
 function FormUser(currentUser) {
 
@@ -106,7 +108,6 @@ function FormUser(currentUser) {
 
   return (
     <>
-  <div id="divRow">
 
        {error && <div class="alert alert-danger d-flex align-items-center" role="alert">
         <svg
@@ -121,139 +122,149 @@ function FormUser(currentUser) {
         <div>{error}</div>
       </div>}
 
-      
-      {!isLoading && isLoggedIn &&
-      <>
-     
-                  {/* AVATAR CARD */}
-                  <div id="avatar">
-                  <img src={usuario.avatar} alt="avatar" height={200} width={200}/>
-                  </div>
-                  {/* AVATAR CARD */}
 
-      {/* ARTISAN CARD */}
-        <div class="card-body ">
-        {!form ? (
-          <div className="card mb-3 " style={{ width: "25rem" }}> {/* bg-warning */}
-            <div className="adios1">
-              <div className="col-md-8">
-                <div className="card-body">
-                  <h5 className="card-title">{usuario?.name}</h5>
-                  <p className="card-text">{usuario?.surname}</p>
-                  <p className="card-text">{usuario?.location}</p>
-                  <p className="card-text">{usuario?.email}</p>
-                  <p className="card-text">{usuario?.cif}</p>
-                  <p className="card-text">{usuario?.role}</p>
-                  {currentUser.user._id === user._id ? (<button
-                    type="submit"
-                    class="btn btn-primary"
-                    onClick={formHandler}>
-                    Edit
-                  </button>) : <p>BORRARRRRRR!!!!!!</p>}
-                </div>
-        {/* ARTISAN CARD */}
-
-
-              </div>
-            </div>
-          </div>
-        ) : (
+          {/* INFO PEOPLE!!! */}
+          <div id="people">
+        {!isLoading && isLoggedIn &&
           <>
-          <form>
-              <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">
-                  Email address
-                </label>
-                <input
-                  type="email"
-                  class="form-control"
-                  id="exampleInputEmail1"
-                  /*    placeholder={user.email} */
-                  aria-describedby="emailHelp"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)} />
-              </div>
-              <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="exampleInputPassword1"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)} />
-              </div>
-              <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">
-                  LastName
-                </label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="exampleInputPassword1"
-                  value={surname}
-                  onChange={(e) => setSurname(e.target.value)} />
-              </div>
-              <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">
-                  Password
-                </label>
-                <input
-                  type="password"
-                  class="form-control"
-                  id="exampleInputPassword1"
-                  placeholder="*******"
-                  value={password}
-                  onChange={(e) => {
-                    setPassword(e.target.value);
-                    setChangePass(true);
 
-                  } } />
-              </div>
-              <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">
-                  Repeat Password
-                </label>
-                <input
-                  type="password"
-                  class="form-control"
-                  id="exampleInputPassword1"
-                  placeholder="*******"
-                  value={passwordRe}
-                  onChange={(e) => {
-                    setPasswordRe(e.target.value);
-                    setChangePass(true);
-                  } } />
-              </div>
-              <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">
-                  CIF
-                </label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="exampleInputPassword1"
-                  value={cif}
-                  onChange={(e) => setCif(e.target.value)} />
-              </div>
 
-              <button
-                type="submit"
-                class="btn btn-primary"
-                onClick={SubmitHandler}
-              >
-                Confirm
-              </button>
+            {/* AVATAR CARD */}
+            <div id="avatar">
+              <img src={usuario.avatar} alt="avatar" width="300" className="user-img rounded-circle mr-2" />
+            </div>
+            {/* AVATAR CARD */}
 
-              <input type="file" onChange={(e) => handleFileUpload(e)} name="avatar" />
 
-            </form>
-            </>
-        )}
-      </div>
-      </>}
-      </div>  
+            {/* ARTISAN CARD */}
+            <div className="card-body border-0">
+              {!form ? (
+                <div className="card mb-3 border-0" style={{ width: "25rem" }}> {/* bg-warning */}
+                  <div className="adios1">
+                    <div className="col-md-8">
+                      <div className="card-body">
+                        <h5 className="card-title">{usuario?.name}</h5>
+                        <p className="card-text">{usuario?.surname}</p>
+                        <p className="card-text">{usuario?.location}</p>
+                        <p className="card-text">{usuario?.email}</p>
+                        <p className="card-text">{usuario?.cif}</p>
+                        <p className="card-text">{usuario?.role}</p>
+                        {currentUser.user._id === user._id ? (<button
+                          type="submit"
+                          id="whitebutton"
+                          onClick={formHandler}>
+                          Edit
+                        </button>) : <p><></></p>}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+
+                // FORM!!!!!!!!!!!
+                <>
+                  <form>
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">
+                        Email address
+                      </label>
+                      <input
+                        type="email"
+                        class="form-control"
+                        id="exampleInputEmail1"
+                        /*    placeholder={user.email} */
+                        aria-describedby="emailHelp"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)} />
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label">
+                        Name
+                      </label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="exampleInputPassword1"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)} />
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label">
+                        LastName
+                      </label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="exampleInputPassword1"
+                        value={surname}
+                        onChange={(e) => setSurname(e.target.value)} />
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label">
+                        Password
+                      </label>
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="exampleInputPassword1"
+                        placeholder="*******"
+                        value={password}
+                        onChange={(e) => {
+                          setPassword(e.target.value);
+                          setChangePass(true);
+
+                        }} />
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label">
+                        Repeat Password
+                      </label>
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="exampleInputPassword1"
+                        placeholder="*******"
+                        value={passwordRe}
+                        onChange={(e) => {
+                          setPasswordRe(e.target.value);
+                          setChangePass(true);
+                        }} />
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label">
+                        CIF
+                      </label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="exampleInputPassword1"
+                        value={cif}
+                        onChange={(e) => setCif(e.target.value)} />
+                    </div>
+
+                    <input type="file" onChange={(e) => handleFileUpload(e)} name="avatar" />
+
+                    <button
+                      type="submit"
+                      id="whitebutton"
+                      onClick={SubmitHandler}
+                    >
+                      Confirm
+                    </button>
+
+                  </form>
+                </>
+                // FORM!!!!!!!!!!!
+
+              )}
+            </div>
+
+          </>}
+         </div>
+         {/* ARTISAN CARD */}
+
+          {/* INFO PEOPLE!!! */}
+
     </>
   );
 }

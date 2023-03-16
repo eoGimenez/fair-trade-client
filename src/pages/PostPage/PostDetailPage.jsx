@@ -6,7 +6,8 @@ import PostService from "../../services/post.service";
 import Navbar2 from "../../components/Navbar/Navbar2";
 import ChatBox from "../../components/ChatBox";
 import { AuthContext } from "../../context/auth.context";
-import "./PostNewPage.css";
+import "../../pages/PostPage/PostNewPage.css"
+
 
 export default function PostDetailPage(props) {
   const [post, setPost] = useState({});

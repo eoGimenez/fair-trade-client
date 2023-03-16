@@ -10,13 +10,15 @@ import "./ProfilePage.css";
 import PostUser from "../../components/profile/PostsUser";
 import Navbar2 from "../../components/Navbar/Navbar2";
 import InBox from "../../components/chat/InBox";
+import "../../pages/PostPage/PostNewPage.css"
+
 
 function ProfilePage() {
   const { userId } = useParams();
+  const { user, isLoggedIn, isLoading } = useContext(AuthContext);
   /*  console.log('PARAMS:', userId) */
   /* const [user, setUser] = useState('') */
   /*  const { usersCTX, getUsers} = useContext(userContext);  */
-  const { user, isLoggedIn, isLoading } = useContext(AuthContext);
   /*  const { post, getPosts } = useContext(postContext); */
 
   const [showChat, setShowChat] = useState(false);
@@ -61,29 +63,54 @@ function ProfilePage() {
      <div id="divRow">
       <Navbar2 userFrom={currentUser} />
 
-        {currentUser ? (
-          <div id="containerprofile">
-            <div className="containerprofile">
-              <div className="col-7" id="chau1">
-                <FormUser user={currentUser} sameUser={sameUser} />
+    {/* CURRENT USER!!!!! */}
+      {currentUser ? (<div id="containerprofile" >
+        <div className="containerprofile">
 
-                <div className="aboutme">
-                  <div className="hola"></div>
+        {/* INFO USUARIO!!!!! */}
+          <div id="chau1"><FormUser user={currentUser} sameUser={sameUser} /></div>
+        {/* INFO USUARIO!!!!! */}
 
-                  <div className="text-center" id="chau2">
-                    <CommerceForm user={currentUser} sameUser={sameUser} />
-                  </div>
-                </div>
-                <div className="row mt-5">
-                  <PostUser
-                    user={currentUser}
-                    isLoading={isLoading}
-                    isLoggedIn={isLoggedIn}
-                  />
-                </div>
-              </div>
+
+          {/* COMMERCE FORM */}
+            <div className="text-center" id="chau2">
+              <CommerceForm user={currentUser} sameUser={sameUser} />
             </div>
+          {/* COMMERCE FORM */}
+
+
+      {/* POSTEOS!!!!! */}
+          <div className="posteos">
+            <p>Your Posts: </p>
+            <PostUser user={currentUser} isLoading={isLoading} isLoggedIn={isLoggedIn} />
           </div>
+           </div>
+           </div>) : <p>Loading...</p>}
+      {/* POSTEOS!!!!! */}
+
+
+
+    {/* CURRENT USER!!!!! */}
+
+
+
+      {/* CHAT!!!         */}
+      <div id="chatjs">
+      {!showChat && <button id="whitebutton" onClick={handleChat}  className="m-2 btn btn-info">
+        Contact
+        </button>}
+      {showChat && <>
+        <InBox />
+        <button id="whitebutton" onClick={handleChat} className="m-2 btn btn-info">
+          Go back!
+          </button>
+      </>}
+      </div>
+        {/* CHAT!!!         */}
+
+      </div> 
+
+    {/* CIERRE RETURN!!!! */}
         ) : (
           <p><div class="text-center">
           <div class="spinner-border" role="status">

@@ -6,7 +6,8 @@ import slide1 from "./slide1.jpg";
 import slide2 from "./slide2.jpg";
 import slide3 from "./slide3.jpg";
 import { Link } from "react-router-dom";
-import CarruselVideo from "../../components/CarruselVideo/CarruselVideo";
+// import CarruselVideo from "../../components/CarruselVideo/CarruselVideo";
+import HomeVideo from "../../components/HomeVideo/HomeVideo";
 
 
 function HomePage() {
@@ -54,7 +55,8 @@ function HomePage() {
       </div> */}
 
       {/* //carruselconvideo */}
-<CarruselVideo />
+      <HomeVideo></HomeVideo>
+{/* <CarruselVideo /> */}
       {/* //termina carruselconvideo */}
 
       <div className="hometext">
@@ -66,7 +68,7 @@ function HomePage() {
         </h2>
       </div>
       <br></br>
-      <div className="hometext">
+      <div className="homebutton">
         <Link to="/signup">
           <button class="cta">
             <span>Sign Up</span>

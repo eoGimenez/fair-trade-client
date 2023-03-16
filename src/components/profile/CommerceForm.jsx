@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import img2 from "../../pages/HomePage/slide3.jpg";
 import userService from "../../services/user.services";
 import { AuthContext } from "../../context/auth.context";
+import "../../pages/PostPage/PostNewPage.css"
 
 function CommerceForm(currentUser) {
   const { user,  isLoading, isLoggedIn} = useContext(AuthContext);
@@ -68,7 +69,12 @@ function CommerceForm(currentUser) {
         </div>
       )}
 
+
+{/* COMMERCE CARD!!!!! */}
+        <div className="comercio">
       {!isLoading && isLoggedIn && 
+
+    
       <div className="col  float-md-start">
       
         <div className="card border-0 ">
@@ -78,10 +84,10 @@ function CommerceForm(currentUser) {
               {!form ? (
                 <>
                   <div
-                    className="card text-bg-light mb-3 "
+                    className="card border-0 mb-3"
                     style={{ width: "20rem" }}
                   >
-                    <div className="card-body ">
+                    <div className="card-body border-0">
                       <h5 className="card-title">
                         About My work:
                         <br />
@@ -94,7 +100,7 @@ function CommerceForm(currentUser) {
                          
                          {currentUser.user._id === user._id ? (  <button
                         type="submit"
-                        className="btn btn-primary"
+                        id="whitebutton"
                         onClick={formHandler}>
                         Edit
                       </button>    ) : <p>NO HAY CURRENT USER!!!!!!</p> }  
@@ -141,11 +147,13 @@ function CommerceForm(currentUser) {
                     </div>
                     <button
                       type="submit"
-                      className="btn btn-primary"
                       onClick={SubmitHandler}
+                      id="whitebutton"
                     >
                       Confirm
                     </button>
+
+          
                   </form>
                 </>
               )}
@@ -153,6 +161,9 @@ function CommerceForm(currentUser) {
           </div>
         </div>
         </div>}
+        </div>
+        {/* COMMERCE CARD!!!!! */}
+
     </>
   );
 }
