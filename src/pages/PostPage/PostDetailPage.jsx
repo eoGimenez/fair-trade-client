@@ -7,6 +7,7 @@ import Navbar2 from "../../components/Navbar/Navbar2";
 import ChatBox from "../../components/ChatBox";
 import { AuthContext } from "../../context/auth.context";
 import "../../pages/PostPage/PostNewPage.css"
+import "./PostDetailPage.css"
 
 
 export default function PostDetailPage(props) {
@@ -57,75 +58,27 @@ export default function PostDetailPage(props) {
 
   return (
     <>
+    <div className="divRow">
       <Navbar2 />
-    {/*    {!showEdit && (
-        <div className="card mx-auto" style={{ width: "15rem" }}>
-          <img
-            src={post.image}
-            className="card-img-top rounded-circle img-fluid"
-            style={{ width: "8rem" }}
-            alt="Img"
-          />
-          <div className="card-body">
-            <h5 className="card-title">{post.title}</h5>
-            <p className="card-text">{post.description}</p>
-          </div>
-          <ul className="list-group list-group-flush">
-            <li className="list-group-item">Batch: {post.batch}</li>
-            <li className="list-group-item">Price: {post.price}</li>
-            <li className="list-group-item">{post.category}</li>
-            {!post.available && (
-              <li className="list-group-item">
-                <span>Out of Stock</span>
-              </li>
-            )}
-          </ul>
-        </div>
-      )} 
-
-       <div className="card-body my-3">
-        {showEdit && (
-          <PostEdit
-            toggleEdit={toggleEdit}
-            getPost={getPost}
-            postId={postId}
-            getPosts={getPosts}
-            setPost={setPost}
-            currentPost={post}
-          />
-        )}
-        {isOwner && !showEdit && (
-          <button className="btn btn-warning mx-2" onClick={toggleEdit}>
-            Edit
-          </button>
-        )}
-        {isOwner && !showEdit && (
-          <button className="btn btn-danger mx-2" onClick={deleteHandler}>
-            Delete
-          </button>
-        )}
-      </div>
-
-      {!isOwner && showChat && <ChatBox author={post.author} />} */}
-
-
+      <div id="postdetailspage">
 
       {/* CARD POSTEO!! */}
+      <div id="cardposteo">
+
       {!showEdit && (
         <div
-          class="card mb-3 mx-auto border-0 "
+          class="card mb-3 mx-auto  "
           id="details"
           style={{ width: "35rem" }}
         >
-          <div class=" ">
-            <h1 class="card-title text-start fw-bold ">{post.title}</h1>
-          </div>
+            <h1 class="card-title text-center fw-bold mt-5">{post.title}</h1>
 
           <img
             src={post.image}
-            class="card-img-top rounded"
+            class="card-img-top rounded text-center"
             id="img "
             alt="..."
+            style={{ width: "25rem" }}
           />
           <div class="card-body">
             <p class=" text-star">{post.description}</p>
@@ -141,10 +94,6 @@ export default function PostDetailPage(props) {
                 <span>Out of Stock</span>
               </p>
             )}
-          </div>
-        </div>
-      )}
-
       <div className="card-body my-3">
         {showEdit && (
           <PostEdit
@@ -157,7 +106,7 @@ export default function PostDetailPage(props) {
           />
         )}
         {isOwner && !showEdit && (
-          <button className="btn btn-warning mx-2" onClick={toggleEdit}>
+          <button id="whitebutton" onClick={toggleEdit}>
             Edit
           </button>
         )}
@@ -167,24 +116,34 @@ export default function PostDetailPage(props) {
           </button>
         )}
       </div>
+          </div>
+        </div>
+      )}
+
+     
+      </div>
 
       {/* CARD POSTEO!! */}
 
 
      {/*  CARD ARTESANO!!!! */}
 <>
+<div id="cardartesano">
     {!isOwner &&  !showEdit && 
-    <div class="card" style={{width: "18rem"}}>
-  <img src={author.avatar} class="card-img-top rounded-circle mr-2 "  width="300" alt="..."/>
-  <div class="card-body">
+    <div class="card" >
+  <div class="card-body d-flex align-items-sm-center">
+  <img src={author.avatar} id="imagencardartisan" class="card-img-top rounded-circle mr-5" alt="..."/>
     <Link to={`/profile/${author._id}`}> Visit {author.name} {author.surname}  profile</Link>
   </div>
-</div>  }   
-</>
-       
+</div>  } 
+</div>  
      {/*  CARD ARTESANO!!!! */}
+       
+</>
 
       {!isOwner && showChat && <ChatBox author={post.author} />}
+      </div>
+      </div>
     </>
   );
 }

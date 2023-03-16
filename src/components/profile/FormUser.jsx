@@ -131,7 +131,7 @@ function FormUser(currentUser) {
 
             {/* AVATAR CARD */}
             <div id="avatar">
-              <img src={usuario.avatar} alt="avatar" width="300" className="user-img rounded-circle mr-2" />
+              <img src={usuario.avatar} alt="avatar" width="300" className="user-img rounded-circle " />
             </div>
             {/* AVATAR CARD */}
 
