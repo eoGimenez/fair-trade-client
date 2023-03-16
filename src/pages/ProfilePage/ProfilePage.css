@@ -3,7 +3,7 @@
 }
 
 /* ALINEA EN FLEX ROW */
-.divRow {
+#divRow {
   display: flex;
   flex-direction: row;
   /* border: solid red 2px; */
@@ -38,12 +38,12 @@
   border: 0;
 }
 
-#chatjs {
+/* #chatjs {
   border: solid 2px black;
   width: 75vw;
   height: 100vh;
 }
-
+ */
 #chau2 {
   /* border: solid 2px green; */
   border: 0;
@@ -117,4 +117,21 @@
 
 .alert {
   height: 10px;
+}
+
+.fix {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.titlesPro {
+  font-size: 1.7em;
+}
+
+.commerce {
+  font-size: 1.8em;
+}
+.name {
+  font-size: 1.4em;
 }

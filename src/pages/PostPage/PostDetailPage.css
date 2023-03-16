@@ -1,0 +1,29 @@
+
+#postdetailspage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 500vw;
+    margin-top: 10vh;
+}
+
+#cardartesano {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#imagencardartisan {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    width: 80px;
+}
+
+#cardposteo {
+    display: flex;
+    flex-direction: row;
+    width: 30vw;
+}

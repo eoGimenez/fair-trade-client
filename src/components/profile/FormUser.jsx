@@ -131,7 +131,7 @@ function FormUser(currentUser) {
 
             {/* AVATAR CARD */}
             <div id="avatar">
-              <img src={usuario.avatar} alt="avatar" width="300" className="user-img rounded-circle mr-2" />
+              <img src={usuario.avatar} alt="avatar" width="300" className="user-img rounded-circle " />
             </div>
             {/* AVATAR CARD */}
 
@@ -143,8 +143,8 @@ function FormUser(currentUser) {
                   <div className="adios1">
                     <div className="col-md-8">
                       <div className="card-body">
-                        <h5 className="card-title">{usuario?.name}</h5>
-                        <p className="card-text">{usuario?.surname}</p>
+                        <h5 className="commerce">{usuario?.name}</h5>
+                        <p className="name">{usuario?.surname}</p>
                         <p className="card-text">{usuario?.location}</p>
                         <p className="card-text">{usuario?.email}</p>
                         <p className="card-text">{usuario?.cif}</p>

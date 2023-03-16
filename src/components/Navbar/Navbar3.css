@@ -1,0 +1,27 @@
+#chatjs {
+    /* width: 75vw; */
+    height: 50vh;
+    position: relative;
+/*     display: flex;
+    flex-direction: column;
+    justify-content: space-between; */
+}
+.chatOn {
+    z-index: 999;
+}
+.chatOff {
+    z-index: 0;
+}
+
+.active {
+    font-size: 15px;
+}
+
+#logoNav {
+    height: 50px;;
+}
+ 
+.fix {
+    height: 300px;
+    
+}

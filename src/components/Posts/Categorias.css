@@ -2,7 +2,8 @@
 .categorias{
     gap: 20px;
     width: 60vw;
-    height: 100vh;;
+    height: 100vh;
+    background-color: blue;
 
 }
  .card-img-top{

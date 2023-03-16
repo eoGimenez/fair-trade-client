@@ -1,16 +1,16 @@
-import Navbar2 from "../../components/Navbar/Navbar2";
+import Navbar3 from "../../components/Navbar/NavBar3";
 import Post from "../../components/Post";
-//import Categorias from "../../components/Posts/Categorias";
 
 
 function PostList() {
 
   return (
-    <>      
-    <Navbar2/>
+    <> 
+    <Navbar3/>
+    <div className="divRow">
       <Post />
-    
-    </>
+      </div>
+         </>
   );
 }
 

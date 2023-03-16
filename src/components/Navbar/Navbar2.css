@@ -14,9 +14,8 @@
     padding: 10px;
     padding-top: 30px;
     width: 25vw;
-    height: 100vh;
+    height: 50vh;
     font-size: 15px;
-
 }
 
 ul {
@@ -32,4 +31,26 @@ li {
 
 .active {
     font-size: 15px;
+}
+
+.navLocated {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+ 
+#chatjs {
+    /* width: 75vw; */
+    height: 50vh;
+    position: relative;
+/*     display: flex;
+    flex-direction: column;
+    justify-content: space-between; */
+}
+.chatOn {
+    z-index: 999;
+}
+.chatOff {
+    z-index: 0;
 }
