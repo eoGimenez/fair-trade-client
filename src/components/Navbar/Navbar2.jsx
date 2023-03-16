@@ -50,13 +50,13 @@ function Navbar2() {
                     {userRole === "Artisan" &&
                       <li>
                         <Link to="/post/new" className="active">
-                          <i class="fa-solid fa-plus"></i>   New Post
+                          <i class="fa-solid fa-plus"></i>   New Craft
                         </Link>
                       </li>
                     }
                     <li>
                       <Link to="/post" className="active">
-                        <i class="fa-solid fa-signs-post"></i>  Posts
+                        <i class="fa-solid fa-signs-post"></i>  Craft
                       </Link>
                     </li>
 

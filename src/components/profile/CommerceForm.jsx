@@ -78,10 +78,10 @@ function CommerceForm(currentUser) {
               {!form ? (
                 <>
                   <div
-                    className="card text-bg-light mb-3"
+                    className="card text-bg-light mb-3 "
                     style={{ width: "20rem" }}
                   >
-                    <div className="card-body">
+                    <div className="card-body ">
                       <h5 className="card-title">
                         About My work:
                         <br />

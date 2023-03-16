@@ -6,9 +6,10 @@ import Post from "../../components/Post";
 function PostList() {
 
   return (
-    <>
+    <>      
     <Navbar2/>
       <Post />
+    
     </>
   );
 }

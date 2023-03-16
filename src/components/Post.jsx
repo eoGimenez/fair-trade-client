@@ -76,10 +76,10 @@ export default function Post() {
                             <div className="col-md-8">
                                 <div className="card-body">
                                     <h4 className="card-title">{post.title}</h4>
-                                    <p className="card-text">{post.description}</p>
-                                    <p className="card-text">Batch:{post.batch}</p>
-                                    <p className="card-text">Price per unit: {post.price}€.</p>
-                                    <p className="card-text"><small className="text-muted">{post.available}</small></p>
+                                    {/* <p className="card-text">{post.description}</p> */}
+                                    {/* <p className="card-text">Batch:{post.batch}</p>
+                                    <p className="card-text">Price per unit: {post.price}€.</p> */}
+                                    {/* <p className="card-text"><small className="text-muted">{post.available}</small></p> */}
                                     <div className="col-6">
                                         <Link to={`/post/${post._id}`} props={user} className="m-2 btn btn-info">Details</Link>
                                     </div>
