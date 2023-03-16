@@ -3,7 +3,7 @@
 }
 
 /* ALINEA EN FLEX ROW */
-.divRow {
+#divRow {
   display: flex;
   flex-direction: row;
   /* border: solid red 2px; */
@@ -38,12 +38,12 @@
   border: 0;
 }
 
-#chatjs {
+/* #chatjs {
   border: solid 2px black;
   width: 75vw;
   height: 100vh;
 }
-
+ */
 #chau2 {
   /* border: solid 2px green; */
   border: 0;

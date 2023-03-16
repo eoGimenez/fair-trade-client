@@ -8,8 +8,9 @@ import { uploadImage } from "../../services/uploads.services";
 import "./PostNewPage.css";
 
 function PostNewPage() {
+  //eslint-disable-next-line
   const { posts, getPosts } = useContext(postContext);
-  const { user, autheticateUser } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   const [img, setImg] = useState("");
 
@@ -217,7 +218,7 @@ function PostNewPage() {
                   <option value="Natural Cosmetics">Natural Cosmetic</option>
                   <option value="Home Deco">Home Deco</option>
                   <option value="Fabric & Fashion">Fabric & Fashion</option>
-                  <option value="Misellaneous">Misellaneous</option>
+                  <option value="Misellaneous">Miscellaneous</option>
                 </select>
 
                 <div class="mb-2 mt-5">
