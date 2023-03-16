@@ -64,7 +64,7 @@ function ProfilePage() {
       <Navbar2 userFrom={currentUser} />
 
     {/* CURRENT USER!!!!! */}
-      {currentUser ? (
+      {currentUser ? (<div id="containerprofile">
         <div className="containerprofile">
 
         {/* INFO USUARIO!!!!! */}
@@ -83,6 +83,7 @@ function ProfilePage() {
           <div className="posteos">
             <p>Your Posts: </p>
             <PostUser user={currentUser} isLoading={isLoading} isLoggedIn={isLoggedIn} />
+          </div>
           </div>
            </div>) :  <p><div class="text-center">
           <div class="spinner-border" role="status">
@@ -115,11 +116,6 @@ function ProfilePage() {
 
     {/* CIERRE RETURN!!!! */}
         
-    
-      
-      
-       
-     
     </>
   );
 }
