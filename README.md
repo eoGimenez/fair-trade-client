@@ -30,20 +30,24 @@ $ npm start
 | /                    | public          | Home.page                |
 | /signup              | public          | Signup.page              |
 | /login               | public          | Login.page               |
-| /user/:userId        | private (user)  | ....                     |
+| /user/:userId        | private (user)  | Profile.page             |
 | /post                | private (user)  | Posts.page               |
-| /post/:postId.       | private (user)  | .....                    |
-| /post/new            | private (user)  | .....                    |
-| /contact             | private (user)  | ....                     |
+| /post/:postId.       | private (user)  | PostDetails.page         |
+| /post/new            | private (user)  | PostNew.page             |
+| /logout              | private (user)  | Home.page                |
 
 
 ## Components
-- ArtisanSignupForm
-- CommerceSignUpForm
-- ArtisanProfile
-- CommerceProfile
+- UserForm
+- CommerceForm
 - Navbar
-- PostCard
+- Inbox
+- Navbar
+- Categorias
+- ChatBox
+- PosEdit
+- IsPrivate
+- HomeVideo
 
 
 ---
