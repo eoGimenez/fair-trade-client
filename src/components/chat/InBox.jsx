@@ -41,6 +41,7 @@ export default function InBox() {
             
             return () =>  session.destroy();
         }
+        //eslint-disable-next-line
     }, [talkLoaded])
 
     return <div className="chat" ref={inBoxDiv} />
