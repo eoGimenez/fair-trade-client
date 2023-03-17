@@ -47,6 +47,7 @@ function ModalLogIn(props) {
 
   useEffect(() => {
     if (user) navigate(`/profile/${user._id}`);
+    //eslint-disable-next-line
   }, [user])
 
   return (

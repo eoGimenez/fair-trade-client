@@ -95,6 +95,7 @@ function SignupPage() {
   };
   useEffect(() => {
     if (user) navigate(`/profile/${user._id}`);
+    //eslint-disable-next-line
   }, [userOk])
 
 

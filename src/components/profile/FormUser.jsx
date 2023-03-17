@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-expressions */
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 /* import img2 from "../profile/emptyavatar.png"; */
 import userService from "../../services/user.services";
 import { AuthContext } from "../../context/auth.context";
@@ -14,7 +13,6 @@ function FormUser(currentUser) {
 
   const { user, isLoading, isLoggedIn} = useContext(AuthContext);
 
-  const navigate = useNavigate()
  /*  console.log("AVATAR:", currentUser) */
   const [form, setForm] = useState(false);
   const [email, setEmail] = useState("");
@@ -26,6 +24,7 @@ function FormUser(currentUser) {
   const [img, setImg] = useState("");
   const [error, setError]= useState("")
   const [changePass, setChangePass]=useState(false);
+  //eslint-disable-next-line
   const [usuario, setUsuario] = useState(user)
   console.log("CURRENT-USER:", currentUser)
   console.log("USSER-AUTHCONTEXT:", user)

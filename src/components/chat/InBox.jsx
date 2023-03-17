@@ -32,7 +32,8 @@ export default function InBox() {
             })
             console.log("CURRENT USER: ",user)
             const chatId = user.chatsId[0];
-            //const chat = session.getInboxes()
+            //eslint-disable-next-line
+            const chat = session.getInboxes()
             const inBox = session.createInbox();
             inBox.select(chatId);
 
