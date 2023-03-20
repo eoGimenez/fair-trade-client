@@ -109,7 +109,7 @@ function FormUser(currentUser) {
   return (
     <>
 
-       {error && <div class="alert alert-danger d-flex align-items-center" role="alert">
+       {error && <div className="alert alert-danger d-flex align-items-center" role="alert">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="bi bi-exclamation-triangle-fill flex-shrink-0 me-2"
@@ -164,49 +164,49 @@ function FormUser(currentUser) {
                 // FORM!!!!!!!!!!!
                 <>
                   <form>
-                    <div class="mb-3">
-                      <label for="exampleInputEmail1" class="form-label">
+                    <div className="mb-3">
+                      <label htmlFor="exampleInputEmail1" className="form-label">
                         Email address
                       </label>
                       <input
                         type="email"
-                        class="form-control"
+                        className="form-control"
                         id="exampleInputEmail1"
                         /*    placeholder={user.email} */
                         aria-describedby="emailHelp"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)} />
                     </div>
-                    <div class="mb-3">
-                      <label for="exampleInputPassword1" class="form-label">
+                    <div className="mb-3">
+                      <label htmlFor="nameId" className="form-label">
                         Name
                       </label>
                       <input
                         type="text"
-                        class="form-control"
-                        id="exampleInputPassword1"
+                        className="form-control"
+                        id="nameId"
                         value={name}
                         onChange={(e) => setName(e.target.value)} />
                     </div>
-                    <div class="mb-3">
-                      <label for="exampleInputPassword1" class="form-label">
+                    <div className="mb-3">
+                      <label htmlFor="lastNameId" className="form-label">
                         LastName
                       </label>
                       <input
                         type="text"
-                        class="form-control"
-                        id="exampleInputPassword1"
+                        className="form-control"
+                        id="lastNameId"
                         value={surname}
                         onChange={(e) => setSurname(e.target.value)} />
                     </div>
-                    <div class="mb-3">
-                      <label for="exampleInputPassword1" class="form-label">
+                    <div className="mb-3">
+                      <label htmlFor="passwordId" className="form-label">
                         Password
                       </label>
                       <input
                         type="password"
-                        class="form-control"
-                        id="exampleInputPassword1"
+                        className="form-control"
+                        id="passwordId"
                         placeholder="*******"
                         value={password}
                         onChange={(e) => {
@@ -215,14 +215,14 @@ function FormUser(currentUser) {
 
                         }} />
                     </div>
-                    <div class="mb-3">
-                      <label for="exampleInputPassword1" class="form-label">
+                    <div className="mb-3">
+                      <label htmlFor="repearPasswordId" className="form-label">
                         Repeat Password
                       </label>
                       <input
                         type="password"
-                        class="form-control"
-                        id="exampleInputPassword1"
+                        className="form-control"
+                        id="repearPasswordId"
                         placeholder="*******"
                         value={passwordRe}
                         onChange={(e) => {
@@ -230,14 +230,14 @@ function FormUser(currentUser) {
                           setChangePass(true);
                         }} />
                     </div>
-                    <div class="mb-3">
-                      <label for="exampleInputPassword1" class="form-label">
+                    <div className="mb-3">
+                      <label htmlFor="cifId" className="form-label">
                         CIF
                       </label>
                       <input
                         type="text"
-                        class="form-control"
-                        id="exampleInputPassword1"
+                        className="form-control"
+                        id="cifId"
                         value={cif}
                         onChange={(e) => setCif(e.target.value)} />
                     </div>

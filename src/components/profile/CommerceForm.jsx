@@ -110,7 +110,7 @@ function CommerceForm(currentUser) {
               ) : (
                 <>
                   <form>
-                    <label for="exampleInputPassword1" className="form-label">
+                    <label htmlFor="exampleInputPassword1" className="form-label">
                       Commerce Name
                     </label>
                     <input
@@ -122,7 +122,7 @@ function CommerceForm(currentUser) {
                     />
 
                     <div className="mb-3">
-                      <label for="exampleInputPassword1" className="form-label">
+                      <label htmlFor="exampleInputPassword1" className="form-label">
                         Location
                       </label>
                       <input
@@ -134,7 +134,7 @@ function CommerceForm(currentUser) {
                       />
                     </div>
                     <div className="mb-3">
-                      <label for="exampleInputPassword1" className="form-label">
+                      <label htmlFor="exampleInputPassword1" className="form-label">
                         About My work
                       </label>
                       <input
