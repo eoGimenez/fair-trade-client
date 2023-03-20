@@ -69,11 +69,6 @@ function CommerceForm(currentUser) {
         {!isLoading && isLoggedIn &&
 
 
-<<<<<<< HEAD
-          <div className="col  float-md-start">
-
-            <div className="card border-0 ">
-=======
                       <p className="card-text">Location:{usuario.location}</p>
                      
                          
@@ -131,7 +126,6 @@ function CommerceForm(currentUser) {
                     >
                       Confirm
                     </button>
->>>>>>> euge
 
               <div className="card-body">
                 <div className="mb-3">
