@@ -69,69 +69,9 @@ function CommerceForm(currentUser) {
         {!isLoading && isLoggedIn &&
 
 
-<<<<<<< HEAD
           <div className="col  float-md-start">
 
             <div className="card border-0 ">
-=======
-                      <p className="card-text">Location:{usuario.location}</p>
-                     
-                         
-                         {currentUser.user._id === user._id ? (  <button
-                        type="submit"
-                        id="whitebutton"
-                        onClick={formHandler}>
-                        Edit
-                      </button>    ) : <p>NO HAY CURRENT USER!!!!!!</p> }  
-                    </div>
-                  </div>
-                </>
-              ) : (
-                <>
-                  <form>
-                    <label htmlFor="exampleInputPassword1" className="form-label">
-                      Commerce Name
-                    </label>
-                    <input
-                      type="texttext"
-                      className="form-control"
-                      id="exampleInputPassword1"
-                      value={commercename}
-                      onChange={(e) => setCommercename(e.target.value)}
-                    />
-
-                    <div className="mb-3">
-                      <label htmlFor="exampleInputPassword1" className="form-label">
-                        Location
-                      </label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="exampleInputPassword1"
-                        value={location}
-                        onChange={(e) => setLocation(e.target.value)}
-                      />
-                    </div>
-                    <div className="mb-3">
-                      <label htmlFor="exampleInputPassword1" className="form-label">
-                        About My work
-                      </label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="exampleInputPassword1"
-                        value={aboutme}
-                        onChange={(e) => setAboutme(e.target.value)}
-                      />
-                    </div>
-                    <button
-                      type="submit"
-                      onClick={SubmitHandler}
-                      id="whitebutton"
-                    >
-                      Confirm
-                    </button>
->>>>>>> euge
 
               <div className="card-body">
                 <div className="mb-3">
