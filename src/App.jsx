@@ -11,6 +11,7 @@ import PostList from "./pages/PostPage/PostList";
 import PostDetailPage from "./pages/PostPage/PostDetailPage";
 import ChatPage from "./pages/ChatPage/ChatPage";
 import ProfilePage2 from "./pages/ProfilePage/ProfilePage2";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 
 function App() {
   
@@ -52,6 +53,7 @@ function App() {
             </IsAnon>
           }
         />
+      <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>
   );
