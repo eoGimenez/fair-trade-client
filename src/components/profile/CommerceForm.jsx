@@ -4,17 +4,20 @@ import userService from "../../services/user.services";
 import { AuthContext } from "../../context/auth.context";
 import "../../pages/PostPage/PostNewPage.css"
 
-function CommerceForm(currentUser) {
-  const { user, isLoading, isLoggedIn } = useContext(AuthContext);
+function CommerceForm({currentUser, setCurrentUser}) {
+  const { user,  isLoading, isLoggedIn} = useContext(AuthContext);
+
+  console.log("CURRENT-USER-COMMERCEFORM", currentUser)
   const [form, setForm] = useState(false);
   const [commercename, setCommercename] = useState("");
   const [location, setLocation] = useState("");
   const [aboutme, setAboutme] = useState("");
   const [error, setError] = useState("");
+
   const [usuario, setUsuario] = useState(user)
 
   const formHandler = () => {
-    setForm(true);
+    setForm(!form);
   };
 
   const SubmitHandler = (e) => {
@@ -34,18 +37,18 @@ function CommerceForm(currentUser) {
     userService
       .updateCommerce(user._id, requestBody)
       .then((response) => {
-        setUsuario(response.data)
-        setForm(false);
+        setCurrentUser(response.data)
+        setForm(!form);
       })
       .catch((err) => console.log("ERROR PUT", err));
   };
 
-  useEffect(() => {
-    setCommercename(user.commercename)
-    setLocation(user.location)
-    setAboutme(user.aboutme)
-
-  }, [user])
+  useEffect(()=>{
+    setCommercename(currentUser.commercename)
+    setLocation(currentUser.location)
+    setAboutme(currentUser.aboutme)
+  
+   },[currentUser])
   return (
     <>
       {error && (
@@ -68,16 +71,31 @@ function CommerceForm(currentUser) {
       <div className="comercio">
         {!isLoading && isLoggedIn &&
 
+    
+      <div className="col  float-md-start">
+      
+        <div className="card border-0 ">
+          {/*  <img src="..." className="card-img-top" alt="..." /> */}
+          <div className="card-body">
+            <div className="mb-3">
+              {!form ? (
+                <>
+                  <div
+                    className="card border-0 mb-3"
+                    style={{ width: "20rem" }}
+                  >
+                    <div className="card-body border-0">
+                      <h5 className="card-title">
+                        <span className="titlesPro">About My work:</span>
+                        <br />
+                        {currentUser.aboutme}
+                      </h5>
+                      <p className="card-text">Commername: {currentUser.commercename}</p>
 
-<<<<<<< HEAD
-          <div className="col  float-md-start">
-
-            <div className="card border-0 ">
-=======
-                      <p className="card-text">Location:{usuario.location}</p>
+                      <p className="card-text">Location:{currentUser.location}</p>
                      
                          
-                         {currentUser.user._id === user._id ? (  <button
+                         {currentUser._id === user._id ? (  <button
                         type="submit"
                         id="whitebutton"
                         onClick={formHandler}>
@@ -99,83 +117,6 @@ function CommerceForm(currentUser) {
                       value={commercename}
                       onChange={(e) => setCommercename(e.target.value)}
                     />
-
-                    <div className="mb-3">
-                      <label htmlFor="exampleInputPassword1" className="form-label">
-                        Location
-                      </label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="exampleInputPassword1"
-                        value={location}
-                        onChange={(e) => setLocation(e.target.value)}
-                      />
-                    </div>
-                    <div className="mb-3">
-                      <label htmlFor="exampleInputPassword1" className="form-label">
-                        About My work
-                      </label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="exampleInputPassword1"
-                        value={aboutme}
-                        onChange={(e) => setAboutme(e.target.value)}
-                      />
-                    </div>
-                    <button
-                      type="submit"
-                      onClick={SubmitHandler}
-                      id="whitebutton"
-                    >
-                      Confirm
-                    </button>
->>>>>>> euge
-
-              <div className="card-body">
-                <div className="mb-3">
-                  {!form ? (
-                    <>
-                      <div
-                        className="card border-0 mb-3"
-                        style={{ width: "20rem" }}
-                      >
-                        <div className="card-body border-0">
-
-                          <p className="card-text">Commername: <br />{usuario.commercename}</p>
-                          <br />
-                          <p className="card-text">Location:{usuario.location}</p>
-                          <br />
-                          <h5 className="card-title">
-                            <span className="titlesPro">About My work:</span>
-                            <br />
-                            {usuario.aboutme}
-                          </h5>
-
-
-                          {currentUser.user._id === user._id ? (<button
-                            type="submit"
-                            id="whitebutton"
-                            onClick={formHandler}>
-                            Edit
-                          </button>) : <p>NO HAY CURRENT USER!!!!!!</p>}
-                        </div>
-                      </div>
-                    </>
-                  ) : (
-                    <>
-                      <form>
-                        <label for="exampleInputPassword1" className="form-label">
-                          Commerce Name
-                        </label>
-                        <input
-                          type="texttext"
-                          className="form-control"
-                          id="exampleInputPassword1"
-                          value={commercename}
-                          onChange={(e) => setCommercename(e.target.value)}
-                        />
 
                         <div className="mb-3">
                           <label for="exampleInputPassword1" className="form-label">
