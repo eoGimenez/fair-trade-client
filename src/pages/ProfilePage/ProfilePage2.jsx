@@ -53,23 +53,23 @@ export default function ProfilePage2() {
                             <div className="col-12   col-md-4 chat">
                                 <div id="chatjs" className={"" + index}>
                                     {!showChat && <button className="active" onClick={handleChat} >
-                                        <i class="fa-solid fa-comment"></i> Inbox
+                                        <i className="fa-solid fa-comment"></i> Inbox
                                     </button>}
                                     {showChat && <>
                                         <InBox />
                                         <button className="active" onClick={handleChat} >
-                                            <i class="fa-solid fa-comment"></i> Go back!
+                                            <i className="fa-solid fa-comment"></i> Go back!
                                         </button>
                                     </>}
                                 </div>
                             </div>
                         </>
                     ) :
-                        <p><div class="text-center">
-                            <div class="spinner-border" role="status">
-                                <span class="visually-hidden">Loading...</span>
+                        <div className="text-center">
+                            <div className="spinner-border" role="status">
+                                <span className="visually-hidden">Loading...</span>
                             </div>
-                        </div></p>}
+                        </div>}
 
                 </div>
             </div>

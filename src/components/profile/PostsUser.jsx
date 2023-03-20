@@ -1,11 +1,8 @@
-import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../context/auth.context";
-//import "../../pages/ProfilePage/ProfilePage.css"
 
 function PostUser(props){
 
-    const { user, authenticateUser, isLoading, isLoggedIn ,currentUser} = props;
+    const { user } = props;
 
     console.log("USER-POSTS-USER", user)
     return(

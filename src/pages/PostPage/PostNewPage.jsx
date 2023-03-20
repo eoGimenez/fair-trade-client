@@ -59,10 +59,10 @@ function PostNewPage() {
   return (
     <>
       <Navbar3 />
-    <div className="divRow">
+    <div >
      
-      <div id="newpost" class=" containerform  mb-3 d-flex justify-content-center ">
-        <form className="row " onSubmit={submitHandler}>
+      <div id="newpost" class=" containerform  mb-3 d-flex mx-auto">
+        <form className="row mx-auto" id="formnew" onSubmit={submitHandler}>
           <div class="mb-3">
             <div className="col col-md-4 ">
               <label htmlFor="title" className="form-label fw-bold">

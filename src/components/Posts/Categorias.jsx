@@ -7,20 +7,20 @@ import { Link } from "react-router-dom";
 import "./Categorias.css"
 
 function Categorias(handleClick) {
- 
-  
+
+
   return (
     <>
       <div className="categorias">
         <div className="card-group w-75  mx-auto ">
-            <div className="card border border-0 sm-col-2">
-          <Link onClick={()=>handleClick("Home Deco")}>
+          <div className="card border border-0 sm-col-2">
+            <Link onClick={() => handleClick("Home Deco")}>
               <img src={imgHome} className="card-img-top rounded" alt="..." />
-          </Link>
-              <div className="card-body">
-                <h2 className="card-title fw-bold">Home Deco</h2>
-              </div>
+            </Link>
+            <div className="card-body">
+              <h2 className="card-title fw-bold">Home Deco</h2>
             </div>
+          </div>
           <div className="card sm-col-2 border border-0">
             <img src={imgNc} className="card-img-top rounded " alt="..." />
             <div className="card-body">

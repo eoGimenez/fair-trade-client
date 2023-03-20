@@ -1,11 +1,11 @@
 import "../../pages/ProfilePage/ProfilePage.css";
-import { useContext, useState , useEffect} from "react";
+import { useContext, useState, useEffect } from "react";
 import userService from "../../services/user.services";
 import { AuthContext } from "../../context/auth.context";
 import "../../pages/PostPage/PostNewPage.css"
 
 function CommerceForm(currentUser) {
-  const { user,  isLoading, isLoggedIn} = useContext(AuthContext);
+  const { user, isLoading, isLoggedIn } = useContext(AuthContext);
   const [form, setForm] = useState(false);
   const [commercename, setCommercename] = useState("");
   const [location, setLocation] = useState("");
@@ -40,12 +40,12 @@ function CommerceForm(currentUser) {
       .catch((err) => console.log("ERROR PUT", err));
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     setCommercename(user.commercename)
     setLocation(user.location)
     setAboutme(user.aboutme)
-  
-   },[user])
+
+  }, [user])
   return (
     <>
       {error && (
@@ -64,34 +64,17 @@ function CommerceForm(currentUser) {
       )}
 
 
-{/* COMMERCE CARD!!!!! */}
-        <div className="comercio">
-      {!isLoading && isLoggedIn && 
+      {/* COMMERCE CARD!!!!! */}
+      <div className="comercio">
+        {!isLoading && isLoggedIn &&
 
-    
-      <div className="col  float-md-start">
-      
-        <div className="card border-0 ">
 
-          <div className="card-body">
-            <div className="mb-3">
-              {!form ? (
-                <>
-                  <div
-                    className="card border-0 mb-3"
-                    style={{ width: "20rem" }}
-                  >
-                    <div className="card-body border-0">
-                      
-                      <p className="card-text">Commername: <br/>{usuario.commercename}</p>
-                      <br/>
+<<<<<<< HEAD
+          <div className="col  float-md-start">
+
+            <div className="card border-0 ">
+=======
                       <p className="card-text">Location:{usuario.location}</p>
-                      <br/>
-                      <h5 className="card-title">
-                        <span className="titlesPro">About My work:</span>
-                        <br />
-                        {usuario.aboutme}
-                      </h5>
                      
                          
                          {currentUser.user._id === user._id ? (  <button
@@ -106,7 +89,7 @@ function CommerceForm(currentUser) {
               ) : (
                 <>
                   <form>
-                    <label for="exampleInputPassword1" className="form-label">
+                    <label htmlFor="exampleInputPassword1" className="form-label">
                       Commerce Name
                     </label>
                     <input
@@ -118,7 +101,7 @@ function CommerceForm(currentUser) {
                     />
 
                     <div className="mb-3">
-                      <label for="exampleInputPassword1" className="form-label">
+                      <label htmlFor="exampleInputPassword1" className="form-label">
                         Location
                       </label>
                       <input
@@ -130,10 +113,10 @@ function CommerceForm(currentUser) {
                       />
                     </div>
                     <div className="mb-3">
-                      <label htmlfor="exampleFormControlTextarea1" className="form-label">
+                      <label htmlFor="exampleInputPassword1" className="form-label">
                         About My work
                       </label>
-                      <textarea
+                      <input
                         type="text"
                         className="form-control"
                         id="exampleInputPassword1"
@@ -148,17 +131,94 @@ function CommerceForm(currentUser) {
                     >
                       Confirm
                     </button>
+>>>>>>> euge
 
-          
-                  </form>
-                </>
-              )}
+              <div className="card-body">
+                <div className="mb-3">
+                  {!form ? (
+                    <>
+                      <div
+                        className="card border-0 mb-3"
+                        style={{ width: "20rem" }}
+                      >
+                        <div className="card-body border-0">
+
+                          <p className="card-text">Commername: <br />{usuario.commercename}</p>
+                          <br />
+                          <p className="card-text">Location:{usuario.location}</p>
+                          <br />
+                          <h5 className="card-title">
+                            <span className="titlesPro">About My work:</span>
+                            <br />
+                            {usuario.aboutme}
+                          </h5>
+
+
+                          {currentUser.user._id === user._id ? (<button
+                            type="submit"
+                            id="whitebutton"
+                            onClick={formHandler}>
+                            Edit
+                          </button>) : <p>NO HAY CURRENT USER!!!!!!</p>}
+                        </div>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <form>
+                        <label for="exampleInputPassword1" className="form-label">
+                          Commerce Name
+                        </label>
+                        <input
+                          type="texttext"
+                          className="form-control"
+                          id="exampleInputPassword1"
+                          value={commercename}
+                          onChange={(e) => setCommercename(e.target.value)}
+                        />
+
+                        <div className="mb-3">
+                          <label for="exampleInputPassword1" className="form-label">
+                            Location
+                          </label>
+                          <input
+                            type="text"
+                            className="form-control"
+                            id="exampleInputPassword1"
+                            value={location}
+                            onChange={(e) => setLocation(e.target.value)}
+                          />
+                        </div>
+                        <div className="mb-3">
+                          <label htmlfor="exampleFormControlTextarea1" className="form-label">
+                            About My work
+                          </label>
+                          <textarea
+                            type="text"
+                            className="form-control"
+                            id="exampleInputPassword1"
+                            value={aboutme}
+                            onChange={(e) => setAboutme(e.target.value)}
+                          />
+                        </div>
+                        <button
+                          type="submit"
+                          onClick={SubmitHandler}
+                          id="whitebutton"
+                        >
+                          Confirm
+                        </button>
+
+
+                      </form>
+                    </>
+                  )}
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        </div>}
-        </div>
-        {/* COMMERCE CARD!!!!! */}
+          </div>}
+      </div>
+      {/* COMMERCE CARD!!!!! */}
 
     </>
   );

@@ -1,42 +1,23 @@
 import { Link } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../context/auth.context";
 import "./Navbar3.css";
 import logoImg from "./navbarlogo.png";
 
 export default function Navbar3() {
-    const { logOutUser, user } = useContext(AuthContext);
-    const [isLoading, setIsLoading] = useState(true);
-    const [id, setId] = useState("");
-    const [userRole, setUserRole] = useState("");
-    const [currentUser, setCurrentUser] = useState({});
-
-    setTimeout(() => {
-        setCurrentUser(user);
-    }, 50);
-    useEffect(() => {
-        setIsLoading(true);
-    }, []);
-    useEffect(() => {
-        setTimeout(() => {
-            setId(currentUser._id);
-            setUserRole(currentUser.role);
-            setIsLoading(false);
-            console.log("USER EN ", currentUser);
-        });
-    }, [currentUser]);
+    const { logOutUser, user, isLoading } = useContext(AuthContext);
 
     return (
         <>
             {!isLoading && (
                 <>
-                    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-                        <div class="container-fluid navbar">
+                    <nav className="navbar navbar-expand-lg bg-body-tertiary">
+                        <div className="container-fluid navbar">
                             <Link to="/">
                                 <img src={logoImg} alt="Logo" id="logoNav" />
                             </Link>
                             <button
-                                class="navbar-toggler"
+                                className="navbar-toggler"
                                 type="button"
                                 data-bs-toggle="collapse"
                                 data-bs-target="#navbarSupportedContent"
@@ -44,31 +25,31 @@ export default function Navbar3() {
                                 aria-expanded="false"
                                 aria-label="Toggle navigation"
                             >
-                                <span class="navbar-toggler-icon"></span>
+                                <span className="navbar-toggler-icon"></span>
                             </button>
-                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                    <li class="nav-item mx-3">
-                                        <Link to={`/profile/${id}`} className="active">
+                            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                                    <li className="nav-item mx-3">
+                                        <Link to={`/profile/${user._id}`} className="active">
                                             <p className="active">
-                                                <i class="fa-solid fa-user "></i>Profile
+                                                <i className="fa-solid fa-user "></i>Profile
                                                 <br />
                                             </p>
                                         </Link>
                                     </li>
-                                    {userRole === "Artisan" && (
-                                        <li class="nav-item mx-3">
+                                    {user.role === "Artisan" && (
+                                        <li className="nav-item mx-3">
                                             <Link to="/post/new" className="active">
                                                 <p className="active">
-                                                    <i class="fa-solid fa-plus"></i>New Craft
+                                                    <i className="fa-solid fa-plus"></i>New Craft
                                                 </p>
                                             </Link>
                                         </li>
                                     )}
-                                    <li class="nav-item mx-3">
+                                    <li className="nav-item mx-3">
                                         <Link to="/post" className="">
                                             <p className="active">
-                                                <i class="fa-solid fa-signs-post"></i> Craft
+                                                <i className="fa-solid fa-signs-post"></i> Craft
                                             </p>
                                         </Link>
                                     </li>

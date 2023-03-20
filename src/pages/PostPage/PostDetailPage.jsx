@@ -39,6 +39,7 @@ export default function PostDetailPage(props) {
   
   useEffect(() => {
     getPost();
+    //eslint-disable-next-line
   }, []);
 
   const toggleEdit = () => {

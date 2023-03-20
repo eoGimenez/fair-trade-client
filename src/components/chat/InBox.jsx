@@ -32,6 +32,7 @@ export default function InBox() {
             })
             console.log("CURRENT USER: ",user)
             const chatId = user.chatsId[0];
+            //eslint-disable-next-line
             const chat = session.getInboxes()
             const inBox = session.createInbox();
             inBox.select(chatId);
@@ -40,6 +41,7 @@ export default function InBox() {
             
             return () =>  session.destroy();
         }
+        //eslint-disable-next-line
     }, [talkLoaded])
 
     return <div className="chat" ref={inBoxDiv} />

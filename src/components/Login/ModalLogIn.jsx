@@ -1,5 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-
 import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
@@ -49,6 +47,7 @@ function ModalLogIn(props) {
 
   useEffect(() => {
     if (user) navigate(`/profile/${user._id}`);
+    //eslint-disable-next-line
   }, [user])
 
   return (
