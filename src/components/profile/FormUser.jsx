@@ -10,12 +10,12 @@ import { addAvatar } from "../../services/uploads.services";
 import "../../pages/PostPage/PostNewPage.css"
 
 
-function FormUser(currentUser) {
+function FormUser({currentUser, setCurrentUser}) {
 
   const { user, isLoading, isLoggedIn} = useContext(AuthContext);
 
   const navigate = useNavigate()
- /*  console.log("AVATAR:", currentUser) */
+  //console.log("AVATAR:", currentUser) 
   const [form, setForm] = useState(false);
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -26,9 +26,6 @@ function FormUser(currentUser) {
   const [img, setImg] = useState("");
   const [error, setError]= useState("")
   const [changePass, setChangePass]=useState(false);
-
-  const [usuario, setUsuario] = useState(user)
-  console.log('USUARIOOOOOO', usuario) 
 
 
  const handleFileUpload = (e) => {
@@ -43,7 +40,7 @@ function FormUser(currentUser) {
 };
 
   const formHandler = () => {
-    setForm(true);
+    setForm(!form);
   };
 
   const SubmitHandler = (e) => {
@@ -87,9 +84,9 @@ function FormUser(currentUser) {
 
     userService.updateUser(user._id, requestBody)
     .then(response=>{
-       setUsuario(response.data)
-  /* console.log('RESPONSE CAMBIO', response.data) */
-      setForm(false)
+      setCurrentUser(response.data)
+   //console.log('RESPONSE CAMBIO', form) 
+      setForm(!form)
 
     })
     .catch(err =>console.log("ERROR PUT",err))
@@ -98,13 +95,12 @@ function FormUser(currentUser) {
 
   };
  useEffect(()=>{
-  setEmail(user.email)
-  setName(user.name)
-  setSurname(user.surname)
-  setCif(user.cif)
+  setEmail(currentUser.email)
+  setName(currentUser.name)
+  setSurname(currentUser.surname)
+  setCif(currentUser.cif)
   
-
- },[user])
+ },[currentUser])
 
   return (
     <>
@@ -131,7 +127,7 @@ function FormUser(currentUser) {
 
             {/* AVATAR CARD */}
             <div id="avatar">
-              <img src={usuario.avatar} alt="avatar" width="300" className="user-img rounded-circle " />
+              <img src={currentUser.avatar} alt="avatar" width="300" className="user-img rounded-circle " />
             </div>
             {/* AVATAR CARD */}
 
@@ -143,18 +139,18 @@ function FormUser(currentUser) {
                   <div className="adios1">
                     <div className="col-md-8">
                       <div className="card-body">
-                        <h5 className="commerce">{usuario?.name}</h5>
-                        <p className="name">{usuario?.surname}</p>
-                        <p className="card-text">{usuario?.location}</p>
-                        <p className="card-text">{usuario?.email}</p>
-                        <p className="card-text">{usuario?.cif}</p>
-                        <p className="card-text">{usuario?.role}</p>
-                        {currentUser.user._id === user._id ? (<button
+                        <h5 className="commerce">{currentUser.name}</h5>
+                        <p className="name">{currentUser.surname}</p>
+                        <p className="card-text">{currentUser.location}</p>
+                        <p className="card-text">{currentUser.email}</p>
+                        <p className="card-text">{currentUser.cif}</p>
+                        <p className="card-text">{currentUser.role}</p>
+                        {currentUser._id === user._id ? (<button
                           type="submit"
                           id="whitebutton"
                           onClick={formHandler}>
                           Edit
-                        </button>) : <p><></></p>}
+                        </button>) : <p></p>}
                       </div>
                     </div>
                   </div>

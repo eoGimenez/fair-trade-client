@@ -6,7 +6,7 @@ import userService from "../../services/user.services";
 import { AuthContext } from "../../context/auth.context";
 import "../../pages/PostPage/PostNewPage.css"
 
-function CommerceForm(currentUser) {
+function CommerceForm({currentUser, setCurrentUser}) {
   const { user,  isLoading, isLoggedIn} = useContext(AuthContext);
 
   console.log("CURRENT-USER-COMMERCEFORM", currentUser)
@@ -16,10 +16,8 @@ function CommerceForm(currentUser) {
   const [aboutme, setAboutme] = useState("");
   const [error, setError] = useState("");
 
-  const [usuario, setUsuario] = useState(user)
-
   const formHandler = () => {
-    setForm(true);
+    setForm(!form);
   };
 
   const SubmitHandler = (e) => {
@@ -40,18 +38,18 @@ function CommerceForm(currentUser) {
     userService
       .updateCommerce(user._id, requestBody)
       .then((response) => {
-        setUsuario(response.data)
-        setForm(false);
+        setCurrentUser(response.data)
+        setForm(!form);
       })
       .catch((err) => console.log("ERROR PUT", err));
   };
 
   useEffect(()=>{
-    setCommercename(user.commercename)
-    setLocation(user.location)
-    setAboutme(user.aboutme)
+    setCommercename(currentUser.commercename)
+    setLocation(currentUser.location)
+    setAboutme(currentUser.aboutme)
   
-   },[user])
+   },[currentUser])
   return (
     <>
       {error && (
@@ -91,14 +89,14 @@ function CommerceForm(currentUser) {
                       <h5 className="card-title">
                         <span className="titlesPro">About My work:</span>
                         <br />
-                        {usuario.aboutme}
+                        {currentUser.aboutme}
                       </h5>
-                      <p className="card-text">Commername: {usuario.commercename}</p>
+                      <p className="card-text">Commername: {currentUser.commercename}</p>
 
-                      <p className="card-text">Location:{usuario.location}</p>
+                      <p className="card-text">Location:{currentUser.location}</p>
                      
                          
-                         {currentUser.user._id === user._id ? (  <button
+                         {currentUser._id === user._id ? (  <button
                         type="submit"
                         id="whitebutton"
                         onClick={formHandler}>

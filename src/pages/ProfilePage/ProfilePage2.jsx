@@ -42,14 +42,15 @@ export default function ProfilePage2() {
                     {currentUser ? (
                         <>
                             <div className="col-12 col-sm-12 col-md-4 m-auto fix">
-                                <CommerceForm user={currentUser} sameUser={sameUser} />
+                                <CommerceForm currentUser={currentUser} sameUser={sameUser} setCurrentUser={setCurrentUser} />
                             </div>
                             <div className="col-12 col-sm-12 col-md-4 m-auto fix">
-                                <FormUser user={currentUser} sameUser={sameUser} />
+                                <FormUser currentUser={currentUser} sameUser={sameUser} setCurrentUser={setCurrentUser} />
                             </div>
+                            {currentUser.role === "Artisan" &&
                             <div className="col-12 col-sm-12 col-md-4 m-auto fix">
                                 <PostUser user={currentUser} isLoading={isLoading} isLoggedIn={isLoggedIn} />
-                            </div>
+                            </div>}
                             <div className="col-12   col-md-4 chat">
                                 <div id="chatjs" className={"" + index}>
                                     {!showChat && <button className="active" onClick={handleChat} >
