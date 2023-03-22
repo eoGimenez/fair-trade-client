@@ -132,12 +132,7 @@ function SignupPage() {
         storeToken(response.data.authToken);
         console.log("DESPUES DEL TOKE", storeToken)
         authenticateUser();
-<<<<<<< HEAD
         setUserOk(true)
-=======
-        setUserOk(!userOk)
-        navigate(`/profile/${user._id}`)
->>>>>>> lulu
       })
       .catch((error) => {
       }); */
