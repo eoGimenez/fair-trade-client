@@ -68,20 +68,20 @@ export default function PostDetailPage(props) {
 
       {!showEdit && (
         <div
-          class="card mb-3 mx-auto  "
-          id="details"
-          style={{ width: "35rem" }}
+          className="card"
+          style={{ width: "35rem"}}
         >
+          
             <h1 class="card-title text-center fw-bold mt-5">{post.title}</h1>
 
           <img
             src={post.image}
-            class="card-img-top rounded text-center"
-            id="img "
+            class="card-img-top rounded"
+            id="imgdetail"
             alt="..."
             style={{ width: "25rem" }}
           />
-          <div class="card-body">
+          <div id="cardetlle">
             <p class=" text-star">{post.description}</p>
             <p class="card-text text-star ">
               Batch : <spam> {post.batch} units</spam>

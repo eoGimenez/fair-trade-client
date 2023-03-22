@@ -73,7 +73,7 @@ export default function Post() {
 
             {!category && reversedPost.map(post => {
                 return (
-                    <div key={post._id} id="postcart" className="card mb-3 w-50  mt-5 mx-auto " style={{ "max-width": "540px;" }}>
+                    <div key={post._id} id="postcart" className="card mb-3 w-25 d-flex  mx-auto " style={{ "max-width": "540px;" }}>
                         <div className="row g-0">
                             <div className="col col-md-4">
                                 <img src={post.image} className="img-fluid rounded-start" alt="Img" />
@@ -81,6 +81,7 @@ export default function Post() {
                             <div className="col-md-8">
                                 <div className="card-body">
                                     <h4 className="card-title">{post.title}</h4>
+                                    <div className="botonazo"></div>
                                     <div className="col-6">
                                         <Link to={`/post/${post._id}`} props={user} id="whitebutton">Details</Link>
                                     </div>
@@ -93,13 +94,13 @@ export default function Post() {
             }
             {category && reversedPost.filter(post => post.category.includes(category)).map(post => {
                 return (
-                    <div key={post._id} className="card mb-3 w-50  mt-5 mx-auto" style={{ "max-width": "540px;" }}>
+                    <div key={post._id} className="card mb-3 w-50 mx-auto " style={{ "max-width": "540px;" }}>
                         <div className="row g-0">
                             <div className="col col-md-4">
                                 <img src={post.image} className="img-fluid rounded-start" alt="Img" />
                             </div>
                             <div className="col-md-8">
-                                <div className="card-body">
+                                <div id="card-body">
                                     <h4 className="card-title">{post.title}</h4>
                                     <p className="card-text">{post.description}</p>
                                     <p className="card-text">Batch:{post.batch}</p>
