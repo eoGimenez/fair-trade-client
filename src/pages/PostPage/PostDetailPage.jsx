@@ -28,6 +28,7 @@ export default function PostDetailPage(props) {
 
   const getPost = () => {
     let currentPost = posts.find((result) => result._id === postId);
+    console.log("CURRENT POST", currentPost)
     setPost(currentPost);
     setAuthor(currentPost.author)
     if (user._id === currentPost.author._id) {
@@ -68,27 +69,27 @@ export default function PostDetailPage(props) {
 
       {!showEdit && (
         <div
-          class="card mb-3 mx-auto  "
+        className="card mb-3 mx-auto  "
           id="details"
           style={{ width: "35rem" }}
         >
-            <h1 class="card-title text-center fw-bold mt-5">{post.title}</h1>
+            <h1 className="card-title text-center fw-bold mt-5">{post.title}</h1>
 
           <img
             src={post.image}
-            class="card-img-top rounded text-center"
+            className="card-img-top rounded text-center"
             id="img "
             alt="..."
             style={{ width: "25rem" }}
           />
-          <div class="card-body">
-            <p class=" text-star">{post.description}</p>
-            <p class="card-text text-star ">
+          <div className="card-body">
+            <p className=" text-star">{post.description}</p>
+            <p className="card-text text-star ">
               Batch : <spam> {post.batch} units</spam>
             </p>
-            <p class="card-text text-star ">Price: {post.price}€</p>
-            <p class="card-text text-star">{post.contract}</p>
-            <p class="card-text text-star">{post.category}</p>
+            <p className="card-text text-star ">Price: {post.price}€</p>
+            <p className="card-text text-star">{post.contract}</p>
+            <p className="card-text text-star">{post.category}</p>
            
             {!post.available && (
               <p className="list-group-item">
@@ -131,9 +132,9 @@ export default function PostDetailPage(props) {
 <>
 <div id="cardartesano">
     {!isOwner &&  !showEdit && 
-    <div class="card" >
-  <div class="card-body d-flex align-items-sm-center">
-  <img src={author.avatar} id="imagencardartisan" class="card-img-top rounded-circle mr-5" alt="..."/>
+    <div className="card" >
+  <div className="card-body d-flex align-items-sm-center">
+  <img src={author.avatar} id="imagencardartisan" className="card-img-top rounded-circle mr-5" alt="..."/>
     <Link to={`/profile/${author._id}`}> Visit {author.name} {author.surname}  profile</Link>
   </div>
 </div>  } 

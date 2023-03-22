@@ -53,32 +53,32 @@ function Navbar2() {
                 <>
                   <li>
                     <Link to={`/profile/${id}`} className="active">
-                      <i class="fa-solid fa-user"></i>    Profile
+                      <i className="fa-solid fa-user"></i>    Profile
                     </Link>
                   </li>
                   <>
                     {userRole === "Artisan" &&
                       <li>
                         <Link to="/post/new" className="active">
-                          <i class="fa-solid fa-plus"></i>   New Craft
+                          <i className="fa-solid fa-plus"></i>   New Craft
                         </Link>
                       </li>
                     }
                     <li>
                       <Link to="/post" className="active">
-                        <i class="fa-solid fa-signs-post"></i>  Craft
+                        <i className="fa-solid fa-signs-post"></i>  Craft
                       </Link>
                     </li>
                     <li>
                       {/* CHAT!!!         */}
                       <div id="chatjs" className={"" + index}>
                         {!showChat && <button className="active" onClick={handleChat} >
-                          <i class="fa-solid fa-comment"></i> Inbox
+                          <i className="fa-solid fa-comment"></i> Inbox
                         </button>}
                         {showChat && <>
                           <InBox />
                           <button className="active" onClick={handleChat} >
-                            <i class="fa-solid fa-comment"></i> Go back!
+                            <i className="fa-solid fa-comment"></i> Go back!
                           </button>
                         </>}
                       </div>

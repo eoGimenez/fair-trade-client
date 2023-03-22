@@ -52,7 +52,7 @@ function ModalLogIn(props) {
 
   return (
     <>
-      {errorMessage && <div class="alert alert-danger alerta " role="alert">
+      {errorMessage && <div className="alert alert-danger alerta " role="alert">
         {errorMessage}
       </div>}
 
