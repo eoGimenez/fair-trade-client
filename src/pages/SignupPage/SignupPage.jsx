@@ -88,7 +88,7 @@ function SignupPage() {
         storeToken(response.data.authToken);
         console.log("DESPUES DEL TOKE", storeToken)
         authenticateUser();
-        setUserOk(!userOk)
+        setUserOk(true)
       })
       .catch((error) => {
       });

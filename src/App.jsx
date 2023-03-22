@@ -2,7 +2,6 @@ import "./App.css";
 import { Routes, Route,  } from "react-router-dom";
 import PostNewPost from './pages/PostPage/PostNewPage'
 import HomePage from "./pages/HomePage/HomePage";
-//import ProfilePage2 from "./pages/ProfilePage/ProfilePage";
 import SignupPage from "./pages/SignupPage/SignupPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import IsPrivate from "./components/IsPrivate/IsPrivate"

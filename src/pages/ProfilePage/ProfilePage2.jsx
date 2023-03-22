@@ -4,7 +4,7 @@ import { AuthContext } from "../../context/auth.context";
 import CommerceForm from "../../components/profile/CommerceForm";
 import FormUser from "../../components/profile/FormUser";
 import userService from "../../services/user.services";
-import "./ProfilePage.css";
+//import "./ProfilePage.css";
 import PostUser from "../../components/profile/PostsUser";
 import Navbar3 from "../../components/Navbar/NavBar3";
 import InBox from "../../components/chat/InBox";
