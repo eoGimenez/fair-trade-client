@@ -60,7 +60,7 @@
 #people {
   /* border: solid 2px blue; */
   border: 0;
-  margin-top: 150px;
+  
   background-color: white;
   display: flex;
   flex-direction: column;
