@@ -29,8 +29,9 @@ function SignupPage() {
   const [passwordRe, setPasswordRe] = useState("");
   const [role, setRole] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
-  const { authenticateUser, user, storeToken } = useContext(AuthContext)
-  const [userOk, setUserOk] = useState(false)
+  const { authenticateUser, user, storeToken, isLoggedIn } = useContext(AuthContext)
+  const [userOk, setUserOk] = useState('')
+   const [ user2, setUser2] = useState('') 
   const navigate = useNavigate();
 
   let requestBody
@@ -72,32 +73,77 @@ function SignupPage() {
       return;
     }
     //debugger;
-    authService
+/*     authService
       .signup(requestBody)
       .then((response) => {
-        return response;
+        console.log('RESPONSE SIGN UP' , response)  
+        setUser2(response.data.user) 
+          authService
+        .login({ email, password })
+        .then(response => {
+          console.log("RESPONSE LOGIN", response)
+          storeToken(response.data.authToken);
+          authenticateUser();
+          setUserOk(!userOk) 
+          navigate(`/profile/${user2._id}`)     
+        })
+        .catch((error) => {
+          const errorDescription = error.response.data.message;
+          console.log("error en log in", error)
+          setErrorMessage(errorDescription);
+        })
       })
-      .catch(err => {
-        const errorDescription = err.response.data.message;
-        console.log("errorDescription", errorDescription)
+      .catch((error) => {
+        const errorDescription = error.response.data.message;
+        console.log("error en sign up", error)
         setErrorMessage(errorDescription);
-        return;
-      })
-    authService.login({ email, password })
+      }); */
+
+
+ 
+      async function signUpAndLogin() {
+        try {
+          const signUpResponse = await authService.signup(requestBody);
+          console.log('RESPONSE SIGN UP', signUpResponse);
+          
+          const { email, password } = requestBody;
+          const loginResponse = await authService.login({ email, password });
+          console.log('RESPONSE LOGIN', loginResponse);
+          
+          const authToken = loginResponse.data.authToken;
+          storeToken(authToken);
+          authenticateUser();
+          console.log('dsps del autenticated')
+          navigate(`/profile/${signUpResponse.data.user._id}`);
+        } catch (error) {
+          const errorDescription = error.response.data.message;
+          console.log('error', error);
+          setErrorMessage(errorDescription);
+        }
+      }
+
+      signUpAndLogin();
+
+
+
+
+   /*  authService.login({ email, password })
       .then(response => {
         storeToken(response.data.authToken);
         console.log("DESPUES DEL TOKE", storeToken)
         authenticateUser();
         setUserOk(!userOk)
+        navigate(`/profile/${user._id}`)
       })
       .catch((error) => {
-      });
+      }); */
   };
   useEffect(() => {
-    if (user) navigate(`/profile/${user._id}`);
+    console.log("user2", user2)
+    if (user2) navigate(`/profile/${user2._id}`);
     //eslint-disable-next-line
-  }, [userOk])
-
+  }, [user2])  
+ 
 
   return (
     <>

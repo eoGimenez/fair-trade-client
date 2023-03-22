@@ -77,9 +77,9 @@ function ProfilePage() {
                 </div>
               </div>
             </div>
-          ) : <p><div class="text-center">
-            <div class="spinner-border" role="status">
-              <span class="visually-hidden">Loading...</span>
+          ) : <p><div className="text-center">
+            <div className="spinner-border" role="status">
+              <span className="visually-hidden">Loading...</span>
             </div>
           </div></p>}
           {/* POSTEOS!!!!! */}
@@ -96,9 +96,9 @@ function ProfilePage() {
           </div>
           } </div>
           </div>
-          ) :  <p><div class="text-center">
-          <div class="spinner-border" role="status">
-            <span class="visually-hidden">Loading...</span>
+          ) :  <p><div className="text-center">
+          <div className="spinner-border" role="status">
+            <span className="visually-hidden">Loading...</span>
           </div>
         </div></p>}
       {/* POSTEOS!!!!! */}

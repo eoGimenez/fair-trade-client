@@ -14,9 +14,9 @@ function PostUser(props){
     return(
         <>
         <Link to={`/post/${post._id}`}><p> {post.title}</p></Link>
-        <div class="">
-   {/*  <h5 class="card-title">Description:{post.description}</h5> */}
-    <p class="card-text"> </p>
+        <div className="">
+   {/*  <h5 className="card-title">Description:{post.description}</h5> */}
+    <p className="card-text"> </p>
   </div>
   </>
     )
