@@ -11,6 +11,7 @@ function PostNewPage() {
   //eslint-disable-next-line
   const { posts, getPosts } = useContext(postContext);
   const { user } = useContext(AuthContext);
+  console.log("USER", user)
 
   const [img, setImg] = useState("");
 
@@ -29,7 +30,6 @@ function PostNewPage() {
     uploadData.append("image", e.target.files[0]);
     uploadImage(uploadData)
       .then((response) => {
-        console.log("RTA CLOUDINADRYYYYY:", response.fileUrl);
         setImg(response.fileUrl);
       })
       .catch((err) => console.log("Error while uploading the file: ", err));

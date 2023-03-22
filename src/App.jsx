@@ -29,6 +29,7 @@ function App() {
         <Route path="/post/:postId" element={<IsPrivate> <PostDetailPage /></IsPrivate>} />
         <Route path="/post/new" element={<IsPrivate> <PostNewPost /></IsPrivate>} />
         <Route path="chat" element={<IsPrivate> <ChatPage /></IsPrivate>} />
+        <Route path="*" element={<NotFoundPage/>}/>
         <Route
           path="/signup"
           element={
