@@ -1,33 +1,31 @@
-import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../context/auth.context";
-//import "../../pages/ProfilePage/ProfilePage.css"
+import "./ProfilePage.css"
 
-function PostUser(props){
+function PostUser(props) {
 
-    const { user, authenticateUser, isLoading, isLoggedIn ,currentUser} = props;
+  const { user } = props;
 
-    console.log("USER-POSTS-USER", user)
-    return(
-        <>
-   <div id="posteos" >
-        <span className="titlesPro">Your Posts:</span>
-        <br/>
-  <div className="posteosIn">{user.posts.map((post)=>{
-    return(
-        <>
-        <Link to={`/post/${post._id}`}><p>Title: {post.title}</p></Link>
-        <div class="">
-    <h5 class="card-title">Description:{post.description}</h5>
-    <p class="card-text"> </p>
-  </div>
-  </>
-    )
-  })}</div>
-  
-</div>
-  </>
-    )
+  console.log("USER-POSTS-USER", user)
+  return (
+    <>
+      <div id="posteos" >
+        <span className="titlesPro">Your Posts</span>
+        <br />
+        <div className="posteosIn">{user.posts.map((post) => {
+          return (
+              <div className="contenedorPosts" key={post._id}>
+                <Link to={`/post/${post._id}`}><span className="linkStyle btn"><p>Title: {post.title}</p></span></Link>
+                <p className="card-title">Description:{post.description}</p>
+                <p className="card-text"> </p>
+                <br />
+                <hr />
+              </div>
+          )
+        })}</div>
+
+      </div>
+    </>
+  )
 }
 
 export default PostUser;

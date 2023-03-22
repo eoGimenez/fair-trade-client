@@ -1,20 +1,20 @@
 /* eslint-disable no-unused-expressions */
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 /* import img2 from "../profile/emptyavatar.png"; */
 import userService from "../../services/user.services";
 import { AuthContext } from "../../context/auth.context";
 import { useContext } from "react";
-import "../../pages/ProfilePage/ProfilePage.css";
+//import "../../pages/ProfilePage/ProfilePage.css";
 import { addAvatar } from "../../services/uploads.services";
-import "../../pages/PostPage/PostNewPage.css"
+//import "../../pages/PostPage/PostNewPage.css"
+import "./FormUser.css"
 
+function FormUser({ currentUser, setCurrentUser }) {
 
-function FormUser({currentUser, setCurrentUser}) {
+  const { user, isLoading, isLoggedIn } = useContext(AuthContext);
 
-  const { user, isLoading, isLoggedIn} = useContext(AuthContext);
-
-  const navigate = useNavigate()
+  //const navigate = useNavigate()
   //console.log("AVATAR:", currentUser) 
   const [form, setForm] = useState(false);
   const [email, setEmail] = useState("");
@@ -24,20 +24,20 @@ function FormUser({currentUser, setCurrentUser}) {
   const [passwordRe, setPasswordRe] = useState("");
   const [cif, setCif] = useState("");
   const [img, setImg] = useState("");
-  const [error, setError]= useState("")
-  const [changePass, setChangePass]=useState(false);
+  const [error, setError] = useState("")
+  const [changePass, setChangePass] = useState(false);
 
 
- const handleFileUpload = (e) => {
-  const uploadData = new FormData();
-  uploadData.append("avatar", e.target.files[0]);
+  const handleFileUpload = (e) => {
+    const uploadData = new FormData();
+    uploadData.append("avatar", e.target.files[0]);
     addAvatar(uploadData)
-    .then((response) => {
-      /* console.log("RTA CLOUDINADRYYYYY:",response.fileUrl); */
-      setImg(response.fileUrl);
-    })
-    .catch((err) => console.log("Error while uploading the file: ", err));
-};
+      .then((response) => {
+        /* console.log("RTA CLOUDINADRYYYYY:",response.fileUrl); */
+        setImg(response.fileUrl);
+      })
+      .catch((err) => console.log("Error while uploading the file: ", err));
+  };
 
   const formHandler = () => {
     setForm(!form);
@@ -52,7 +52,7 @@ function FormUser({currentUser, setCurrentUser}) {
       surname === "" ||
       cif === ""
     ) {
-       setError("Faltan campos")
+      setError("Faltan campos")
       return;
     }
 
@@ -62,12 +62,14 @@ function FormUser({currentUser, setCurrentUser}) {
       return;
     }
 
-   if(changePass) { const passwordRegex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
-   if (!passwordRegex.test(password)) {
-     setError("Pass inconrrecto")
-     
-     return;
-   }} 
+    if (changePass) {
+      const passwordRegex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+      if (!passwordRegex.test(password)) {
+        setError("Pass inconrrecto")
+
+        return;
+      }
+    }
 
     const requestBody = {
       email,
@@ -77,35 +79,35 @@ function FormUser({currentUser, setCurrentUser}) {
       avatar: img
     }
 
-     if(changePass){
-      requestBody.password= password;
-       requestBody.passwordRe = passwordRe;
+    if (changePass) {
+      requestBody.password = password;
+      requestBody.passwordRe = passwordRe;
     }
 
     userService.updateUser(user._id, requestBody)
-    .then(response=>{
-      setCurrentUser(response.data)
-   //console.log('RESPONSE CAMBIO', form) 
-      setForm(!form)
+      .then(response => {
+        setCurrentUser(response.data)
+        //console.log('RESPONSE CAMBIO', form) 
+        setForm(!form)
 
-    })
-    .catch(err =>console.log("ERROR PUT",err))
-      
-   
+      })
+      .catch(err => console.log("ERROR PUT", err))
+
+
 
   };
- useEffect(()=>{
-  setEmail(currentUser.email)
-  setName(currentUser.name)
-  setSurname(currentUser.surname)
-  setCif(currentUser.cif)
-  
- },[currentUser])
+  useEffect(() => {
+    setEmail(currentUser.email)
+    setName(currentUser.name)
+    setSurname(currentUser.surname)
+    setCif(currentUser.cif)
+
+  }, [currentUser])
 
   return (
     <>
 
-       {error && <div className="alert alert-danger d-flex align-items-center" role="alert">
+      {error && <div className="alert alert-danger d-flex align-items-center" role="alert">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="bi bi-exclamation-triangle-fill flex-shrink-0 me-2"
@@ -119,16 +121,17 @@ function FormUser({currentUser, setCurrentUser}) {
       </div>}
 
 
-          {/* INFO PEOPLE!!! */}
-          <div id="people">
+      {/* INFO PEOPLE!!! */}
+      <div id="people">
         {!isLoading && isLoggedIn &&
           <>
 
 
             {/* AVATAR CARD */}
-            <div id="avatar">
+
+            {!form && <div id="avatar">
               <img src={currentUser.avatar} alt="avatar" width="300" className="user-img rounded-circle " />
-            </div>
+            </div>}
             {/* AVATAR CARD */}
 
 
@@ -237,9 +240,9 @@ function FormUser({currentUser, setCurrentUser}) {
                         value={cif}
                         onChange={(e) => setCif(e.target.value)} />
                     </div>
-
-                    <input type="file" onChange={(e) => handleFileUpload(e)} name="avatar" />
-
+                    <div>
+                      <input type="file" onChange={(e) => handleFileUpload(e)} name="avatar" />
+                    </div>
                     <button
                       type="submit"
                       id="whitebutton"
@@ -256,10 +259,10 @@ function FormUser({currentUser, setCurrentUser}) {
             </div>
 
           </>}
-         </div>
-         {/* ARTISAN CARD */}
+      </div>
+      {/* ARTISAN CARD */}
 
-          {/* INFO PEOPLE!!! */}
+      {/* INFO PEOPLE!!! */}
 
     </>
   );

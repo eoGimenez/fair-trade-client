@@ -1,5 +1,6 @@
 *{
     font-family: 'Poppins', sans-serif;
+    outline-color: transparent;
 }
 
 /* ALINEA EN FLEX ROW */
@@ -92,17 +93,24 @@
   flex-direction: column;
 }
 
-.posteos {
-  /* border: solid 2px blueviolet; */
-  border: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  height: 100vh;
-  width: 15vw;
+#posteos {
+  height: auto;
+  margin-top: 80px;
 }
 
+#posteos p {
+  font-size: 1.3em;
+}
+.linkStyle:hover {
+  color: #4f2579;
+  background-color: #ebebf8;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+.linkStyle:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
 
 .adios1 {
   /* border: solid 2px orange; */
@@ -127,11 +135,15 @@
 
 .titlesPro {
   font-size: 1.7em;
-}
 
+}
 .commerce {
   font-size: 1.8em;
 }
 .name {
   font-size: 1.4em;
+}
+
+.contenedorPosts {
+  margin-top: 15px;
 }
