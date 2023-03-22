@@ -13,7 +13,7 @@ function FormUser({currentUser, setCurrentUser}) {
 
   const { user, isLoading, isLoggedIn} = useContext(AuthContext);
 
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   //console.log("AVATAR:", currentUser) 
   const [form, setForm] = useState(false);
   const [email, setEmail] = useState("");
