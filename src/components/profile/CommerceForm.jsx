@@ -13,8 +13,14 @@ function CommerceForm({currentUser, setCurrentUser}) {
   const [location, setLocation] = useState("");
   const [aboutme, setAboutme] = useState("");
   const [error, setError] = useState("");
+  const [ truncate, setTruncate ] = useState(true);
 
-  const [usuario, setUsuario] = useState(user)
+  const clickHandler = () => {
+    setTruncate(!truncate)
+  }
+
+  let classDesc = "";
+  if (truncate) classDesc = "text-truncate"
 
   const formHandler = () => {
     setForm(!form);
@@ -47,8 +53,8 @@ function CommerceForm({currentUser, setCurrentUser}) {
     setCommercename(currentUser.commercename)
     setLocation(currentUser.location)
     setAboutme(currentUser.aboutme)
-  
    },[currentUser])
+
   return (
     <>
       {error && (
@@ -86,13 +92,13 @@ function CommerceForm({currentUser, setCurrentUser}) {
                   >
                     <div className="card-body border-0">
                       <h5 className="card-title">
-                        <span className="titlesPro">About My work:</span>
+                        <span className="titlesPro">About my work</span>
                         <br />
-                        {currentUser.aboutme}
+                        <p className={"description d-inline-block " +classDesc} onClick={clickHandler}>{currentUser.aboutme}</p>
                       </h5>
-                      <p className="card-text">Commername: {currentUser.commercename}</p>
+                      <p className="card-text">{currentUser.commercename}</p>
 
-                      <p className="card-text">Location:{currentUser.location}</p>
+                      <p className="card-text">{currentUser.location}</p>
                      
                          
                          {currentUser._id === user._id ? (  <button
@@ -103,6 +109,7 @@ function CommerceForm({currentUser, setCurrentUser}) {
                       </button>    ) : <p>NO HAY CURRENT USER!!!!!!</p> }  
                     </div>
                   </div>
+                  <hr/>
                 </>
               ) : (
                 <>

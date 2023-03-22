@@ -39,18 +39,3 @@ li {
     justify-content: space-between;
 }
 
- 
-#chatjs {
-    /* width: 75vw; */
-    height: 50vh;
-    position: relative;
-/*     display: flex;
-    flex-direction: column;
-    justify-content: space-between; */
-}
-.chatOn {
-    z-index: 999;
-}
-.chatOff {
-    z-index: 0;
-}

@@ -21,7 +21,7 @@ export default function InBox() {
                 id: user._id,
                 name: user.name,
                 email: user.email,
-                photoUrl: "https://picsum.photos/200/300",
+                photoUrl: user.avatar,
                 welcomeMessage: 'Hello!',
                 role: "defaul"
             });

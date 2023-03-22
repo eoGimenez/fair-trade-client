@@ -15,3 +15,24 @@
    #containerprofile{
     width: 100vw;
    }
+
+   .description {
+    max-width: 250px;
+    margin: 10px 0;
+   }
+
+   .title {
+    font-weight: 800;
+   }
+
+   .contenedorPosts {
+    display: grid;
+   }
+
+   .cForm {
+    height: auto;
+   }
+
+   .uForm {
+    height: 50vh;
+   }

@@ -3,7 +3,7 @@ import { useContext, useEffect, useRef, useState } from "react"
 import Talk from "talkjs"
 import { AuthContext } from "../context/auth.context"
 
-export default function ChatBox({ author: { _id, name, email } }) {
+export default function ChatBox({ author: { _id, name, email, avatar } }) {
     const inBoxDiv = useRef();
     const [talkLoaded, setTalkLoaded] = useState(false);
     const { user } = useContext(AuthContext);
@@ -20,7 +20,7 @@ export default function ChatBox({ author: { _id, name, email } }) {
                 id: user._id,
                 name: user.name,
                 email: user.email,
-                photoUrl: "https://picsum.photos/200/300",
+                photoUrl: user.avatar,
                 welcomeMessage: 'Hello!',
                 role: "defaul"
             });
@@ -28,7 +28,7 @@ export default function ChatBox({ author: { _id, name, email } }) {
                 id: _id,
                 name: name,
                 email: email,
-                photoUrl: "https://picsum.photos/200/300",
+                photoUrl: avatar,
                 welcomeMessage: 'Hello!',
                 role: "defaul"
             });
