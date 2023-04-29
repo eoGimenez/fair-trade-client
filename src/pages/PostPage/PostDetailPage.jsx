@@ -28,6 +28,7 @@ export default function PostDetailPage(props) {
 
   const getPost = () => {
     let currentPost = posts.find((result) => result._id === postId);
+    console.log("CURRENT POST", currentPost)
     setPost(currentPost);
     setAuthor(currentPost.author)
     if (user._id === currentPost.author._id) {
@@ -86,9 +87,9 @@ export default function PostDetailPage(props) {
             <p class="card-text text-star ">
               Batch : <spam> {post.batch} units</spam>
             </p>
-            <p class="card-text text-star ">Price: {post.price}€</p>
-            <p class="card-text text-star">{post.contract}</p>
-            <p class="card-text text-star">{post.category}</p>
+            <p className="card-text text-star ">Price: {post.price}€</p>
+            <p className="card-text text-star">{post.contract}</p>
+            <p className="card-text text-star">{post.category}</p>
            
             {!post.available && (
               <p className="list-group-item">
@@ -131,9 +132,9 @@ export default function PostDetailPage(props) {
 <>
 <div id="cardartesano">
     {!isOwner &&  !showEdit && 
-    <div class="card" >
-  <div class="card-body d-flex align-items-sm-center">
-  <img src={author.avatar} id="imagencardartisan" class="card-img-top rounded-circle mr-5" alt="..."/>
+    <div className="card" >
+  <div className="card-body d-flex align-items-sm-center">
+  <img src={author.avatar} id="imagencardartisan" className="card-img-top rounded-circle mr-5" alt="..."/>
     <Link to={`/profile/${author._id}`}> Visit {author.name} {author.surname}  profile</Link>
   </div>
 </div>  } 

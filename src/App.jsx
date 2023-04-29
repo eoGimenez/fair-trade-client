@@ -10,6 +10,7 @@ import PostList from "./pages/PostPage/PostList";
 import PostDetailPage from "./pages/PostPage/PostDetailPage";
 import ChatPage from "./pages/ChatPage/ChatPage";
 import ProfilePage2 from "./pages/ProfilePage/ProfilePage2";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 
 
 
@@ -28,6 +29,7 @@ function App() {
         <Route path="/post/:postId" element={<IsPrivate> <PostDetailPage /></IsPrivate>} />
         <Route path="/post/new" element={<IsPrivate> <PostNewPost /></IsPrivate>} />
         <Route path="chat" element={<IsPrivate> <ChatPage /></IsPrivate>} />
+        <Route path="*" element={<NotFoundPage/>}/>
         <Route
           path="/signup"
           element={
@@ -52,6 +54,7 @@ function App() {
             </IsAnon>
           }
         />
+      <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>
   );

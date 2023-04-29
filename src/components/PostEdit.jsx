@@ -73,17 +73,17 @@ export default function PostEdit({
     <>
       <div
         id="newpost"
-        class=" containerform  mb-3 d-flex justify-content-center "
+        className=" containerform  mb-3 d-flex justify-content-center "
       >
         <form className="row " onSubmit={submitHandler}>
-          <div class="mb-3">
+          <div className="mb-3">
             <div className="col col-md-2">
-              <div class="card" style={{ width: "18rem" }}>
-                <img src={form.image} class="card-img-top" alt="..." />
+              <div className="card" style={{ width: "18rem" }}>
+                <img src={form.image} className="card-img-top" alt="..." />
               </div>
             </div>
           </div>
-          <div class="mb-3">
+          <div className="mb-3">
             <div className="col col-md-4 ">
               <label htmlFor="title" className="form-label">
                 Title
@@ -98,7 +98,7 @@ export default function PostEdit({
             </div>
           </div>
 
-          <div class="mb-3">
+          <div className="mb-3">
             <div className="col col-md-4">
               <label htmlFor="description" className="form-label">
                 Description
@@ -193,7 +193,7 @@ export default function PostEdit({
             </div>
           </div>
 
-          <div class="form-check form-switch col col-md-2">
+          <div className="form-check form-switch col col-md-2">
               <label
                 className="form-check-label fw-bold "
                 for="flexSwitchCheckChecked"

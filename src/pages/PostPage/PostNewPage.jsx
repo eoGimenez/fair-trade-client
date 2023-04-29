@@ -11,6 +11,7 @@ function PostNewPage() {
   //eslint-disable-next-line
   const { posts, getPosts } = useContext(postContext);
   const { user } = useContext(AuthContext);
+  console.log("USER", user)
 
   const [img, setImg] = useState("");
 
@@ -29,7 +30,6 @@ function PostNewPage() {
     uploadData.append("image", e.target.files[0]);
     uploadImage(uploadData)
       .then((response) => {
-        console.log("RTA CLOUDINADRYYYYY:", response.fileUrl);
         setImg(response.fileUrl);
       })
       .catch((err) => console.log("Error while uploading the file: ", err));
@@ -61,9 +61,9 @@ function PostNewPage() {
       <Navbar3 />
     <div >
      
-      <div id="newpost" class=" containerform  mb-3 d-flex mx-auto">
+      <div id="newpost" className=" containerform  mb-3 d-flex mx-auto">
         <form className="row mx-auto" id="formnew" onSubmit={submitHandler}>
-          <div class="mb-3">
+          <div className="mb-3">
             <div className="col col-md-4 ">
               <label htmlFor="title" className="form-label fw-bold">
                 Title
@@ -78,16 +78,16 @@ function PostNewPage() {
             </div>
           </div>  
 
-            <div class="mb-3">
+            <div className="mb-3">
               <div className="col col-md-4">
                 <label
                   htmlfor="exampleFormControlTextarea1"
-                  class="form-label fw-bold"
+                  className="form-label fw-bold"
                 >
                   Description
                 </label>
                 <textarea
-                  class="form-control"
+                  className="form-control"
                   id="exampleFormControlTextarea1"
                   rows="3"
                   value={form.description}
@@ -172,7 +172,7 @@ function PostNewPage() {
                   <option value="Misellaneous">Miscellaneous</option>
                 </select>
 
-                <div class="mb-2 mt-5">
+                <div className="mb-2 mt-5">
                   <div className="col col-md-4">
                     <input
                       type="file"
