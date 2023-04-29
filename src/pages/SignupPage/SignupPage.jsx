@@ -96,7 +96,7 @@ function SignupPage() {
         const errorDescription = error.response.data.message;
         console.log("error en sign up", error)
         setErrorMessage(errorDescription);
-      }); */
+      });
 
 
  
