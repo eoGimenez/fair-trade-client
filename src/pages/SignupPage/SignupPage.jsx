@@ -71,7 +71,6 @@ function SignupPage() {
       setErrorMessage("Check for Password requirement")
       return;
     }
-    //debugger;
     authService
       .signup(requestBody)
       .then((response) => {
